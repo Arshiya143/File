@@ -12,20 +12,24 @@ document.addEventListener("DOMContentLoaded", function () {
   const sidebar = document.querySelector(".resizable-sidebar");
 
   const updateGridColumns = (percentage) => {
-    if (window.innerWidth >= 769) {
-      const columns = Math.max(5, 12 - Math.floor(percentage / 16));
-      container.className = `grid grid-cols-${columns} p-4 transition-all duration-300 dive-height`;
-    }
+    const columns = Math.max(5, 12 - Math.floor(percentage / 16));
+    container.className = `grid grid-cols-${columns} p-4 transition-all duration-300 dive-height`;
     localStorage.setItem("gridPercentage", percentage); // Save percentage to local storage
   };
 
   const setDraggablePosition = (percentage) => {
+    if (window.innerWidth < 768) {
+      return; // Exit early if screen size is less than 768 pixels
+    }
     const y = (percentage / 100) * 110;
     progress.style.height = percentage + "%";
     draggable.style.top = y + "px";
   };
 
   draggable.addEventListener("mousedown", function (event) {
+    if (window.innerWidth < 768) {
+      return; // Prevent dragging functionality on screens smaller than 768 pixels
+    }
     event.preventDefault();
     const slider = draggable.parentElement;
     const sliderRect = slider.getBoundingClientRect();
@@ -49,11 +53,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initial setup on page load
   window.addEventListener("load", () => {
-    const savedPercentage = localStorage.getItem("gridPercentage");
-    if (savedPercentage !== null) {
-      const percentage = parseFloat(savedPercentage);
-      setDraggablePosition(percentage);
-      updateGridColumns(percentage); // Ensure grid columns are updated initially
+    if (window.innerWidth >= 768) {
+      const savedPercentage = localStorage.getItem("gridPercentage");
+      if (savedPercentage !== null) {
+        const percentage = parseFloat(savedPercentage);
+        setDraggablePosition(percentage);
+        updateGridColumns(percentage); // Ensure grid columns are updated initially
+      }
     }
   });
 
@@ -218,6 +224,30 @@ document.addEventListener("DOMContentLoaded", function () {
     window.removeEventListener("mousemove", startResizing);
     window.removeEventListener("mouseup", stopResizing);
   };
+
+  function handleResize() {
+    const width = window.innerWidth;
+    if (width < 768) {
+      container.className = "";
+      container.className =
+        "grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-12 gap-4 transition-all duration-300 dive-height p-6 overflow-y-auto";
+    }
+  }
+
+  function throttle(callback, delay) {
+    let lastCalled = 0;
+    return function () {
+      const now = new Date().getTime();
+      if (now - lastCalled >= delay) {
+        callback.apply(null, arguments);
+        lastCalled = now;
+      }
+    };
+  }
+
+  window.addEventListener("resize", throttle(handleResize, 200));
+
+  handleResize();
 
   resizer.addEventListener("mousedown", initResize);
   window.togglePanel = togglePanel;

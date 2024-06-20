@@ -18,6 +18,24 @@
     width: 92% !important;
     height: 76.5vh !important;
   }
+  .width-buttons {
+    width: 31rem;
+  }
+}
+@media (max-width: 640px) {
+  .width-buttons {
+    width: 26rem;
+  }
+}
+@media (max-width: 532px) {
+  .width-buttons {
+    width: 19rem;
+  }
+}
+@media (max-width: 410px) {
+  .width-buttons {
+    width: 12rem;
+  }
 }
 
 .text-input.blue-border {
@@ -30,6 +48,9 @@
 }
 .mt-34 {
   margin-top: 3.4rem;
+}
+.ml-130 {
+  margin-left: 32.5rem;
 }
 .ml-138 {
   margin-left: 34.5rem;

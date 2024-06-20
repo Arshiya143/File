@@ -29,7 +29,7 @@
 
       <div
         id="path-display"
-        class="flex items-center rounded-md overflow-hidden flex-shrink-0 bg-color-white h-10 w-11/12 md:ml-6 md:w-61 lg:w-8/12 cursor-pointer"
+        class="flex items-center rounded-md overflow-hidden bg-color-white h-10 w-11/12 md:ml-6 md:w-61 lg:w-8/12 cursor-pointer"
       >
         <button
           class="pt-3 pb-3 pl-4 hidden md:flex items-center justify-center"
@@ -37,7 +37,7 @@
           <img src="images/top.svg" />
         </button>
         <div
-          class="flex items-center space-x-1 pl-4 pr-4 pt-2.5 pb-2.5 flex-shrink flex-grow border-none outline-none font-size-16 font-normal color-light-black"
+          class="flex items-center pl-4 pr-4 pt-2.5 pb-2.5 flex-shrink-0 flex-grow border-none outline-none font-size-16 font-normal color-light-black overflow-x-auto"
         >
           <button class="flex items-center">
             <i class="ri-home-4-line pr-2"></i>Personal
@@ -55,7 +55,6 @@
           </button>
           <button class="flex items-center">
             New folder <img src="images/down.svg" />
-            <span>/</span>
           </button>
         </div>
         <button class="pr-5 pt-3 pb-3 flex items-center justify-center">
@@ -105,14 +104,83 @@
 
     <div class="md:hidden">
       <div
-        class="flex items-center justify-between rounded-md overflow-hidden flex-shrink-0 bg-transparent h-10 w-11/12 ml-6 md:w-61 lg:w-8/12 cursor-pointer"
+        class="flex items-center justify-between overflow-hidden flex-shrink-0 bg-transparent h-14 w-11/12 ml-6 mb-3 md:w-61 lg:w-8/12 cursor-pointer relative"
       >
+        <!-- Left buttons container (scrollable) -->
         <div
-          class="flex items-center space-x-1 pr-4 pt-2.5 pb-2.5 flex-shrink flex-grow border-none outline-none font-size-16 font-normal color-light-black"
+          class="absolute inset-y-0 left-0 flex items-center space-x-6 ml-2 w-96 width-buttons overflow-x-auto font-size-16 font-normal color-light-black"
         >
-          Posiotion
+          <!-- Example left buttons (can be repeated as needed) -->
+          <button class="flex items-center">
+            <i class="ri-home-4-line pr-2"></i>Personal
+            <img src="images/down.svg" />
+            <span>/</span>
+          </button>
+          <button class="flex items-center">
+            Desktop
+            <img src="images/down.svg" />
+            <span>/</span>
+          </button>
+          <button class="flex items-center">
+            <span class="truncate">New folder(0)</span>
+            <img src="images/down.svg" class="ml-1" />
+            <span>/</span>
+          </button>
+          <button class="flex items-center">
+            <span class="truncate">New folder(0)</span>
+            <img src="images/down.svg" class="ml-1" />
+            <span>/</span></button
+          ><button class="flex items-center">
+            <span class="truncate">New folder(0)</span>
+            <img src="images/down.svg" class="ml-1" />
+            <span>/</span>
+          </button>
+
+          <!-- Add more buttons here if needed -->
+        </div>
+
+        <!-- Right icons container -->
+        <div class="absolute inset-y-0 right-0 flex items-center space-x-2">
+          <!-- Example icons (can be repeated as needed) -->
+          <button
+            class="pr-5 pt-3 pb-3 flex items-center justify-center"
+            onclick="toggleView();"
+          >
+            <img src="images/view.svg" />
+          </button>
+          <button
+            class="pt-3 pb-3 flex items-center justify-center dropdown-toggle"
+            onclick="toggleDropdown('morePaneDropdown')"
+          >
+            <i class="ri-more-fill"></i>
+          </button>
+
+          <!-- Add more icons here if needed -->
         </div>
       </div>
+      <div
+        id="morePaneDropdown"
+        class="dropdown-options absolute ml-130 z-10 bg-color-light-white border border-color-gray5 rounded-lg shadow-md hidden w-10"
+      >
+        <div class="options rounded-t-lg">
+          <a
+            href="#"
+            class="block p-1 flex justify-center items-center dropdown-item"
+            onclick="togglePanel('detail');"
+          >
+            <i class="ri-profile-line color-light-gray font-size-20"></i>
+          </a>
+        </div>
+        <div class="options rounded-b-lg">
+          <a
+            href="#"
+            class="block p-1 flex justify-center items-center dropdown-item"
+            onclick="togglePanel('preview');"
+            ><i class="ri-eye-line color-light-gray font-size-20"></i
+          ></a>
+        </div>
+      </div>
+
       <div
         class="pt-4 pb-3.5 w-full flex flex-col items-center gap-2 gradient-bg"
       >
@@ -444,6 +512,19 @@
             <a
               href="#"
               class="block p-2 pl-4 dropdown-item"
+              onclick="toggleView();"
+              ><div class="flex">
+                <img src="images/list.svg" class="pr-4" /><span
+                  class="font-size-16 font-normal color-light-gray"
+                  >List View</span
+                >
+              </div></a
+            >
+          </div>
+          <div class="options">
+            <a
+              href="#"
+              class="block p-2 pl-4 dropdown-item"
               onclick="togglePanel('detail');"
               ><div class="flex">
                 <i
@@ -455,14 +536,14 @@
               </div></a
             >
           </div>
-          <div class="options">
+          <div class="options rounded-b-lg">
             <a
               href="#"
               class="block p-2 pl-4 dropdown-item"
               onclick="togglePanel('preview');"
               ><div class="flex">
-                <i class="ri-eye-line pr-4 color-light-gray font-size-20"></i
-                ><span class="font-size-16 pt-1 font-normal color-light-gray"
+                <i class="ri-eye-line pr-4 color-light-gray font-size-20"></i>
+                <span class="font-size-16 pt-1 font-normal color-light-gray"
                   >Preview pane</span
                 >
               </div></a
@@ -507,7 +588,7 @@
     <div class="relative">
       <div
         id="gridContainer"
-        style="max-height: 75vh"
+        style="max-height: 72vh"
         class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-12 gap-4 transition-all duration-300 dive-height p-6 overflow-y-auto"
       >
         <!-- Your grid items here -->
