@@ -1,0 +1,304 @@
+/* Roboto Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+/* Icons */
+@import url("https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css");
+/* Tailwind */
+@import url("https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css");
+
+/*root default styles*/
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-white: #ffffff;
+  --color-light-white1: #ddd;
+  --color-light-white: #fbfbfb;
+  --color-light-white2: rgba(255, 255, 255, 1);
+  --color-light-white3: #f9f9f9;
+  --color-pure-black: #000000;
+  --color-pure-black1: #060709;
+  --color-light-gray: #282828;
+  --color-light-black: #4d4d4d;
+  --color-light-black1: #d9d9d9;
+  --color-dark-white: #fdfdfd;
+  --color-gray-2: #646464;
+  --color-gray-3: rgba(77, 77, 77, 0.53);
+  --color-gray-4: #c9c9c9;
+  --color-gray-5: #686868;
+  --color-gray-6: #a3a3a3;
+  --color-gray-7: #b5b5b5;
+  --color-dark-gray: rgba(0, 0, 0, 0.38);
+  --color-dark-gray1: rgba(0, 0, 0, 0.25);
+  --color-dark-yellow: #fdcf01;
+  --color-light-pink: #ffd9d9;
+  --color-light-blue: #93c5fd;
+  --bg-linear-gradient: linear-gradient(
+    204deg,
+    #fff 15.46%,
+    rgba(217, 217, 217, 0.56) 118.36%
+  );
+  /*Font Family and Font Size */
+  --font-family-roboto: "Roboto", sans-serif;
+  --font-size-50: 50px;
+  --font-size-24: 24px;
+  --font-size-20: 20px;
+  --font-size-18: 18px;
+  --font-size-16: 16px;
+  --font-size-14: 14px;
+}
+
+body {
+  font-family: var(--font-family-roboto) !important;
+}
+.sidebar-wrapper {
+  background-image: url(./images/main-bg.png);
+  background-size: cover;
+  background-position: center;
+}
+
+.border-color-dark-gray1 {
+  border-color: var(--color-dark-gray-1);
+}
+.border-color-gray4 {
+  border-color: var(--color-gray-4);
+}
+
+.border-color-gray5 {
+  border-color: var(--color-gray-5);
+}
+.border-color-gray6 {
+  border-color: var(--color-gray-6);
+}
+.border-color-gray7 {
+  border-color: var(--color-gray-7);
+}
+
+.border-color-light-blue {
+  border-color: var(--color-light-blue);
+}
+
+.bg-color-white {
+  background-color: var(--color-white);
+}
+.bg-color-light-white {
+  background-color: var(--color-light-white);
+}
+.bg-color-light-white3 {
+  background-color: var(--color-light-white3);
+}
+.bg-color-dark-white {
+  background-color: var(--color-dark-white);
+}
+.bg-color-light-gray {
+  background-color: var(--color-light-gray);
+}
+.bg-color-dark-gray {
+  background-color: var(--color-dark-gray);
+}
+.bg-color-light-blue {
+  background-color: var(--color-light-blue);
+}
+.bg-color-light-black {
+  background-color: var(--color-light-black);
+}
+.bg-color-light-black1 {
+  background-color: var(--color-light-black1);
+}
+.bg-color-pure-black {
+  background-color: var(--color-pure-black);
+}
+.bg-color-dark-yellow,
+.options:hover {
+  background-color: var(--color-dark-yellow);
+}
+
+.color-white {
+  color: var(--color-white);
+}
+.color-pure-black1 {
+  color: var(--color-pure-black1);
+}
+.color-light-white2 {
+  color: var(--color-light-white2);
+}
+.color-light-black {
+  color: var(--color-light-black);
+}
+.color-light-gray {
+  color: var(--color-light-gray);
+}
+.color-dark-yellow {
+  color: var(--color-dark-yellow);
+}
+
+.font-size-24 {
+  font-size: var(--font-size-24);
+}
+.font-size-20 {
+  font-size: var(--font-size-20);
+}
+.font-size-16 {
+  font-size: var(--font-size-16);
+}
+.font-size-14 {
+  font-size: var(--font-size-14);
+}
+.font-size-18 {
+  font-size: var(--font-size-18);
+}
+
+/* sidebar */
+.sidebar .drop-menu .drop-list {
+  max-height: 0;
+  transition: max-height 0.5s ease-out;
+  overflow: hidden;
+  background: var(--color-light-white);
+}
+.sidebar .drop-menu.active .drop-list {
+  max-height: 500px;
+  transition: max-height 0.25s ease-in;
+}
+.sidebar .drop-menu.active .fa-chevron-right {
+  transform: rotate(90deg);
+}
+.sidebar li a:hover,
+.sidebar li div.drop-menu > div:hover {
+  transition: all 0.3s ease;
+  background: var(--color-light-black);
+  color: var(--color-dark-yellow);
+}
+.sidebar li a.active {
+  background: var(--color-light-gray);
+  color: var(--color-dark-yellow);
+}
+
+/* Index Style Start */
+
+.sidebar {
+  transition: transform 0.3s ease;
+}
+
+.sidebar.hidden {
+  transform: translateX(-100%);
+}
+
+@media (min-width: 1024px) {
+  .sidebar.hidden {
+    transform: translateX(0);
+  }
+}
+
+.bg-custom-white {
+  background: #d9d9d9;
+}
+
+.hover-color-custom-yellow:hover {
+  color: #fdcf01;
+}
+
+.footer-vertical {
+  background-image: url(./images/footer-vertical-icon.png);
+  background-size: cover;
+  background-position: center;
+}
+
+.sidebar-bg {
+  background-image: url(./images/sidebar-bg.svg);
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-custom-light {
+  background-color: #dbd7d7;
+}
+
+.arrow-rotate {
+  transition: transform 0.3s ease-in-out;
+}
+
+.arrow-down {
+  transform: rotate(90deg);
+  padding-top: 4px;
+}
+
+.active {
+  background-color: #fdcf01;
+  color: black;
+}
+
+/* Users and Groups Style Start */
+
+.dropdown-options {
+  display: none;
+}
+
+.dropdown-options-custom-width {
+  max-width: 250px;
+  width: 220px;
+}
+
+/* Style for Input range scroll */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 40%;
+  background: transparent;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 10%;
+  height: 8px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #8c8989;
+  background: linear-gradient(to right, #fbbf24 20%, #d1d5db 20%);
+  border-radius: 5px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  display: none;
+}
+
+/* Custom styles for active dropdown items */
+.dropdown-item-active {
+  background-color: #fbbf24; /* Yellow */
+  outline-offset: -2px;
+  border-radius: 8px;
+}
+
+/* Custom style for active dropdown button */
+.dropdown-button-active {
+  outline: 2px solid #fbbf24; /* Yellow */
+  outline-offset: -2px;
+}
+
+.custom-input-start-radius {
+  border-start-start-radius: 0.75rem;
+  border-end-start-radius: 0.75rem;
+}
+.custom-input-end-radius {
+  border-start-end-radius: 0.75rem;
+  border-end-end-radius: 0.75rem;
+}
+
+/* Additional custom styles for the user info dropdown created by Vigh*/
+.custom-select {
+  display: none;
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #ddd;
+  z-index: 1;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.custom-select-option {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+.custom-select-option:hover {
+  background-color: #f3f4f6;
+}
