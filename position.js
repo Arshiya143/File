@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // DOM Elements
   const draggable = document.getElementById("draggable");
   const progress = document.getElementById("progress");
   const container = document.getElementById("gridContainer");
@@ -7,147 +8,117 @@ document.addEventListener("DOMContentLoaded", function () {
   const detailContent = document.getElementById("detailContent");
   const previewContent = document.getElementById("previewContent");
   const panel = document.getElementById("panel");
-  const gridContainer = document.getElementById("gridContainer");
   const resizer = document.querySelector(".resizer");
   const sidebar = document.querySelector(".resizable-sidebar");
-
-  const updateGridColumns = (percentage) => {
-    const columns = Math.max(5, 12 - Math.floor(percentage / 16));
-    container.className = `grid grid-cols-${columns} p-4 transition-all duration-300 dive-height md-height`;
-    localStorage.setItem("gridPercentage", percentage); // Save percentage to local storage
-  };
-
-  const setDraggablePosition = (percentage) => {
-    if (window.innerWidth < 768) {
-      return; // Exit early if screen size is less than 768 pixels
-    }
-    const y = (percentage / 100) * 110;
-    progress.style.height = percentage + "%";
-    draggable.style.top = y + "px";
-  };
-
-  draggable.addEventListener("mousedown", function (event) {
-    if (window.innerWidth < 768) {
-      return; // Prevent dragging functionality on screens smaller than 768 pixels
-    }
-    event.preventDefault();
-    const slider = draggable.parentElement;
-    const sliderRect = slider.getBoundingClientRect();
-
-    const onMouseMove = (e) => {
-      let y = e.clientY - sliderRect.top;
-      y = Math.max(0, Math.min(y, sliderRect.height));
-      draggable.style.top = y + "px";
-      const percentage = (y / sliderRect.height) * 100;
-      progress.style.height = percentage + "%";
-      updateGridColumns(percentage);
-    };
-
-    const onMouseUp = () => {
-      document.removeEventListener("mousemove", onMouseMove);
-    };
-
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseup", onMouseUp, { once: true });
-  });
-
-  // Initial setup on page load
-  window.addEventListener("load", () => {
-    if (window.innerWidth >= 768) {
-      const savedPercentage = localStorage.getItem("gridPercentage");
-      if (savedPercentage !== null) {
-        const percentage = parseFloat(savedPercentage);
-        setDraggablePosition(percentage);
-        updateGridColumns(percentage); // Ensure grid columns are updated initially
-      }
-    }
-  });
-
   const editIcon = document.querySelector(".edit-icon");
   const textDisplay = document.querySelector(".text-display");
   const textInput = document.querySelector(".text-input");
   const imageOverlay = document.querySelector(".group .absolute");
   const overlay = document.querySelector(".overlay");
 
-  // Click handler for edit icon
-  editIcon.addEventListener("click", function (event) {
-    event.stopPropagation(); // Prevents the click from bubbling to the image overlay
-    textDisplay.classList.toggle("hidden");
-    textInput.classList.toggle("hidden");
-    editIcon.classList.add("hidden");
-    textInput.focus();
-    textInput.select(); // Selects all text inside the input
-    imageOverlay.classList.add("opacity-50");
-    overlay.classList.add("overlay-height");
-  });
-
-  // Blur event handler for text input
-  textInput.addEventListener("blur", function () {
-    textDisplay.textContent = textInput.value;
-    textDisplay.classList.toggle("hidden");
-    textInput.classList.toggle("hidden");
-    imageOverlay.classList.remove("opacity-50");
-    overlay.classList.remove("overlay-height");
-  });
-
-  // Close on click outside
-  document.addEventListener("click", function (event) {
-    const isClickInside = document
-      .querySelector(".relative")
-      .contains(event.target);
-    if (!isClickInside) {
-      editIcon.classList.remove("hidden");
-      textDisplay.classList.remove("hidden");
-      textInput.classList.add("hidden");
-      imageOverlay.classList.remove("opacity-50");
-    }
-  });
-  function toggleDropdown(id) {
-    var dropdownOptions = document.getElementById(id);
-    var allDropdowns = document.querySelectorAll(".dropdown-options");
-
-    allDropdowns.forEach(function (dropdown) {
-      if (dropdown.id !== id) {
-        dropdown.style.display = "none";
+  // Utility Functions
+  const throttle = (callback, delay) => {
+    let lastCalled = 0;
+    return function () {
+      const now = new Date().getTime();
+      if (now - lastCalled >= delay) {
+        callback.apply(null, arguments);
+        lastCalled = now;
       }
+    };
+  };
+
+  const toggleClass = (element, className) => {
+    element.classList.toggle(className);
+  };
+
+  // Event Handlers
+  const setDraggablePosition = (percentage) => {
+    if (window.innerWidth < 768) return;
+    const y = (percentage / 100) * 110;
+    progress.style.height = `${percentage}%`;
+    draggable.style.top = `${y}px`;
+  };
+
+  const updateGridColumns = (percentage) => {
+    const columns = Math.max(5, 12 - Math.floor(percentage / 16));
+    container.className = `grid grid-cols-${columns} p-4 transition-all duration-300 dive-height md-height`;
+    localStorage.setItem("gridPercentage", percentage);
+  };
+
+  const initResize = (e) => {
+    window.addEventListener("mousemove", startResizing);
+    window.addEventListener("mouseup", stopResizing);
+  };
+
+  const startResizing = (e) => {
+    const minWidth = 288;
+    const maxWidth = 600;
+    let newWidth = window.innerWidth - e.clientX;
+    if (newWidth < minWidth) newWidth = minWidth;
+    else if (newWidth > maxWidth) newWidth = maxWidth;
+
+    sidebar.style.width = `${newWidth}px`;
+    const margin = !panel.classList.contains("hidden") ? `${newWidth}px` : "0";
+    gridContainer.style.marginRight = margin;
+    tableContainer.style.marginRight = margin;
+  };
+
+  const stopResizing = () => {
+    window.removeEventListener("mousemove", startResizing);
+    window.removeEventListener("mouseup", stopResizing);
+  };
+
+  const handleResize = () => {
+    const width = window.innerWidth;
+    if (width < 768) {
+      const cont = container.className;
+      if (!cont.includes("hidden")) {
+        container.className =
+          "grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-12 gap-4 transition-all duration-300 dive-height p-6 overflow-y-auto md-height";
+      }
+    }
+  };
+
+  const toggleDropdown = (id) => {
+    const dropdownOptions = document.getElementById(id);
+    const allDropdowns = document.querySelectorAll(".dropdown-options");
+
+    allDropdowns.forEach((dropdown) => {
+      if (dropdown.id !== id) dropdown.style.display = "none";
     });
 
-    if (
+    dropdownOptions.style.display =
       dropdownOptions.style.display === "none" ||
       dropdownOptions.style.display === ""
-    ) {
-      dropdownOptions.style.display = "block";
-    } else {
-      dropdownOptions.style.display = "none";
-    }
+        ? "block"
+        : "none";
 
-    // Toggle active class on button
-    var dropdownButton = document.querySelector(
+    const dropdownButton = document.querySelector(
       `button[onclick="toggleDropdown('${id}')"]`
     );
-    var allDropdownButtons = document.querySelectorAll(".dropdown-toggle");
+    const allDropdownButtons = document.querySelectorAll(".dropdown-toggle");
 
-    allDropdownButtons.forEach(function (button) {
-      if (button !== dropdownButton) {
+    allDropdownButtons.forEach((button) => {
+      if (button !== dropdownButton)
         button.classList.remove("dropdown-button-active");
-      }
     });
 
     dropdownButton.classList.toggle("dropdown-button-active");
-  }
+  };
+
   const togglePopup = (popupId) => {
     const popup = document.getElementById(popupId);
-    if (popup) {
-      popup.classList.toggle("hidden");
-    } else {
-      console.error("Popup with id " + popupId + " not found.");
-    }
+    if (popup) toggleClass(popup, "hidden");
+    else console.error(`Popup with id ${popupId} not found.`);
   };
+
   const toggleView = () => {
-    gridContainer.classList.toggle("hidden");
-    tableContainer.classList.toggle("hidden");
-    zoom.classList.toggle("hidden");
+    toggleClass(gridContainer, "hidden");
+    toggleClass(tableContainer, "hidden");
+    toggleClass(zoom, "hidden");
   };
+
   const togglePanel = (view) => {
     const isPanelHidden = panel.classList.contains("hidden");
 
@@ -178,65 +149,76 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  const initResize = (e) => {
-    window.addEventListener("mousemove", startResizing);
-    window.addEventListener("mouseup", stopResizing);
-  };
+  // Event Listeners
+  draggable.addEventListener("mousedown", function (event) {
+    if (window.innerWidth < 768) return;
+    event.preventDefault();
+    const slider = draggable.parentElement;
+    const sliderRect = slider.getBoundingClientRect();
 
-  const startResizing = (e) => {
-    const minWidth = 288; // Set your minimum width here
-    const maxWidth = 600; // Set your maximum width here
-    let newWidth = window.innerWidth - e.clientX;
-
-    // Ensure the new width is within the specified range
-    if (newWidth < minWidth) {
-      newWidth = minWidth;
-    } else if (newWidth > maxWidth) {
-      newWidth = maxWidth;
-    }
-
-    sidebar.style.width = `${newWidth}px`;
-
-    const margin = !panel.classList.contains("hidden") ? `${newWidth}px` : "0";
-    document.getElementById("gridContainer").style.marginRight = margin;
-    document.getElementById("tableContainer").style.marginRight = margin;
-  };
-
-  const stopResizing = () => {
-    window.removeEventListener("mousemove", startResizing);
-    window.removeEventListener("mouseup", stopResizing);
-  };
-
-  function handleResize() {
-    // const mobileList = document.getElementById("mobileList");
-    // const deskList = document.getElementById("deskList");
-    const width = window.innerWidth;
-    if (width < 768) {
-      const cont = container.className;
-      if (!cont.includes("hidden")) {
-        container.className = "";
-        container.className =
-          "grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-12 gap-4 transition-all duration-300 dive-height p-6 overflow-y-auto md-height";
-      }
-    }
-  }
-
-  function throttle(callback, delay) {
-    let lastCalled = 0;
-    return function () {
-      const now = new Date().getTime();
-      if (now - lastCalled >= delay) {
-        callback.apply(null, arguments);
-        lastCalled = now;
-      }
+    const onMouseMove = (e) => {
+      let y = e.clientY - sliderRect.top;
+      y = Math.max(0, Math.min(y, sliderRect.height));
+      draggable.style.top = `${y}px`;
+      const percentage = (y / sliderRect.height) * 100;
+      progress.style.height = `${percentage}%`;
+      updateGridColumns(percentage);
     };
-  }
+
+    const onMouseUp = () => {
+      document.removeEventListener("mousemove", onMouseMove);
+    };
+
+    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseup", onMouseUp, { once: true });
+  });
+
+  editIcon.addEventListener("click", function (event) {
+    event.stopPropagation();
+    toggleClass(textDisplay, "hidden");
+    toggleClass(textInput, "hidden");
+    editIcon.classList.add("hidden");
+    textInput.focus();
+    textInput.select();
+    imageOverlay.classList.add("opacity-50");
+    overlay.classList.add("overlay-height");
+  });
+
+  textInput.addEventListener("blur", function () {
+    textDisplay.textContent = textInput.value;
+    toggleClass(textDisplay, "hidden");
+    toggleClass(textInput, "hidden");
+    imageOverlay.classList.remove("opacity-50");
+    overlay.classList.remove("overlay-height");
+  });
+
+  document.addEventListener("click", function (event) {
+    const isClickInside = document
+      .querySelector(".relative")
+      .contains(event.target);
+    if (!isClickInside) {
+      editIcon.classList.remove("hidden");
+      textDisplay.classList.remove("hidden");
+      textInput.classList.add("hidden");
+      imageOverlay.classList.remove("opacity-50");
+    }
+  });
 
   window.addEventListener("resize", throttle(handleResize, 200));
+  window.addEventListener("load", () => {
+    if (window.innerWidth >= 768) {
+      const savedPercentage = localStorage.getItem("gridPercentage");
+      if (savedPercentage !== null) {
+        const percentage = parseFloat(savedPercentage);
+        setDraggablePosition(percentage);
+        updateGridColumns(percentage);
+      }
+    }
+  });
 
-  handleResize();
-
+  // Initialization
   resizer.addEventListener("mousedown", initResize);
+  handleResize();
   window.togglePanel = togglePanel;
   window.toggleView = toggleView;
   window.togglePopup = togglePopup;
