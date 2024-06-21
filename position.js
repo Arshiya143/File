@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const updateGridColumns = (percentage) => {
     const columns = Math.max(5, 12 - Math.floor(percentage / 16));
-    container.className = `grid grid-cols-${columns} p-4 transition-all duration-300 dive-height`;
+    container.className = `grid grid-cols-${columns} p-4 transition-all duration-300 dive-height md-height`;
     localStorage.setItem("gridPercentage", percentage); // Save percentage to local storage
   };
 
@@ -148,24 +148,6 @@ document.addEventListener("DOMContentLoaded", function () {
     tableContainer.classList.toggle("hidden");
     zoom.classList.toggle("hidden");
   };
-  // JavaScript to toggle the visibility of the input field
-  const pathDisplay = document.getElementById("path-display");
-  const positionInputContainer = document.getElementById(
-    "position-input-container"
-  );
-  const positionInput = document.getElementById("position-input");
-
-  pathDisplay.addEventListener("click", () => {
-    pathDisplay.classList.add("hidden");
-    positionInputContainer.classList.remove("hidden");
-    positionInput.focus();
-    positionInput.select();
-  });
-
-  positionInput.addEventListener("blur", () => {
-    positionInputContainer.classList.add("hidden");
-    pathDisplay.classList.remove("hidden");
-  });
   const togglePanel = (view) => {
     const isPanelHidden = panel.classList.contains("hidden");
 
@@ -226,11 +208,16 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   function handleResize() {
+    // const mobileList = document.getElementById("mobileList");
+    // const deskList = document.getElementById("deskList");
     const width = window.innerWidth;
     if (width < 768) {
-      container.className = "";
-      container.className =
-        "grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-12 gap-4 transition-all duration-300 dive-height p-6 overflow-y-auto";
+      const cont = container.className;
+      if (!cont.includes("hidden")) {
+        container.className = "";
+        container.className =
+          "grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-12 gap-4 transition-all duration-300 dive-height p-6 overflow-y-auto md-height";
+      }
     }
   }
 

@@ -36,6 +36,7 @@
   --color-dark-yellow: #fdcf01;
   --color-light-pink: #ffd9d9;
   --color-light-blue: #93c5fd;
+  --color-dark-red: #e53e3e;
   --bg-linear-gradient: linear-gradient(
     204deg,
     #fff 15.46%,
@@ -63,6 +64,9 @@ body {
 .border-color-dark-gray1 {
   border-color: var(--color-dark-gray-1);
 }
+.border-color-gray3 {
+  border-color: var(--color-gray-4);
+}
 .border-color-gray4 {
   border-color: var(--color-gray-4);
 }
@@ -75,6 +79,9 @@ body {
 }
 .border-color-gray7 {
   border-color: var(--color-gray-7);
+}
+.border-color-light-gray {
+  border-color: var(--color-light-gray);
 }
 
 .border-color-light-blue {
@@ -131,8 +138,14 @@ body {
 .color-light-gray {
   color: var(--color-light-gray);
 }
+.color-light-gray6 {
+  color: var(--color-light-gray-6);
+}
 .color-dark-yellow {
   color: var(--color-dark-yellow);
+}
+.color-dark-red {
+  color: var(--color-dark-red);
 }
 
 .font-size-24 {
