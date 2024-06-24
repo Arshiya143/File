@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const updateGridColumns = (percentage) => {
     const columns = Math.max(5, 12 - Math.floor(percentage / 16));
-    container.className = `grid grid-cols-${columns} p-4 transition-all duration-300 dive-height md-height`;
+    container.className = `grid grid-cols-${columns} p-4 transition-all duration-300`;
     localStorage.setItem("gridPercentage", percentage);
   };
 
@@ -71,12 +71,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const handleResize = () => {
     const width = window.innerWidth;
-    if (width < 768) {
+    const upload = document.getElementById("uploadPopup");
+    const share = document.getElementById("sharePopup");
+    if (width <= 768) {
       const cont = container.className;
       if (!cont.includes("hidden")) {
         container.className =
-          "grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-12 gap-4 transition-all duration-300 dive-height p-6 overflow-y-auto md-height";
+          "grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-12 gap-4 transition-all duration-300 p-6 overflow-y-auto";
       }
+      share.classList.add("hidden");
+      upload.classList.add("hidden");
     }
   };
 
@@ -127,24 +131,28 @@ document.addEventListener("DOMContentLoaded", function () {
         panel.classList.remove("hidden");
         detailContent.classList.remove("hidden");
         previewContent.classList.add("hidden");
-        gridContainer.style.marginRight =
-          tableContainer.style.marginRight = `${panel.offsetWidth}px`;
+        if (window.innerWidth >= 768)
+          gridContainer.style.marginRight =
+            tableContainer.style.marginRight = `${panel.offsetWidth}px`;
       } else {
         panel.classList.add("hidden");
-        gridContainer.style.marginRight = tableContainer.style.marginRight =
-          "0";
+        if (window.innerWidth >= 768)
+          gridContainer.style.marginRight = tableContainer.style.marginRight =
+            "0";
       }
     } else if (view === "preview") {
       if (isPanelHidden || previewContent.classList.contains("hidden")) {
         panel.classList.remove("hidden");
         previewContent.classList.remove("hidden");
         detailContent.classList.add("hidden");
-        gridContainer.style.marginRight =
-          tableContainer.style.marginRight = `${panel.offsetWidth}px`;
+        if (window.innerWidth >= 768)
+          gridContainer.style.marginRight =
+            tableContainer.style.marginRight = `${panel.offsetWidth}px`;
       } else {
         panel.classList.add("hidden");
-        gridContainer.style.marginRight = tableContainer.style.marginRight =
-          "0";
+        if (window.innerWidth >= 768)
+          gridContainer.style.marginRight = tableContainer.style.marginRight =
+            "0";
       }
     }
   };

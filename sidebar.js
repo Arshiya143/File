@@ -19,3 +19,8 @@ for (let i = 0; i < sidebarLinks.length; i++) {
 function toggleDropMenu(target) {
   target.classList.toggle("active");
 }
+function toggleSubDropMenu() {
+  const subDrop = document.getElementById("subdrop-menu");
+  console.log(subDrop);
+  subDrop.classList.toggle("hidden");
+}

@@ -123,7 +123,9 @@ body {
   background-color: var(--color-pure-black);
 }
 .bg-color-dark-yellow,
-.options:hover {
+.options:hover,
+.options:focus,
+.options:active {
   background-color: var(--color-dark-yellow);
 }
 
@@ -226,7 +228,7 @@ body {
   overflow: hidden;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
-  background: var(--color-light-white);
+  background: var(--color-gray-8);
 }
 .sidebar .drop-menu.active .drop-list {
   max-height: 500px;
@@ -236,6 +238,12 @@ body {
   transition: 0.3s ease;
 }
 .sidebar .drop-menu.active i.big-right-arrow {
+  transform: rotate(90deg);
+}
+.sidebar i.subdrop-right-arrow {
+  transition: 0.3s ease;
+}
+.sidebar .subdrop.active i.subdrop-right-arrow {
   transform: rotate(90deg);
 }
 .sidebar li a:hover,
