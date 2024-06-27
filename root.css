@@ -15,27 +15,31 @@
 
 :root {
   --color-white: #ffffff;
-  --color-light-white1: #ddd;
-  --color-light-white: #fbfbfb;
+  --color-light-white: #ddd;
+  --color-light-white1: #fbfbfb;
   --color-light-white2: rgba(255, 255, 255, 1);
-  --color-light-white3: #f9f9f9;
   --color-pure-black: #000000;
   --color-pure-black1: #060709;
   --color-light-gray: #282828;
+  --color-light-gray1: #c9c9c9;
   --color-light-black: #4d4d4d;
   --color-light-black1: #d9d9d9;
   --color-dark-white: #fdfdfd;
   --color-gray-2: #646464;
-  --color-gray-3: rgba(77, 77, 77, 0.53);
-  --color-gray-4: #c9c9c9;
-  --color-gray-5: #686868;
-  --color-gray-6: #a3a3a3;
-  --color-gray-7: #b5b5b5;
-  --color-gray-8: #dbd7d7;
+  --color-gray-3: #a3a3a3;
   --color-dark-gray: rgba(0, 0, 0, 0.38);
-  --color-dark-gray1: rgba(0, 0, 0, 0.25);
   --color-dark-yellow: #fdcf01;
   --color-light-pink: #ffd9d9;
+  --color-lighten-gray: #f9f9f9;
+  --color-medium-gray: #6d6d6d;
+  --color-link-blue: #00adef;
+  --color-creame-yellow: #fff4c2;
+  --color-green: #09ab40;
+  --color-gray-opaque: rgba(77, 77, 77, 0.53);
+  --color-medium-gray: #686868;
+  --color-silver-gray: #b5b5b5;
+  --color-platinum-gray: #dbd7d7;
+  --color-dark-gray-opaque: rgba(0, 0, 0, 0.25);
   --color-light-blue: #93c5fd;
   --color-dark-red: #e53e3e;
   --bg-linear-gradient: linear-gradient(
@@ -43,6 +47,8 @@
     #fff 15.46%,
     rgba(217, 217, 217, 0.56) 118.36%
   );
+  --box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  --border-radius: 0px 10px 10px 0px;
   /*Font Family and Font Size */
   --font-family-roboto: "Roboto", sans-serif;
   --font-size-50: 50px;
@@ -51,6 +57,9 @@
   --font-size-18: 18px;
   --font-size-16: 16px;
   --font-size-14: 14px;
+  /*Font Weight */
+  --font-weight-400: 400;
+  --font-weight-500: 500;
 }
 
 body {
@@ -61,118 +70,6 @@ body {
   background-size: cover;
   background-position: center;
 }
-
-.border-color-dark-gray1 {
-  border-color: var(--color-dark-gray-1);
-}
-.border-color-gray3 {
-  border-color: var(--color-gray-4);
-}
-.border-color-gray4 {
-  border-color: var(--color-gray-4);
-}
-
-.border-color-gray5 {
-  border-color: var(--color-gray-5);
-}
-.border-color-gray6 {
-  border-color: var(--color-gray-6);
-}
-.border-color-gray7 {
-  border-color: var(--color-gray-7);
-}
-.border-color-light-gray {
-  border-color: var(--color-light-gray);
-}
-
-.border-color-light-blue {
-  border-color: var(--color-light-blue);
-}
-
-.bg-color-white {
-  background-color: var(--color-white);
-}
-.bg-color-light-white {
-  background-color: var(--color-light-white);
-}
-.bg-color-light-white3 {
-  background-color: var(--color-light-white3);
-}
-.bg-color-dark-white {
-  background-color: var(--color-dark-white);
-}
-.bg-color-light-gray {
-  background-color: var(--color-light-gray);
-}
-.bg-color-dark-gray {
-  background-color: var(--color-dark-gray);
-}
-.bg-color-dark-gray8 {
-  background-color: var(--color-dark-gray);
-}
-.bg-color-light-blue {
-  background-color: var(--color-light-blue);
-}
-.bg-color-light-black {
-  background-color: var(--color-light-black);
-}
-.bg-color-light-black1 {
-  background-color: var(--color-light-black1);
-}
-.bg-color-pure-black {
-  background-color: var(--color-pure-black);
-}
-.bg-color-dark-yellow,
-.options:hover,
-.options:focus,
-.options:active {
-  background-color: var(--color-dark-yellow);
-}
-
-.hover-text:hover {
-  color: var(--color-dark-yellow);
-}
-.color-white {
-  color: var(--color-white);
-}
-.color-pure-black1 {
-  color: var(--color-pure-black1);
-}
-.color-light-white2 {
-  color: var(--color-light-white2);
-}
-.color-light-black {
-  color: var(--color-light-black);
-}
-.color-light-gray {
-  color: var(--color-light-gray);
-}
-.color-light-gray6 {
-  color: var(--color-light-gray-6);
-}
-.color-dark-yellow {
-  color: var(--color-dark-yellow);
-}
-.color-dark-red {
-  color: var(--color-dark-red);
-}
-
-.font-size-24 {
-  font-size: var(--font-size-24);
-}
-.font-size-20 {
-  font-size: var(--font-size-20);
-}
-.font-size-16 {
-  font-size: var(--font-size-16);
-}
-.font-size-14 {
-  font-size: var(--font-size-14);
-}
-.font-size-18 {
-  font-size: var(--font-size-18);
-}
-
 .sidebar-bg {
   background-image: url(./images/sidebar-bg.svg);
   background-size: cover;
@@ -243,7 +140,7 @@ body {
 .sidebar i.subdrop-right-arrow {
   transition: 0.3s ease;
 }
-.sidebar .subdrop.active i.subdrop-right-arrow {
+.sidebar i.subdrop-right-arrow.rotate {
   transform: rotate(90deg);
 }
 .sidebar li a:hover,

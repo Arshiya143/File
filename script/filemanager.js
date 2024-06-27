@@ -11,12 +11,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const resizer = document.querySelector(".resizer");
   const sidebar = document.querySelector(".resizable-sidebar");
   const editIcon = document.querySelector(".edit-icon");
-  const textDisplay = document.querySelector(".text-display");
+  const textDisplay = document.getElementById("text-display");
   const textInput = document.querySelector(".text-input");
   const imageOverlay = document.querySelector(".group .absolute");
   const overlay = document.querySelector(".overlay");
 
   // Utility Functions
+  // Throttle function to limit the rate of execution for a function
   const throttle = (callback, delay) => {
     let lastCalled = 0;
     return function () {
@@ -28,11 +29,13 @@ document.addEventListener("DOMContentLoaded", function () {
     };
   };
 
+  // Toggle a class on an element
   const toggleClass = (element, className) => {
     element.classList.toggle(className);
   };
 
   // Event Handlers
+  // Set the position of the draggable element based on percentage
   const setDraggablePosition = (percentage) => {
     if (window.innerWidth < 768) return;
     const y = (percentage / 100) * 110;
@@ -40,17 +43,20 @@ document.addEventListener("DOMContentLoaded", function () {
     draggable.style.top = `${y}px`;
   };
 
+  // Update the number of grid columns based on percentage
   const updateGridColumns = (percentage) => {
     const columns = Math.max(5, 12 - Math.floor(percentage / 16));
-    container.className = `grid grid-cols-${columns} p-4 transition-all duration-300`;
+    container.className = `grid grid-cols-${columns} p-8 transition-all duration-300`;
     localStorage.setItem("gridPercentage", percentage);
   };
 
+  // Initialize the resizing of the sidebar
   const initResize = (e) => {
     window.addEventListener("mousemove", startResizing);
     window.addEventListener("mouseup", stopResizing);
   };
 
+  // Start resizing the sidebar
   const startResizing = (e) => {
     const minWidth = 288;
     const maxWidth = 600;
@@ -64,26 +70,25 @@ document.addEventListener("DOMContentLoaded", function () {
     tableContainer.style.marginRight = margin;
   };
 
+  // Stop resizing the sidebar
   const stopResizing = () => {
     window.removeEventListener("mousemove", startResizing);
     window.removeEventListener("mouseup", stopResizing);
   };
 
+  // Handle window resize
   const handleResize = () => {
     const width = window.innerWidth;
-    const upload = document.getElementById("uploadPopup");
-    const share = document.getElementById("sharePopup");
     if (width <= 768) {
       const cont = container.className;
       if (!cont.includes("hidden")) {
         container.className =
           "grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-12 gap-4 transition-all duration-300 p-6 overflow-y-auto";
       }
-      share.classList.add("hidden");
-      upload.classList.add("hidden");
     }
   };
 
+  // Toggle visibility of a dropdown
   const toggleDropdown = (id) => {
     const dropdownOptions = document.getElementById(id);
     const allDropdowns = document.querySelectorAll(".dropdown-options");
@@ -111,18 +116,21 @@ document.addEventListener("DOMContentLoaded", function () {
     dropdownButton.classList.toggle("dropdown-button-active");
   };
 
+  // Toggle visibility of a popup
   const togglePopup = (popupId) => {
     const popup = document.getElementById(popupId);
     if (popup) toggleClass(popup, "hidden");
     else console.error(`Popup with id ${popupId} not found.`);
   };
 
+  // Toggle between grid and table views
   const toggleView = () => {
     toggleClass(gridContainer, "hidden");
     toggleClass(tableContainer, "hidden");
     toggleClass(zoom, "hidden");
   };
 
+  // Toggle the side panel between detail and preview views
   const togglePanel = (view) => {
     const isPanelHidden = panel.classList.contains("hidden");
 
@@ -158,6 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   // Event Listeners
+  // Handle dragging of the draggable element
   draggable.addEventListener("mousedown", function (event) {
     if (window.innerWidth < 768) return;
     event.preventDefault();
@@ -181,6 +190,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("mouseup", onMouseUp, { once: true });
   });
 
+  // Handle edit icon click
   editIcon.addEventListener("click", function (event) {
     event.stopPropagation();
     toggleClass(textDisplay, "hidden");
@@ -192,6 +202,7 @@ document.addEventListener("DOMContentLoaded", function () {
     overlay.classList.add("overlay-height");
   });
 
+  // Handle text input blur
   textInput.addEventListener("blur", function () {
     textDisplay.textContent = textInput.value;
     toggleClass(textDisplay, "hidden");
@@ -200,6 +211,7 @@ document.addEventListener("DOMContentLoaded", function () {
     overlay.classList.remove("overlay-height");
   });
 
+  // Handle document click to hide edit icon and text input
   document.addEventListener("click", function (event) {
     const isClickInside = document
       .querySelector(".relative")
@@ -212,7 +224,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // Handle window resize with throttle
   window.addEventListener("resize", throttle(handleResize, 200));
+
+  // Handle window load to set grid columns based on saved percentage
   window.addEventListener("load", () => {
     if (window.innerWidth >= 768) {
       const savedPercentage = localStorage.getItem("gridPercentage");
