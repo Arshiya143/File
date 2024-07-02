@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="root.css" />
+    <link rel="stylesheet" href="styles/as.css" />
+  </head>
+
+  <body class="h-screen w-full flex flex-col fm">
+    <main class="flex w-full h-full flex">
+      <!-- Sidebar -->
+      <aside class="h-full relative">
+        <input type="checkbox" class="hidden" id="sidebar-toggle" />
+        <label
+          for="sidebar-toggle"
+          class="absolute lg:hidden top-6 ml-4 -right-8 md:-right-10 sm:ml-7 md:ml-10"
+        >
+          <i class="ri-bar-chart-horizontal-line"></i>
+        </label>
+        <div class="h-full sidebar">
+          <div class="sidebar-container">
+            <div class="p-6">
+              <img src="/images/logo.png" alt="Dots Logo" />
+            </div>
+            <div class="md:pt-6">
+              <ul class="space-y-1">
+                <li>
+                  <div
+                    role="button"
+                    onclick="toggleDropMenu(this)"
+                    class="drop-menu cursor-pointer rounded-r-lg"
+                  >
+                    <div
+                      class="w-full px-6 py-3 flex justify-between items-center"
+                      href="#"
+                    >
+                      <span>Overview </span>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div
+                    role="button"
+                    onclick="toggleDropMenu(this)"
+                    class="drop-menu cursor-pointer rounded-r-lg"
+                  >
+                    <div
+                      class="w-full px-6 py-3 flex justify-between items-center"
+                      href="#"
+                    >
+                      <span>System settings</span>
+                      <i
+                        class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"
+                      ></i>
+                    </div>
+                  </div>
+                </li>
+
+                <li>
+                  <div
+                    role="button"
+                    onclick="toggleDropMenu(this)"
+                    class="drop-menu cursor-pointer rounded-r-lg"
+                  >
+                    <div
+                      class="w-full px-6 py-3 flex justify-between items-center"
+                      href="#"
+                    >
+                      <span>Users & groups</span>
+                      <i
+                        class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"
+                      ></i>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div
+                    role="button"
+                    onclick="toggleDropMenu(this)"
+                    class="drop-menu cursor-pointer rounded-r-lg"
+                  >
+                    <div
+                      class="w-full px-6 py-3 flex justify-between items-center"
+                      href="#"
+                    >
+                      <span>Storage/File</span>
+                      <i
+                        class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"
+                      ></i>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div
+                    role="button"
+                    onclick="toggleDropMenu(this)"
+                    class="drop-menu cursor-pointer rounded-r-lg"
+                  >
+                    <div
+                      class="w-full px-6 py-3 flex justify-between items-center"
+                      href="#"
+                    >
+                      <span>Plugin center</span>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div
+                    role="button"
+                    onclick="toggleDropMenu(this)"
+                    class="drop-menu cursor-pointer rounded-r-lg"
+                  >
+                    <div
+                      class="w-full px-6 py-3 flex justify-between items-center"
+                      href="#"
+                    >
+                      <span>Safety control</span>
+                      <i
+                        class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"
+                      ></i>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div
+                    role="button"
+                    onclick="toggleDropMenu(this)"
+                    class="drop-menu cursor-pointer rounded-r-lg"
+                  >
+                    <div
+                      class="w-full px-6 py-3 flex justify-between items-center"
+                      href="#"
+                    >
+                      <span>Server</span>
+                      <i
+                        class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"
+                      ></i>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <div class="flex-grow h-100 main main-bg">
+        <div class="flex w-full h-full flex-col content">
+          <p class="pl-12 pt-5 pb-4 sm:pl-16 md:pl-14 lg:pl-6 md:pt-4 md:pb-6">
+            <i class="ri-settings-3-fill pr-3 ri-xl"></i
+            ><span class="text-lg">System settings</span>
+          </p>
+          <!-- topTaskbar -->
+          <div
+            class="pl-4 md:pl-6 pt-3 pb-3 pr-4 md:pr-6 w-full flex flex-row justify-between items-center gradient-bg"
+          >
+            <div class="w-full sm:w-4/12 xl:w-6/12">
+              <div class="flex items-center gap-1 sm:gap-2">
+                <span class="text-c-light-black"> Storage /File </span>
+                <i class="ri-arrow-right-line ri-lg text-c-light-black"></i>
+                <span class="font-semibold text-c-black"> Share </span>
+              </div>
+            </div>
+            <div
+              class="w-full sm:w-8/12 xl:w-6/12 flex flex-row items-center justify-end gap-2 mt-2 sm:mt-0"
+            >
+              <div
+                id="searchbutton"
+                class="flex items-center rounded-md overflow-hidden flex-shrink-0 flex-grow bg-c-white h-8 md:h-10 w-1/2 md:w-2/12"
+              >
+                <input
+                  type="text"
+                  class="pl-4 pt-2.5 pb-2.5 flex-shrink flex-grow border-none outline-none font-size-16 w-3/12"
+                  placeholder="Please enter the string"
+                />
+                <div class="pt-3 pb-3 pr-4 flex items-center justify-center">
+                  <img src="images/search.svg" />
+                </div>
+              </div>
+              <button
+                class="flex items-center rounded-lg border border-c-light-black h-8 md:h-10 px-2 md:px-4 hover-bg-c-black hover-text-c-yellow text-sm"
+                id="cancelbutton"
+              >
+                <i class="ri-close-circle-fill"></i>
+                <span class="hidden sm:flex pl-1">Cancel</span>
+                <span class="hidden md:flex pl-1">Sharing</span>
+              </button>
+              <button
+                class="flex items-center rounded-lg border border-c-light-black h-8 md:h-10 px-2 md:px-4 hover-bg-c-black hover-text-c-yellow text-sm"
+              >
+                <i class="ri-download-line"></i>
+                <span class="pl-1 hidden sm:flex">Export</span>
+              </button>
+            </div>
+          </div>
+
+          <!--Main content -->
+          <div class="relative h-full overflow-y-auto">
+            <!-- Share and reporting tab -->
+            <div class="max-w-full mx-auto rounded-lg">
+              <!-- Tabs Navigation -->
+              <div class="flex justify-start gap-7 pl-4 md:pl-6 pt-3">
+                <button
+                  id="tab-sharing"
+                  class="py-2 text-center border-b-4 text-lg border-yellow-300 font-medium focus:font-semibold hover:border-yellow-300"
+                  onclick="setActiveTab('tab-sharing')"
+                >
+                  Sharing
+                </button>
+                <button
+                  id="tab-sharing-report"
+                  class="text-center border-b-4 text-lg border-transparent hover:border-yellow-300"
+                  onclick="setActiveTab('tab-sharing-report')"
+                >
+                  Sharing report
+                </button>
+              </div>
+
+              <!-- Tabs Content -->
+              <div
+                id="content-sharing"
+                class="tab-content active pl-4 md:pl-6 pt-6 pr-4 md:pr-6"
+              >
+                <div
+                  class="users-admin-btn-grp flex items-center relative justify-between flex-wrap"
+                >
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <button
+                      class="custom-safety-btn rounded px-6 py-1 mr-1 hover:border-yellow-300"
+                    >
+                      Today
+                    </button>
+                    <button
+                      class="custom-safety-btn rounded px-6 py-1 mr-1 hover:border-yellow-300"
+                    >
+                      Last 30 days
+                    </button>
+                    <button
+                      class="custom-safety-btn rounded px-6 py-1 mr-1 hover:border-yellow-300"
+                    >
+                      All
+                    </button>
+                    <button
+                      class="custom-safety-btn rounded px-6 py-1 mr-1 hover:border-yellow-300"
+                    >
+                      Customize
+                    </button>
+                    <button
+                      class="border rounded px-6 py-1 mr-1 custom-safety-btn custom-outline hover:border-yellow-300"
+                    >
+                      <span class="mr-1">Select User</span>
+                      <i class="ri-arrow-down-s-fill"></i></button
+                    ><button
+                      class="border rounded px-6 py-1 mr-1 custom-safety-btn custom-outline hover:border-yellow-300"
+                    >
+                      <span class="mr-1">Type</span>
+                      <i class="ri-arrow-down-s-fill"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="mt-6 overflow-x-auto rounded-lg">
+                  <table class="min-w-full bg-c-white rounded-lg shadow-lg">
+                    <thead class="bg-c-dark-gray rounded-lg">
+                      <tr
+                        class="text-center font-medium border-none rounded-lg text-c-white text-xs sm:text-sm xl:text-base"
+                      >
+                        <th class="px-2 py-1 md:px-4 md:py-2">Sharer</th>
+                        <th class="px-2 py-1 md:px-4 md:py-2">Name</th>
+                        <th class="px-2 py-1 md:px-4 md:py-2">Type</th>
+                        <th class="px-2 py-1 md:px-4 md:py-2">Details</th>
+                        <th class="px-2 py-1 md:px-4 md:py-2">View</th>
+                        <th class="px-2 py-1 md:px-0 md:py-2">
+                          <button class="font-semibold">
+                            Downloads <i class="ri-arrow-down-s-fill"></i>
+                          </button>
+                        </th>
+                        <th class="px-2 py-1 md:px-4 md:py-2">Expiration</th>
+                        <th class="px-2 py-1 md:px-4 md:py-2">
+                          <button class="font-semibold">
+                            Time <i class="ri-arrow-down-s-fill"></i>
+                          </button>
+                        </th>
+                        <th class="px-2 py-1 md:px-4 md:py-2">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-left text-xs md:text-base">
+                      <!-- Table rows go here -->
+                    </tbody>
+                  </table>
+                </div>
+                <div
+                  class="flex-grow flex flex-col justify-center items-center h-96"
+                >
+                  <img src="images/No data.svg" />
+                  <span class="font-size-18">No Data Found</span>
+                </div>
+              </div>
+
+              <div
+                id="content-sharing-report"
+                class="tab-content pl-4 md:pl-6 pt-6 pr-4 md:pr-6"
+              >
+                <div
+                  class="users-admin-btn-grp flex items-center relative justify-between flex-wrap"
+                >
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <button
+                      class="custom-safety-btn rounded px-6 py-1 mr-1 hover:border-yellow-300"
+                    >
+                      Today
+                    </button>
+                    <button
+                      class="custom-safety-btn rounded px-6 py-1 mr-1 hover:border-yellow-300"
+                    >
+                      Last 30 days
+                    </button>
+                    <button
+                      class="custom-safety-btn rounded px-6 py-1 mr-1 hover:border-yellow-300"
+                    >
+                      All
+                    </button>
+                    <button
+                      class="custom-safety-btn rounded px-6 py-1 mr-1 hover:border-yellow-300"
+                    >
+                      Customize
+                    </button>
+                    <button
+                      class="border rounded px-6 py-1 mr-1 custom-safety-btn custom-outline hover:border-yellow-300"
+                    >
+                      <span class="mr-1">Select User</span>
+                      <i class="ri-arrow-down-s-fill"></i></button
+                    ><button
+                      class="border rounded px-6 py-1 mr-1 custom-safety-btn custom-outline hover:border-yellow-300"
+                    >
+                      <span class="mr-1">Type</span>
+                      <i class="ri-arrow-down-s-fill"></i>
+                    </button>
+                    <div class="dropdown inline-block relative">
+                      <button
+                        class="border rounded px-6 py-1 custom-safety-btn custom-outline hover:border-yellow-300"
+                      >
+                        <span class="mr-1">Bulk Operations</span>
+                        <i class="ri-arrow-down-s-fill"></i>
+                      </button>
+                      <ul
+                        class="dropdown-menu custom-dropdown-menu absolute hidden text-gray-700 shadow bg-custom-pure-white text-xs"
+                      >
+                        <li>
+                          <a
+                            class="rounded-t custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4"
+                            href="#"
+                            >Close report</a
+                          >
+                        </li>
+                        <li>
+                          <a
+                            class="rounded-t custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4"
+                            href="#"
+                            >Unshare</a
+                          >
+                        </li>
+                        <li>
+                          <a
+                            class="rounded-t custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4"
+                            href="#"
+                            >Prohibit/allow sharing</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-6 overflow-x-auto rounded-lg">
+                  <table class="min-w-full bg-c-white rounded-lg shadow-lg">
+                    <thead class="bg-c-dark-gray rounded-lg">
+                      <tr
+                        class="text-center font-medium border-none rounded-lg text-c-white text-xs md:text-sm xl:text-base"
+                      >
+                        <th class="px-2 py-1 md:px-4 md:py-2">Whistleblower</th>
+                        <th class="px-2 py-1 md:px-4 md:py-2">
+                          Report sharing
+                        </th>
+                        <th class="px-2 py-1 md:px-4 md:py-2">
+                          Reason for reporting
+                        </th>
+                        <th class="px-2 py-1 md:px-4 md:py-2">
+                          <button class="font-semibold">
+                            Time <i class="ri-arrow-down-s-fill"></i>
+                          </button>
+                        </th>
+                        <th class="px-2 py-1 md:px-4 md:py-2">
+                          Process result
+                        </th>
+                        <th class="px-2 py-1 md:px-4 md:py-2">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-left text-xs md:text-base">
+                      <!-- Table rows go here -->
+                    </tbody>
+                  </table>
+                </div>
+                <div
+                  class="flex-grow flex flex-col justify-center items-center h-96"
+                >
+                  <img src="images/No data.svg" />
+                  <span class="font-size-18">No Data Found</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="script/sidebar.js"></script>
+    <script>
+      // toggle between tabs
+      document
+        .getElementById("tab-sharing")
+        .addEventListener("click", function () {
+          document.getElementById("content-sharing").classList.add("active");
+          document
+            .getElementById("content-sharing-report")
+            .classList.remove("active");
+          document.getElementById("searchbutton").classList.remove("hidden");
+          document.getElementById("cancelbutton").classList.remove("hidden");
+        });
+
+      document
+        .getElementById("tab-sharing-report")
+        .addEventListener("click", function () {
+          document.getElementById("content-sharing").classList.remove("active");
+          document
+            .getElementById("content-sharing-report")
+            .classList.add("active");
+          document.getElementById("searchbutton").classList.add("hidden");
+          document.getElementById("cancelbutton").classList.add("hidden");
+        });
+      // active tab
+      function setActiveTab(activeTabId) {
+        const tabs = ["tab-sharing", "tab-sharing-report"];
+
+        tabs.forEach((tabId) => {
+          const tab = document.getElementById(tabId);
+          if (tabId === activeTabId) {
+            tab.classList.add("border-yellow-300", "font-medium");
+            tab.classList.remove("border-transparent");
+          } else {
+            tab.classList.remove("border-yellow-300", "font-medium");
+            tab.classList.add("border-transparent");
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
