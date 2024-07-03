@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Notice</title>
+    <title>Admin & Users- document permission</title>
     <link
       href="https://unpkg.com/tailwindcss@^2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
@@ -387,7 +387,7 @@
                 <thead class="h-14">
                   <tr class="bg-c-dark-gray">
                     <th
-                      class="text-c-white font-medium text-left pl-3 rounded-tl-md"
+                      class="text-c-white font-medium text-left pl-3 rounded-tl-md pr-20"
                     >
                       Name
                     </th>
@@ -407,16 +407,58 @@
                 <tbody>
                   <tr class="h-16">
                     <td class="font-normal text-c-black text-left pl-3">
-                      26-02-2024
+                      Editor
+                    </td>
+                    <td class="font-normal text-c-black text-left pl-3 pr-5">
+                      <span
+                        class="bg-system py-1.5 text-center px-5 font-normal rounded-sm text-dark-black"
+                        >System</span
+                      >
+                    </td>
+                    <td class="font-normal text-c-black text-left pl-3 pr-5">
+                      Document list, Preview, Download / Copy, Upload, Edit,
+                      Delete, Share, Comments, Dynamics
+                    </td>
+
+                    <td class="font-normal text-c-black text-left pl-3">
+                      <div class="flex relative text-sm gap-2">
+                        <div class="relative">
+                          <button type="button" class="dropdown-btn">
+                            Action&nbsp;<i class="ri-arrow-down-s-line"></i>
+                          </button>
+                          <div
+                            class="absolute text-xs dropdown-option w-20 z-10 min-w-full space-y-1 border rounded-md overflow-hidden"
+                          >
+                            <button
+                              class="block hover-bg-c-yellow w-full px-2 py-1"
+                            >
+                              Run
+                            </button>
+                            <button
+                              class="block hover-bg-c-yellow w-full px-2 py-1"
+                            >
+                              Log
+                            </button>
+                          </div>
+                        </div>
+                        <button class="text-c-sky pr-5" onclick="showModal()">
+                          Edit
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="h-16">
+                    <td class="font-normal text-c-black text-left pl-3">
+                      Edit / Uploader
                     </td>
                     <td class="font-normal text-c-black text-left pl-3">
                       <span
                         class="bg-system py-1.5 text-center px-5 font-normal rounded-sm text-dark-black"
-                        >Pushed</span
+                        >System</span
                       >
                     </td>
                     <td class="font-normal text-c-black text-left pl-3">
-                      26-02-2024
+                      Document list, Preview
                     </td>
 
                     <td class="font-normal text-c-black text-left pl-3">
@@ -443,8 +485,128 @@
                         <button class="text-c-sky" onclick="showModal()">
                           Edit
                         </button>
-                        <button class="text-c-sky" onclick="showPreviewModal()">
-                          Preview
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="h-16">
+                    <td class="font-normal text-c-black text-left pl-3">
+                      Viewer
+                    </td>
+                    <td class="font-normal text-c-black text-left pl-3">
+                      <span
+                        class="bg-system py-1.5 text-center px-5 font-normal rounded-sm text-dark-black"
+                        >System</span
+                      >
+                    </td>
+                    <td class="font-normal text-c-black text-left pl-3">
+                      Document list, Preview
+                    </td>
+
+                    <td class="font-normal text-c-black text-left pl-3">
+                      <div class="flex relative text-sm gap-2">
+                        <div class="relative">
+                          <button type="button" class="dropdown-btn">
+                            Action&nbsp;<i class="ri-arrow-down-s-line"></i>
+                          </button>
+                          <div
+                            class="absolute text-xs dropdown-option w-20 z-10 min-w-full space-y-1 border rounded-md overflow-hidden"
+                          >
+                            <button
+                              class="block hover-bg-c-yellow w-full px-2 py-1"
+                            >
+                              Run
+                            </button>
+                            <button
+                              class="block hover-bg-c-yellow w-full px-2 py-1"
+                            >
+                              Log
+                            </button>
+                          </div>
+                        </div>
+                        <button class="text-c-sky" onclick="showModal()">
+                          Edit
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="h-16">
+                    <td class="font-normal text-c-black text-left pl-3">
+                      Previewer
+                    </td>
+                    <td class="font-normal text-c-black text-left pl-3">
+                      <span
+                        class="bg-system py-1.5 text-center px-5 font-normal rounded-sm text-dark-black"
+                        >System</span
+                      >
+                    </td>
+                    <td class="font-normal text-c-black text-left pl-3">
+                      Document list, Preview
+                    </td>
+
+                    <td class="font-normal text-c-black text-left pl-3">
+                      <div class="flex relative text-sm gap-2">
+                        <div class="relative">
+                          <button type="button" class="dropdown-btn">
+                            Action&nbsp;<i class="ri-arrow-down-s-line"></i>
+                          </button>
+                          <div
+                            class="absolute text-xs dropdown-option w-20 z-10 min-w-full space-y-1 border rounded-md overflow-hidden"
+                          >
+                            <button
+                              class="block hover-bg-c-yellow w-full px-2 py-1"
+                            >
+                              Run
+                            </button>
+                            <button
+                              class="block hover-bg-c-yellow w-full px-2 py-1"
+                            >
+                              Log
+                            </button>
+                          </div>
+                        </div>
+                        <button class="text-c-sky" onclick="showModal()">
+                          Edit
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="h-16">
+                    <td class="font-normal text-c-black text-left pl-3">
+                      Owner
+                    </td>
+                    <td class="font-normal text-c-black text-left pl-3">
+                      <span
+                        class="bg-system py-1.5 text-center px-5 font-normal rounded-sm text-dark-black"
+                        >System</span
+                      >
+                    </td>
+                    <td class="font-normal text-c-black text-left pl-3">
+                      Document list, Preview
+                    </td>
+
+                    <td class="font-normal text-c-black text-left pl-3">
+                      <div class="flex relative text-sm gap-2">
+                        <div class="relative">
+                          <button type="button" class="dropdown-btn">
+                            Action&nbsp;<i class="ri-arrow-down-s-line"></i>
+                          </button>
+                          <div
+                            class="absolute text-xs dropdown-option w-20 z-10 min-w-full space-y-1 border rounded-md overflow-hidden"
+                          >
+                            <button
+                              class="block hover-bg-c-yellow w-full px-2 py-1"
+                            >
+                              Run
+                            </button>
+                            <button
+                              class="block hover-bg-c-yellow w-full px-2 py-1"
+                            >
+                              Log
+                            </button>
+                          </div>
+                        </div>
+                        <button class="text-c-sky" onclick="showModal()">
+                          Edit
                         </button>
                       </div>
                     </td>
@@ -469,14 +631,17 @@
       <div
         class="bg-white rounded-2xl overflow-hidden shadow-lg max-w-xl w-full bg-c-lighten-gray modal-content"
       >
-        <div class="flex py-4 px-5 justify-start items-center">
+        <div
+          class="flex py-4 px-5 justify-between items-center border border-b"
+        >
+          <div class="text-lg">Document Permission</div>
           <button
             type="button"
             id="closeModalButton"
             class="py-1.5 px-3 bg-c-lightest-gray rounded-md text-c-black"
             onclick="hideModal()"
           >
-            <i class="ri-arrow-left-line text-black mr-3"></i>Back
+            <i class="ri-close-circle-fill text-black mr-3 ri-lg"></i>
           </button>
         </div>
         <div class="p-5">
