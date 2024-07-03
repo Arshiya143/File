@@ -1,0 +1,409 @@
+.bg-c-black {
+  background: var(--color-light-gray);
+}
+
+.bg-c-yellow {
+  background: var(--color-dark-yellow);
+}
+
+.bg-c-light-black {
+  background: var(--color-light-black);
+}
+
+.bg-c-gray-2 {
+  background: var(--color-gray-2);
+}
+
+.bg-c-gray-3 {
+  background: var(--color-gray);
+}
+
+.bg-c-gray-4 {
+  background: var(--color-gray-8);
+}
+
+.bg-c-lighten-gray {
+  background: var(--color-lighten-gray);
+}
+
+.bg-c-lightest-gray {
+  background: var(--color-lightest-gray);
+}
+
+.bg-c-creame-yellow {
+  background: var(--color-creame-yellow);
+}
+
+.bg-c-dark-gray {
+  background: var(--color-dark-gray);
+}
+
+.bg-c-light-white {
+  background: var(--color-light-white);
+}
+
+.text-dark-black {
+  color: var(--color-pure-black);
+}
+
+.text-c-white {
+  color: var(--color-white);
+}
+
+.text-c-black {
+  color: var(--color-light-gray);
+}
+
+.text-c-yellow {
+  color: var(--color-dark-yellow);
+}
+.text-link-blue {
+  color: var(--color-link-blue);
+}
+.text-c-green {
+  color: var(--color-green);
+}
+.text-c-sky {
+  color: var(--color-light-sky);
+}
+
+.text-c-light-black {
+  color: var(--color-light-black);
+}
+
+.text-c-gray-2 {
+  color: var(--color-gray-2);
+}
+
+.text-c-dark-gray {
+  color: var(--color-dark-gray);
+}
+
+.text-c-medium-gray {
+  color: var(--color-medium-gray);
+}
+
+.text-c-light-white {
+  color: var(--color-light-white);
+}
+
+.hover-text-c-yellow:hover {
+  color: var(--color-dark-yellow);
+}
+
+.hover-bg-c-black:hover {
+  background: var(--color-light-gray);
+}
+
+.hover-bg-c-yellow:hover {
+  background: var(--color-dark-yellow);
+}
+
+.bg-light-pink {
+  background: var(--color-light-pink);
+}
+
+.border-c-light-gray {
+  border-color: var(--color-light-gray);
+}
+
+.border-gray {
+  border-color: var(--border-light-gray);
+}
+
+.border-c-dark-gray {
+  border-color: var(--border-color);
+}
+
+.border-c-gray {
+  border-color: var(--color-gray);
+}
+
+.border-c-sky {
+  border-color: var(--color-light-sky);
+}
+
+.border-c-yellow {
+  border-color: var(--color-dark-yellow);
+}
+
+.bg-c-gray-3 {
+  background: var(--bg-light-gray);
+}
+
+body.fm {
+  overflow-x: hidden;
+}
+
+.fm .main {
+  background: url("/images/main-bg.png");
+  background-size: cover;
+  background-position: center;
+  overflow: scroll;
+}
+
+@media (width > 768px) {
+  .fm .main {
+    /* max-height: calc(100vh - 60px); */
+    max-height: calc(100vh);
+  }
+}
+
+@media (width < 767.98px) {
+  .fm .main {
+    /* max-height: calc(100vh - 45px); */
+    max-height: calc(100vh);
+  }
+}
+
+.fm .taskbar {
+  background: url("/images/taskbar-bg.svg");
+  background-size: cover;
+  background-position: center;
+}
+
+.fm .bg-system {
+  background: url("/images/system.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.fm div[role="dialog"] {
+  padding: 20px 10px;
+}
+
+.fm div[role="dialog"] .modal-content {
+  max-height: 90vh;
+  overflow: scroll;
+}
+
+.fm div[role="dialog"] .modal-content::-webkit-scrollbar,
+.fm .main::-webkit-scrollbar,
+.fm-table-container::-webkit-scrollbar,
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (width < 768px) {
+  .fm-table-container {
+    overflow-y: scroll;
+    overflow-x: scroll;
+  }
+
+  .fm-table-container table {
+    min-width: 1000px;
+  }
+}
+
+.fm .main .content {
+  min-width: 320px;
+}
+
+.fm .toggle-bg {
+  background: #dcdcdc;
+  border: 1px solid var(--border-light-gray);
+}
+
+.fm .toggle-switch input:checked ~ .dot {
+  transform: translateX(118%);
+  background: #f9f9f9;
+}
+
+.fm .toggle-switch input:checked ~ .toggle-bg {
+  background: var(--color-dark-yellow);
+}
+.fm .dropdown-option {
+  display: none;
+  background-color: #f9f9f9;
+}
+
+.fm .tooltip {
+  display: none;
+}
+.fm .has-tooltip:hover ~ .tooltip {
+  display: block;
+}
+.fm .dropdown-btn:focus ~ .dropdown-option,
+.dropdown-option:hover {
+  display: block;
+}
+
+.fm .radio-button input {
+  display: none;
+  white-space: nowrap;
+}
+
+.fm .radio-border input {
+  display: none;
+  white-space: nowrap;
+}
+
+.fm .radio-button span {
+  min-width: 80px;
+}
+
+.fm .radio-button input:checked ~ span {
+  background: #fdcf01;
+  color: #000;
+}
+
+.fm .radio-border input:checked ~ span {
+  border-bottom: 4px solid #fdcf01;
+  font-weight: 500;
+}
+
+/* file specific */
+
+.fm #tab-holder {
+  position: relative;
+}
+
+.fm #tab-holder .tab-content {
+  padding-bottom: 1rem;
+}
+
+.fm #tab-holder input.tab-manager[type="radio"] {
+  position: absolute;
+  left: -100%;
+  top: -100%;
+  height: 0;
+  display: none;
+}
+
+.fm
+  #tab-holder
+  input.tab-manager[type="radio"]
+  + div.content-holder
+  > label.tab-label {
+  float: left;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.fm
+  #tab-holder
+  input.tab-manager[type="radio"]
+  + div.content-holder
+  > div.tab-content {
+  position: absolute;
+  width: 100%;
+  display: none;
+}
+
+.fm
+  #tab-holder
+  input.tab-manager[type="radio"]:checked
+  + div.content-holder
+  > div.tab-content {
+  display: block;
+}
+
+.fm
+  #tab-holder
+  input.tab-manager[type="radio"]:checked
+  + div.content-holder
+  > label.tab-label {
+  border-bottom: 2px solid var(--color-dark-yellow);
+}
+
+.fm #tab-holder .tab-content form input[type="checkbox"]:checked + label {
+  background: var(--color-dark-yellow);
+  color: var(--color-light-gray);
+}
+
+.fm button {
+  white-space: nowrap;
+}
+
+/*multiple select -  css override*/
+.ui.selection.dropdown {
+  border-radius: 7px !important;
+}
+
+.ui.label {
+  background-color: #fff !important;
+  border-radius: 10px !important;
+}
+
+/* js tab controlled */
+.tab-control {
+  border-bottom: 2px solid transparent;
+}
+
+.tab-control.active {
+  border-color: var(--color-dark-yellow);
+  font-weight: bold;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* no dark outline on input focus */
+.fm input:focus,
+.fm textarea:focus,
+.fm select:focus {
+  outline: none;
+}
+
+/* checkbox with yellow border */
+.fm input[type="checkbox"].c-checkbox {
+  accent-color: var(--color-dark-yellow);
+}
+.fm input[type="checkbox"].c-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  font-size: 2rem;
+  padding: 0.1rem;
+  width: 16px;
+  cursor: pointer;
+  position: relative;
+  height: 16px;
+  border: 2px solid var(--color-dark-yellow);
+  border-radius: 2px;
+}
+/* .fm input[type="checkbox"].c-checkbox:checked{
+    background-color: var(--color-dark-yellow);
+} */
+.fm input[type="checkbox"].c-checkbox:checked::after {
+  content: "✔";
+  font-size: 12px;
+  position: absolute;
+  height: 12px;
+  top: -3px;
+  left: 2px;
+}
+
+.fm select option:checked,
+.fm select option:hover,
+.fm select:focus > option:checked {
+  box-shadow: 0 0 10px 100px var(--color-dark-yellow) inset;
+}
+
+.fm #message-content {
+  height: 540px;
+}
+
+.fm input::placeholder {
+  color: var(--color-gray-2);
+  font-weight: 300;
+}
+
+/* For Internet Explorer 10-11 */
+.fm input:-ms-input-placeholder {
+  color: var(--color-gray-2);
+  font-weight: 300;
+}
+
+/* For Microsoft Edge */
+.fm input::-ms-input-placeholder {
+  color: var(--color-gray-2);
+  font-weight: 300;
+}

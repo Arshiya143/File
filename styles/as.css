@@ -291,7 +291,7 @@ body.fm {
   border: 1px solid rgba(104, 134, 134, 0.53);
   background: var(--color-lighten-gray);
   margin-top: 1px;
-  width: 11.5rem;
+  width: 11.7rem;
 }
 
 .dropdown:hover .dropdown-menu {
@@ -337,4 +337,20 @@ body.fm {
     /* max-height: calc(100vh - 45px); */
     max-height: calc(100vh);
   }
+}
+@media (width < 400px) {
+  .search {
+    /* max-height: calc(100vh - 45px); */
+    display: none;
+  }
+  .taskicon {
+    /* max-height: calc(100vh - 45px); */
+    width: 13.5rem;
+  }
+  .searchicon {
+    padding: 8px;
+  }
+}
+.nodata {
+  height: 50vh;
 }
