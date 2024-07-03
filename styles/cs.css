@@ -179,18 +179,18 @@ body.fm {
 
 .fm div[role="dialog"] .modal-content::-webkit-scrollbar,
 .fm .main::-webkit-scrollbar,
-.fm-table-container::-webkit-scrollbar,
+.cs-table-container::-webkit-scrollbar,
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
 @media (width < 768px) {
-  .fm-table-container {
+  .cs-table-container {
     overflow-y: scroll;
     overflow-x: scroll;
   }
 
-  .fm-table-container table {
+  .cstable-container table {
     min-width: 1000px;
   }
 }

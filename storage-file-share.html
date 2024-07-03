@@ -158,7 +158,7 @@
               <span class="text-lg text-c-black">System settings</span>
             </div>
           </div>
-          <!-- topTaskbar -->
+          <!-- topTaskbar in desktop -->
           <div
             class="pl-4 md:pl-6 pt-3 pb-3 pr-4 md:pr-6 w-full flex flex-row justify-between items-center gradient-bg"
           >
@@ -176,7 +176,7 @@
             >
               <div
                 id="searchbutton"
-                class="flex items-center rounded overflow-hidden flex-shrink-0 flex-grow bg-c-white h-7 w-1/12 md:w-2/12"
+                class="flex items-center rounded overflow-hidden flex-shrink-0 flex-grow bg-c-white h-7 w-1/12 md:w-2/12 hidden md:flex"
               >
                 <input
                   type="text"
@@ -186,22 +186,50 @@
                 <div
                   class="searchicon pt-3 pb-3 pr-4 flex items-center justify-center"
                 >
-                  <img src="images/search.svg" height="15" width="16" />
+                  <img src="images/search.svg" />
                 </div>
               </div>
               <button
-                class="flex items-center border px-3 hover-bg-c-black hover-text-c-yellow text-sm text-black py-1 rounded border-gray-600"
+                class="flex items-center border px-3 hover-bg-c-black hover-text-c-yellow text-sm text-black py-1 rounded border-gray-600 hidden sm:flex"
                 id="cancelbutton"
               >
                 <i class="ri-close-circle-fill"></i>
-                <span class="hidden sm:flex pl-1">Cancel</span>
-                <span class="hidden md:flex pl-1">Sharing</span>
+                <span class="pl-1">Cancel</span>
+                <span class="pl-1">Sharing</span>
               </button>
               <button
                 class="flex items-center border px-3 hover-bg-c-black hover-text-c-yellow text-sm text-black py-1 rounded border-gray-600"
               >
                 <i class="ri-download-line"></i>
-                <span class="pl-1 hidden sm:flex">Export</span>
+                <span class="pl-1">Export</span>
+              </button>
+            </div>
+          </div>
+          <!-- searchbar in mobile-->
+          <div
+            class="pl-4 pt-3 mt-3 pb-3 pr-4 w-full flex flex-row justify-between items-center bg-c-light-white-smoke md:hidden text-xs"
+          >
+            <div class="w-full flex flex-row items-center justify-end gap-2">
+              <div
+                id="searchbutton"
+                class="flex items-center rounded overflow-hidden flex-shrink-0 flex-grow bg-c-white h-8 w-1/12"
+              >
+                <input
+                  type="text"
+                  class="pl-4 pt-2.5 pb-2.5 flex-shrink flex-grow border-none outline-none w-3/12"
+                  placeholder="Please enter the string"
+                />
+                <div class="pt-3 pb-3 pr-4 flex items-center justify-center">
+                  <img src="images/search.svg" />
+                </div>
+              </div>
+              <button
+                class="flex items-center border px-1 hover-bg-c-black hover-text-c-yellow text-black py-2 rounded border-gray-600"
+                id="cancelbutton"
+              >
+                <i class="ri-close-circle-fill"></i>
+                <span class="pl-1">Cancel</span>
+                <span class="pl-1">Sharing</span>
               </button>
             </div>
           </div>
@@ -211,17 +239,20 @@
             <!-- Share and reporting tab -->
             <div class="max-w-full mx-auto rounded-lg">
               <!-- Tabs Navigation -->
-              <div class="flex justify-start gap-7 pl-4 md:pl-6 pt-3">
+              <div class="flex justify-start gap-7 pl-4 md:pl-6 pt-3 relative">
+                <div
+                  class="tab-underline absolute bottom-0 left-0 w-0 h-0.5 rounded-t-full"
+                ></div>
                 <button
                   id="tab-sharing"
-                  class="py-2 text-center border-b-4 text-lg border-yellow-300 font-medium focus:font-semibold hover:border-yellow-300"
+                  class="text-center text-lg relative z-10"
                   onclick="setActiveTab('tab-sharing')"
                 >
                   Sharing
                 </button>
                 <button
                   id="tab-sharing-report"
-                  class="text-center border-b-4 text-lg border-transparent hover:border-yellow-300"
+                  class="text-center text-lg relative z-10"
                   onclick="setActiveTab('tab-sharing-report')"
                 >
                   Sharing report
@@ -366,14 +397,14 @@
                         </li>
                         <li>
                           <a
-                            class="rounded-t custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4"
+                            class="custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4"
                             href="#"
                             >Unshare</a
                           >
                         </li>
                         <li>
                           <a
-                            class="rounded-t custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4"
+                            class="rounded-b custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4"
                             href="#"
                             >Prohibit/allow sharing</a
                           >
@@ -450,18 +481,30 @@
       // active tab
       function setActiveTab(activeTabId) {
         const tabs = ["tab-sharing", "tab-sharing-report"];
+        const underline = document.querySelector(".tab-underline");
 
         tabs.forEach((tabId) => {
           const tab = document.getElementById(tabId);
           if (tabId === activeTabId) {
-            tab.classList.add("border-yellow-300", "font-medium");
+            tab.classList.add("tab-active");
             tab.classList.remove("border-transparent");
+            const tabRect = tab.getBoundingClientRect();
+            const parentRect = tab.parentElement.getBoundingClientRect();
+            underline.style.width = `${tabRect.width}px`;
+            underline.style.transform = `translateX(${
+              tabRect.left - parentRect.left
+            }px)`;
           } else {
-            tab.classList.remove("border-yellow-300", "font-medium");
+            tab.classList.remove("tab-active");
             tab.classList.add("border-transparent");
           }
         });
       }
+
+      // Set default tab
+      window.onload = () => {
+        setActiveTab("tab-sharing");
+      };
     </script>
   </body>
 </html>
