@@ -117,6 +117,9 @@
 .border-c-dark-gray {
   border-color: var(--border-color);
 }
+.border-c-dark-gray-opaque {
+  border-color: var(--color-dark-gray-opaque);
+}
 
 .border-c-gray {
   border-color: var(--color-gray);
@@ -421,7 +424,7 @@ body.fm {
   }
   .maintitle,
   .textsize {
-    font-size: 8px;
+    font-size: 14px;
   }
 }
 @media (width > 400px) {
