@@ -380,7 +380,7 @@ body.fm {
     background-color: var(--color-dark-yellow);
 } */
 .fm input[type="checkbox"].c-checkbox:checked::after {
-  content: "✔";
+  content: "\2713";
   font-size: 12px;
   position: absolute;
   height: 12px;
@@ -424,7 +424,7 @@ body.fm {
   }
   .maintitle,
   .textsize {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 @media (width > 400px) {
@@ -440,15 +440,5 @@ body.fm {
   }
   .textsize {
     font-size: 14px;
-  }
-}
-@media (max-width: 480px) {
-  .cs input[type="checkbox"].d-checkbox:checked::after {
-    content: "\2713";
-    font-size: 12px;
-    position: absolute;
-    height: 12px;
-    top: -3px;
-    left: 2px;
   }
 }
