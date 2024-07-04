@@ -431,6 +431,11 @@ body.fm {
   .textsize {
     font-size: 12px;
   }
+  .flex-responsive {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
 }
 @media (width > 400px) {
   .title {
