@@ -41,6 +41,9 @@
 .bg-c-light-white {
   background: var(--color-light-white);
 }
+.bg-c-light-pink {
+  background: var(--color-light-pink);
+}
 
 .text-dark-black {
   color: var(--color-pure-black);
@@ -368,6 +371,7 @@ body.fm {
   height: 16px;
   border: 2px solid var(--color-dark-yellow);
   border-radius: 2px;
+  flex-shrink: 0; /* Prevent shrinking */
 }
 /* .fm input[type="checkbox"].c-checkbox:checked{
     background-color: var(--color-dark-yellow);
@@ -406,4 +410,32 @@ body.fm {
 .fm input::-ms-input-placeholder {
   color: var(--color-gray-2);
   font-weight: 300;
+}
+@media (width < 400px) {
+  .title {
+    width: 33.333333%;
+  }
+
+  .subcontent {
+    width: 66.666667%;
+  }
+  .maintitle,
+  .textsize {
+    font-size: 8px;
+  }
+}
+@media (width > 400px) {
+  .title {
+    width: 25%;
+  }
+
+  .subcontent {
+    width: 75%;
+  }
+  .maintitle {
+    font-size: 16px;
+  }
+  .textsize {
+    font-size: 14px;
+  }
 }
