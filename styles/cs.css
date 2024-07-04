@@ -387,6 +387,11 @@ body.fm {
   top: -3px;
   left: 2px;
 }
+@media (max-width: 480px) {
+  .fm input[type="checkbox"].d-checkbox:checked::after {
+    top: -4px;
+  }
+}
 
 .fm select option:checked,
 .fm select option:hover,
