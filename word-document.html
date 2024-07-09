@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word Processor</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="root.css" />
+    <link rel="stylesheet" href="styles/as.css" />
+  </head>
+  <body>
+    <div class="flex h-screen w-full fm text-c-black">
+      <div
+        id="comments"
+        class="fixed flex h-full flex-col border-r bg-c-lighten-gray hidden md:w-1/3 xl:w-1/5 font-size-14"
+      >
+        <div
+          class="resizer absolute top-0 right-0 w-1 h-full"
+          style="cursor: ew-resize; background-color: #d1d5db"
+        ></div>
+        <div
+          class="sticky top-0 z-10 flex items-center justify-between border-b px-4 py-2"
+        >
+          <h3 class="font-medium font-size-16">Comments</h3>
+          <div>
+            <button class="pr-2" onclick="togglePane('addcomment')">
+              <i class="ri-chat-new-line ri-lg"></i>
+            </button>
+            <button onclick="togglePane('comments')">
+              <i class="ri-close-fill ri-lg"></i>
+            </button>
+          </div>
+        </div>
+        <div class="flex-1 overflow-auto" id="comment-list">
+          <div class="space-y-4 p-4">
+            <div class="grid gap-2">
+              <div class="flex items-start gap-3">
+                <div class="h-8 w-8 rounded-full">
+                  <img
+                    src="images/avatar.png"
+                    alt="Avatar"
+                    class="h-8 w-8 rounded-full"
+                  />
+                </div>
+                <div class="flex-1 space-y-1">
+                  <div class="flex items-center justify-between">
+                    <div class="font-medium">John Doe</div>
+                    <div class="text-xs">2 hours ago</div>
+                  </div>
+                  <p>This is a great document! I have a few suggestions...</p>
+                  <div class="flex items-center gap-2">
+                    <button class="p-2">
+                      <i class="ri-reply-line"></i>
+                    </button>
+                    <button class="p-2">
+                      <i class="ri-thumb-up-line"></i>
+                    </button>
+                    <button class="p-2">
+                      <i class="ri-thumb-down-line"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="ml-11 grid gap-2">
+                <div class="flex items-start gap-3">
+                  <div class="h-8 w-8 rounded-full">
+                    <img
+                      src="images/avatar.png"
+                      alt="Avatar"
+                      class="h-8 w-8 rounded-full"
+                    />
+                  </div>
+                  <div class="flex-1 space-y-1">
+                    <div class="flex items-center justify-between">
+                      <div class="font-medium">Sarah Anderson</div>
+                      <div class="text-xs">1 hour ago</div>
+                    </div>
+                    <p>
+                      I agree, those are great suggestions. Let me add a few
+                      more...
+                    </p>
+                    <div class="flex items-center gap-2">
+                      <button class="p-2">
+                        <i class="ri-reply-line"></i>
+                      </button>
+                      <button class="p-2">
+                        <i class="ri-thumb-up-line"></i>
+                      </button>
+                      <button class="p-2">
+                        <i class="ri-thumb-down-line"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ml-20 grid gap-2">
+                <div class="flex items-start gap-3">
+                  <div class="h-8 w-8 rounded-full">
+                    <img
+                      src="images/avatar.png"
+                      alt="Avatar"
+                      class="h-8 w-8 rounded-full"
+                    />
+                  </div>
+                  <div class="flex-1 space-y-1">
+                    <div class="flex items-center justify-between">
+                      <div class="font-medium">Sarah Anderson</div>
+                      <div class="text-xs">1 hour ago</div>
+                    </div>
+                    <p>
+                      I agree, those are great suggestions. Let me add a few
+                      more...
+                    </p>
+                    <div class="flex items-center gap-2">
+                      <button class="p-2">
+                        <i class="ri-reply-line"></i>
+                      </button>
+                      <button class="p-2">
+                        <i class="ri-thumb-up-line"></i>
+                      </button>
+                      <button class="p-2">
+                        <i class="ri-thumb-down-line"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="grid gap-2">
+              <div class="flex items-start gap-3">
+                <div class="h-8 w-8 rounded-full">
+                  <img
+                    src="images/avatar.png"
+                    alt="Avatar"
+                    class="h-8 w-8 rounded-full"
+                  />
+                </div>
+                <div class="flex-1 space-y-1">
+                  <div class="flex items-center justify-between">
+                    <div class="font-medium">John Doe</div>
+                    <div class="text-xs">2 hours ago</div>
+                  </div>
+                  <p>This is a great document! I have a few suggestions...</p>
+                  <div class="flex items-center gap-2">
+                    <button class="p-2">
+                      <i class="ri-reply-line"></i>
+                    </button>
+                    <button class="p-2">
+                      <i class="ri-thumb-up-line"></i>
+                    </button>
+                    <button class="p-2">
+                      <i class="ri-thumb-down-line"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="ml-11 grid gap-2">
+                <div class="flex items-start gap-3">
+                  <div class="h-8 w-8 rounded-full">
+                    <img
+                      src="images/avatar.png"
+                      alt="Avatar"
+                      class="h-8 w-8 rounded-full"
+                    />
+                  </div>
+                  <div class="flex-1 space-y-1">
+                    <div class="flex items-center justify-between">
+                      <div class="font-medium">Sarah Anderson</div>
+                      <div class="text-xs">1 hour ago</div>
+                    </div>
+                    <p>
+                      I agree, those are great suggestions. Let me add a few
+                      more...
+                    </p>
+                    <div class="flex items-center gap-2">
+                      <button class="p-2">
+                        <i class="ri-reply-line"></i>
+                      </button>
+                      <button class="p-2">
+                        <i class="ri-thumb-up-line"></i>
+                      </button>
+                      <button class="p-2">
+                        <i class="ri-thumb-down-line"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          id="addcomment"
+          class="sticky bottom-0 z-10 border-t px-4 py-2 hidden"
+        >
+          <div class="flex items-center gap-2">
+            <textarea
+              placeholder="Write a new comment..."
+              class="flex-1 rounded-md border border-neutral-300 p-2 text-sm focus:outline-none"
+              rows="4"
+            ></textarea>
+            <button
+              class="border px-3 hover-bg-c-black hover-text-c-yellow bg-c-yellow text-sm py-1 rounded border-gray-600"
+            >
+              Post
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="flex-1" id="frame">
+        <div class="h-[calc(100vh-64px)] overflow-auto relative">
+          <!-- Add relative class here -->
+          <div class="prose max-w-none">
+            <iframe
+              id="iframe{{ $iframe['filetype'].$iframefile['filekey'] }}"
+              src="https://desktop2.sizaf.com/filemanager/Desktop"
+              class="w-full h-screen"
+            ></iframe>
+            <div
+              class="absolute bottom-5 left-5 bg-gray-300 rounded-full px-2 py-1"
+            >
+              <button onclick="togglePane('comments')">
+                <i class="ri-chat-4-line ri-lg"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const comment = document.getElementById("comments");
+      const frame = document.getElementById("frame");
+      const resizer = document.querySelector(".resizer");
+      const commentList = document.getElementById("comment-list");
+
+      // Toggle visibility of the comments pane
+      function togglePane(id) {
+        let element = document.getElementById(id);
+        element.classList.toggle("hidden");
+        if (id === "comments" && !element.classList.contains("hidden")) {
+          scrollToBottom();
+        }
+        updateFrameMargin();
+      }
+
+      // Scroll to the bottom of the comment list
+      function scrollToBottom() {
+        commentList.scrollTop = commentList.scrollHeight;
+      }
+
+      // Update the margin of the frame based on the comments pane width
+      function updateFrameMargin() {
+        const margin = !comment.classList.contains("hidden")
+          ? `${comment.offsetWidth}px`
+          : "0";
+        frame.style.marginLeft = margin;
+      }
+
+      let startX, startWidth;
+
+      // Initialize the resizing of the sidebar
+      const initResize = (e) => {
+        e.preventDefault();
+        startX = e.clientX;
+        startWidth = comment.offsetWidth;
+
+        window.addEventListener("mousemove", startResizing);
+        window.addEventListener("mouseup", stopResizing);
+      };
+
+      // Start resizing the sidebar
+      const startResizing = (e) => {
+        const minWidth = 288;
+        const maxWidth = 500;
+        let newWidth = startWidth + (e.clientX - startX);
+
+        if (newWidth < minWidth) newWidth = minWidth;
+        else if (newWidth > maxWidth) newWidth = maxWidth;
+
+        comment.style.width = `${newWidth}px`;
+        console.log("newWidth", newWidth);
+        console.log("comment", comment.style.width);
+        updateFrameMargin();
+      };
+
+      // Stop resizing the sidebar
+      const stopResizing = () => {
+        window.removeEventListener("mousemove", startResizing);
+        window.removeEventListener("mouseup", stopResizing);
+      };
+
+      resizer.addEventListener("mousedown", initResize);
+
+      // Update frame margin initially in case the comments section is not hidden
+      updateFrameMargin();
+    </script>
+  </body>
+</html>

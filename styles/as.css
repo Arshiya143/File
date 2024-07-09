@@ -41,6 +41,9 @@ body.fm {
 .bg-c-light-gray {
   background: var(--color-light-gray);
 }
+.bg-c-lighten-gray {
+  background: var(--color-lighten-gray);
+}
 .bg-c-creame-yellow {
   background: var(--color-creame-yellow);
 }
