@@ -17,6 +17,7 @@
   </head>
   <body>
     <div class="flex h-screen w-full fm text-c-black">
+      <!--Comment section-->
       <div
         id="comments"
         class="fixed flex h-full flex-col border-r bg-c-lighten-gray hidden md:w-1/3 xl:w-1/5 font-size-14"
@@ -38,6 +39,7 @@
             </button>
           </div>
         </div>
+        <!--chat list-->
         <div class="flex-1 overflow-auto" id="comment-list">
           <div class="space-y-4 p-4">
             <div class="grid gap-2">
@@ -196,6 +198,7 @@
             </div>
           </div>
         </div>
+        <!--Add comment-->
         <div
           id="addcomment"
           class="sticky bottom-0 z-10 border-t px-4 py-2 hidden"
@@ -214,9 +217,9 @@
           </div>
         </div>
       </div>
+      <!--Iframe-->
       <div class="flex-1" id="frame">
         <div class="h-[calc(100vh-64px)] overflow-auto relative">
-          <!-- Add relative class here -->
           <div class="prose max-w-none">
             <iframe
               id="iframe{{ $iframe['filetype'].$iframefile['filekey'] }}"
@@ -265,7 +268,7 @@
 
       let startX, startWidth;
 
-      // Initialize the resizing of the sidebar
+      // Initialize the resizing of the comment section
       const initResize = (e) => {
         e.preventDefault();
         startX = e.clientX;
@@ -275,7 +278,7 @@
         window.addEventListener("mouseup", stopResizing);
       };
 
-      // Start resizing the sidebar
+      // Start resizing the comment section
       const startResizing = (e) => {
         const minWidth = 288;
         const maxWidth = 500;
@@ -290,7 +293,7 @@
         updateFrameMargin();
       };
 
-      // Stop resizing the sidebar
+      // Stop resizing the comment section
       const stopResizing = () => {
         window.removeEventListener("mousemove", startResizing);
         window.removeEventListener("mouseup", stopResizing);
