@@ -42,7 +42,7 @@
         <!--chat list-->
         <div class="flex-1 overflow-auto" id="comment-list">
           <div class="space-y-4 p-4">
-            <div class="grid gap-2">
+            <div class="grid gap-2 border-b">
               <div class="flex items-start gap-3">
                 <div class="h-8 w-8 rounded-full">
                   <img
@@ -54,7 +54,7 @@
                 <div class="flex-1 space-y-1">
                   <div class="flex items-center justify-between">
                     <div class="font-medium">John Doe</div>
-                    <div class="text-xs">2 hours ago</div>
+                    <div class="text-xs">10-07-2024 10:45</div>
                   </div>
                   <p>This is a great document! I have a few suggestions...</p>
                   <div class="flex items-center gap-2">
@@ -62,10 +62,7 @@
                       <i class="ri-reply-line"></i>
                     </button>
                     <button class="p-2">
-                      <i class="ri-thumb-up-line"></i>
-                    </button>
-                    <button class="p-2">
-                      <i class="ri-thumb-down-line"></i>
+                      <i class="ri-delete-bin-line"></i>
                     </button>
                   </div>
                 </div>
@@ -93,16 +90,13 @@
                         <i class="ri-reply-line"></i>
                       </button>
                       <button class="p-2">
-                        <i class="ri-thumb-up-line"></i>
-                      </button>
-                      <button class="p-2">
-                        <i class="ri-thumb-down-line"></i>
+                        <i class="ri-delete-bin-line"></i>
                       </button>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="ml-20 grid gap-2">
+              <div class="ml-11 grid gap-2">
                 <div class="flex items-start gap-3">
                   <div class="h-8 w-8 rounded-full">
                     <img
@@ -125,10 +119,7 @@
                         <i class="ri-reply-line"></i>
                       </button>
                       <button class="p-2">
-                        <i class="ri-thumb-up-line"></i>
-                      </button>
-                      <button class="p-2">
-                        <i class="ri-thumb-down-line"></i>
+                        <i class="ri-delete-bin-line"></i>
                       </button>
                     </div>
                   </div>
@@ -147,7 +138,7 @@
                 <div class="flex-1 space-y-1">
                   <div class="flex items-center justify-between">
                     <div class="font-medium">John Doe</div>
-                    <div class="text-xs">2 hours ago</div>
+                    <div class="text-xs">10-07-2024 10:45</div>
                   </div>
                   <p>This is a great document! I have a few suggestions...</p>
                   <div class="flex items-center gap-2">
@@ -155,10 +146,7 @@
                       <i class="ri-reply-line"></i>
                     </button>
                     <button class="p-2">
-                      <i class="ri-thumb-up-line"></i>
-                    </button>
-                    <button class="p-2">
-                      <i class="ri-thumb-down-line"></i>
+                      <i class="ri-delete-bin-line"></i>
                     </button>
                   </div>
                 </div>
@@ -186,10 +174,7 @@
                         <i class="ri-reply-line"></i>
                       </button>
                       <button class="p-2">
-                        <i class="ri-thumb-up-line"></i>
-                      </button>
-                      <button class="p-2">
-                        <i class="ri-thumb-down-line"></i>
+                        <i class="ri-delete-bin-line"></i>
                       </button>
                     </div>
                   </div>
@@ -203,14 +188,29 @@
           id="addcomment"
           class="sticky bottom-0 z-10 border-t px-4 py-2 hidden"
         >
-          <div class="flex items-center gap-2">
-            <textarea
-              placeholder="Write a new comment..."
-              class="flex-1 rounded-md border border-neutral-300 p-2 text-sm focus:outline-none"
-              rows="4"
-            ></textarea>
+          <!-- Mention list -->
+          <div
+            id="mentionList"
+            class="absolute hidden bg-c-white border border-c-medium-gray rounded-md shadow-lg z-20 max-h-40 overflow-y-auto bottom-full"
+          >
+            <!-- Mention items will be dynamically inserted here -->
+          </div>
+          <div class="flex items-center gap-2 relative">
+            <div class="flex-1 relative">
+              <textarea
+                id="commentTextarea"
+                placeholder="Write a new comment..."
+                class="w-full rounded-md border border-c-medium-gray p-2 text-sm focus:outline-none bg-transparent relative z-10 text-transparent caret-black"
+                rows="4"
+                style="caret-color: black"
+              ></textarea>
+              <div
+                id="styledTextarea"
+                class="absolute top-0 left-0 w-full h-full p-2 text-sm pointer-events-none whitespace-pre-wrap break-words overflow-hidden bg-transparent"
+              ></div>
+            </div>
             <button
-              class="border px-3 hover-bg-c-black hover-text-c-yellow bg-c-yellow text-sm py-1 rounded border-gray-600"
+              class="border px-3 hover-bg-c-black hover-text-c-yellow text-sm py-1 rounded border-gray-600 bg-c-yellow"
             >
               Post
             </button>
@@ -219,7 +219,7 @@
       </div>
       <!--Iframe-->
       <div class="flex-1" id="frame">
-        <div class="h-[calc(100vh-64px)] overflow-auto relative">
+        <div class="overflow-auto relative">
           <div class="prose max-w-none">
             <iframe
               id="iframe{{ $iframe['filetype'].$iframefile['filekey'] }}"
@@ -242,12 +242,15 @@
       const frame = document.getElementById("frame");
       const resizer = document.querySelector(".resizer");
       const commentList = document.getElementById("comment-list");
+      const mentionList = document.getElementById("mentionList");
+      const textarea = document.getElementById("commentTextarea");
+      const styledTextarea = document.getElementById("styledTextarea");
 
       // Toggle visibility of the comments pane
       function togglePane(id) {
         let element = document.getElementById(id);
         element.classList.toggle("hidden");
-        if (id === "comments" && !element.classList.contains("hidden")) {
+        if (!element.classList.contains("hidden")) {
           scrollToBottom();
         }
         updateFrameMargin();
@@ -303,6 +306,99 @@
 
       // Update frame margin initially in case the comments section is not hidden
       updateFrameMargin();
+
+      // Array of users for mention suggestions
+      const users = [
+        { id: 1, name: "John Doe" },
+        { id: 2, name: "Sarah Anderson" },
+        { id: 3, name: "Michael Brown" },
+      ];
+
+      // Function to highlight @mentions in the textarea content
+      function highlightMentions(text) {
+        // Regex to find @mentions and wrap them with a span for styling
+        const regex = /(@[a-zA-Z]+\s[a-zA-Z]+)/g;
+        return text.replace(
+          regex,
+          (match) => `<span class="text-link-blue">${match}</span>`
+        );
+      }
+
+      // Update the preview and display user suggestions as the user types
+      textarea.addEventListener("input", (e) => {
+        const value = e.target.value;
+        const cursorPosition = e.target.selectionStart;
+        const lastAtIndex = value.lastIndexOf("@", cursorPosition - 1);
+
+        // Show highlighted mentions in the preview area
+        styledTextarea.innerHTML =
+          highlightMentions(value) +
+          "<br>".repeat(textarea.rows - (value.match(/\n/g) || []).length);
+
+        if (lastAtIndex !== -1) {
+          const query = value.slice(lastAtIndex + 1, cursorPosition);
+          const filteredUsers = users.filter((user) =>
+            user.name.toLowerCase().includes(query.toLowerCase())
+          );
+
+          // Display filtered users in the mention list if there are matches
+          if (filteredUsers.length > 0) {
+            mentionList.innerHTML = filteredUsers
+              .map(
+                (user) =>
+                  `<div class="px-4 py-2 hover-bg-c-yellow text-c-black cursor-pointer" data-name="${user.name}">${user.name}</div>`
+              )
+              .join("");
+            const rect = textarea.getBoundingClientRect();
+            mentionList.style.left = `${rect.left}px`;
+            mentionList.style.width = `${textarea.offsetWidth}px`;
+            mentionList.classList.remove("hidden");
+          } else {
+            mentionList.classList.add("hidden");
+          }
+        } else {
+          mentionList.classList.add("hidden");
+        }
+      });
+
+      // Insert the selected mention into the textarea and update the preview
+      mentionList.addEventListener("click", (e) => {
+        if (e.target.dataset.name) {
+          const cursorPosition = textarea.selectionStart;
+          const value = textarea.value;
+          const lastAtIndex = value.lastIndexOf("@", cursorPosition - 1);
+
+          // Replace the @mention with the selected user’s name
+          const newValue =
+            value.slice(0, lastAtIndex + 1) +
+            e.target.dataset.name +
+            " " +
+            value.slice(cursorPosition);
+          textarea.value = newValue;
+          textarea.focus();
+          textarea.setSelectionRange(
+            lastAtIndex + 1 + e.target.dataset.name.length + 1,
+            lastAtIndex + 1 + e.target.dataset.name.length + 1
+          );
+
+          // Update the preview area with the new text
+          styledTextarea.innerHTML =
+            highlightMentions(textarea.value) +
+            "<br>".repeat(
+              textarea.rows - (textarea.value.match(/\n/g) || []).length
+            );
+
+          // Hide the mention list after selection
+          mentionList.classList.add("hidden");
+        }
+      });
+
+      // Hide the mention list if the user clicks outside of the textarea or list
+      document.addEventListener("click", (e) => {
+        if (!mentionList.contains(e.target) && !textarea.contains(e.target)) {
+          mentionList.classList.add("hidden");
+        }
+      });
     </script>
   </body>
 </html>
