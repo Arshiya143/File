@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin & Users- Users & Groups</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="root.css" />
+    <link rel="stylesheet" href="styles/as.css" />
+  </head>
+
+  <body class="h-screen w-full flex flex-col fm">
+    <main class="flex w-full h-full flex">
+      <!-- Sidebar -->
+      <aside class="h-full relative">
+        <input type="checkbox" class="hidden" id="sidebar-toggle" />
+        <label
+          for="sidebar-toggle"
+          class="absolute lg:hidden top-1 -right-8 md:-right-10 px-1"
+        >
+          <i class="ri-bar-chart-horizontal-line"></i>
+        </label>
+        <div class="h-full sidebar">
+          <div class="sidebar-container">
+            <div class="p-6">
+              <img src="/images/logo.png" alt="Dots Logo" />
+            </div>
+            <div class="md:pt-6">
+              <ul class="space-y-1">
+                <li>
+                  <div
+                    role="button"
+                    onclick="toggleDropMenu(this)"
+                    class="drop-menu cursor-pointer rounded-r-lg"
+                  >
+                    <div
+                      class="w-full px-6 py-3 flex justify-between items-center"
+                      href="#"
+                    >
+                      <span>Overview </span>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div
+                    role="button"
+                    onclick="toggleDropMenu(this)"
+                    class="drop-menu cursor-pointer rounded-r-lg"
+                  >
+                    <div
+                      class="w-full px-6 py-3 flex justify-between items-center"
+                      href="#"
+                    >
+                      <span>System settings</span>
+                      <i
+                        class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"
+                      ></i>
+                    </div>
+                  </div>
+                </li>
+
+                <li>
+                  <div
+                    role="button"
+                    onclick="toggleDropMenu(this)"
+                    class="drop-menu cursor-pointer rounded-r-lg"
+                  >
+                    <div
+                      class="w-full px-6 py-3 flex justify-between items-center"
+                      href="#"
+                    >
+                      <span>Users & groups</span>
+                      <i
+                        class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"
+                      ></i>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div
+                    role="button"
+                    onclick="toggleDropMenu(this)"
+                    class="drop-menu cursor-pointer rounded-r-lg"
+                  >
+                    <div
+                      class="w-full px-6 py-3 flex justify-between items-center"
+                      href="#"
+                    >
+                      <span>Storage/File</span>
+                      <i
+                        class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"
+                      ></i>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div
+                    role="button"
+                    onclick="toggleDropMenu(this)"
+                    class="drop-menu cursor-pointer rounded-r-lg"
+                  >
+                    <div
+                      class="w-full px-6 py-3 flex justify-between items-center"
+                      href="#"
+                    >
+                      <span>Plugin center</span>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div
+                    role="button"
+                    onclick="toggleDropMenu(this)"
+                    class="drop-menu cursor-pointer rounded-r-lg"
+                  >
+                    <div
+                      class="w-full px-6 py-3 flex justify-between items-center"
+                      href="#"
+                    >
+                      <span>Safety control</span>
+                      <i
+                        class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"
+                      ></i>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div
+                    role="button"
+                    onclick="toggleDropMenu(this)"
+                    class="drop-menu cursor-pointer rounded-r-lg"
+                  >
+                    <div
+                      class="w-full px-6 py-3 flex justify-between items-center"
+                      href="#"
+                    >
+                      <span>Server</span>
+                      <i
+                        class="ri-arrow-right-s-line text-c-yellow big-right-arrow text-2xl"
+                      ></i>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <div class="flex-grow h-100 main">
+        <div class="flex w-full h-full flex-col content">
+          <div class="px-3 md:px-5 py-6">
+            <div class="flex items-center gap-4">
+              <i class="ri-settings-3-fill ri-xl"></i>
+              <span class="text-lg text-c-black">System settings</span>
+            </div>
+          </div>
+          <!-- topTaskbar in desktop -->
+          <div
+            class="pl-4 md:pl-6 pt-3 pb-3 pr-4 md:pr-6 w-full flex flex-row justify-between items-center taskbar"
+          >
+            <div class="w-full md:w-6/12 xl:w-8/12">
+              <div class="flex items-center gap-1 sm:gap-2">
+                <span class="text-c-light-black whitespace-nowrap">
+                  Admin &amp; Users
+                </span>
+                <i class="ri-arrow-right-line ri-lg text-c-light-black"></i>
+                <span class="font-semibold text-c-black">
+                  Users &amp; Groups
+                </span>
+              </div>
+            </div>
+            <div
+              class="relative taskicon hidden md:flex md:w-6/12 xl:w-4/12 flex flex-row items-center justify-end gap-6"
+            >
+              <div
+                id="searchbutton"
+                class="flex items-center rounded overflow-hidden flex-shrink-0 flex-grow bg-c-white h-7 w-1/12 md:w-2/12 hidden md:flex"
+              >
+                <input
+                  type="text"
+                  class="search pl-4 pt-2.5 pb-2.5 flex-shrink flex-grow border-none outline-none font-size-14 w-3/12"
+                  placeholder="Search users,groups..."
+                />
+                <div
+                  class="searchicon pt-3 pb-3 pr-4 flex items-center justify-center"
+                >
+                  <img src="images/search.svg" />
+                </div>
+              </div>
+              <button class="">
+                <i
+                  class="ri-add-circle-fill ri-xl"
+                  onclick="toggleModal('newUserModal')"
+                ></i>
+              </button>
+              <button class="has-tooltip">
+                <i class="ri-folder-2-fill ri-xl"></i>
+              </button>
+              <div
+                class="absolute py-1 px-2 text-start text-xs tooltip -bottom-8 right-0 z-10 bg-c-lighten-gray border border-c-yellow rounded-md"
+              >
+                Enter the directory
+              </div>
+            </div>
+          </div>
+          <!-- searchbar in mobile-->
+          <div
+            class="pl-4 pt-3 mt-3 pb-3 pr-4 w-full flex flex-row justify-between items-center bg-c-light-white-smoke md:hidden"
+            id="mobiletaskbar"
+          >
+            <div
+              class="relative w-full flex flex-row items-center justify-end gap-2"
+            >
+              <div
+                class="flex items-center rounded overflow-hidden flex-shrink-0 flex-grow bg-c-white h-8 w-1/12"
+              >
+                <input
+                  type="text"
+                  class="pl-4 pt-2.5 pb-2.5 flex-shrink flex-grow border-none outline-none w-3/12"
+                  placeholder="Search users,groups..."
+                />
+                <div class="pt-3 pb-3 pr-4 flex items-center justify-center">
+                  <img src="images/search.svg" />
+                </div>
+              </div>
+              <button class="px-2">
+                <i
+                  class="ri-add-circle-fill ri-xl"
+                  onclick="toggleModal('newUserModal')"
+                ></i>
+              </button>
+              <button class="has-tooltip">
+                <i class="ri-folder-2-fill ri-xl"></i>
+              </button>
+              <div
+                class="absolute py-1 px-2 text-start text-xs tooltip -bottom-8 right-0 z-10 bg-c-lighten-gray border border-c-yellow rounded-md"
+              >
+                Enter the directory
+              </div>
+            </div>
+          </div>
+
+          <!--Main content -->
+          <div class="p-4 relative h-full flex flex-col">
+            <div
+              class="users-admin-btn-grp flex items-center relative justify-between flex-wrap"
+            >
+              <div class="flex items-center gap-2 flex-wrap">
+                <div class="dropdown inline-block relative">
+                  <button
+                    class="border rounded px-6 py-1 custom-safety-btn custom-outline hover:border-yellow-300"
+                  >
+                    <span class="mr-1">Group 1</span>
+                    <i class="ri-arrow-down-s-fill"></i>
+                  </button>
+                  <ul
+                    class="dropdown-menu custom-dropdown-menu absolute hidden text-gray-700 shadow bg-custom-pure-white text-xs"
+                  >
+                    <li>
+                      <a
+                        class="rounded-t custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4"
+                        href="#"
+                        onclick="toggleModal('editModal')"
+                        >Edit</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <button
+                  class="border rounded px-6 py-1 mr-1 custom-safety-btn custom-outline hover:border-yellow-300"
+                >
+                  <span class="mr-1">New Users</span>
+                  <i class="ri-arrow-down-s-fill"></i></button
+                ><button
+                  class="border rounded px-6 py-1 mr-1 custom-safety-btn custom-outline hover:border-yellow-300"
+                >
+                  <span class="mr-1">Bulk Operations</span>
+                  <i class="ri-arrow-down-s-fill"></i>
+                </button>
+                <button
+                  class="text-c-light-black bg-c-light-black1 rounded px-6 py-1 mr-1"
+                >
+                  Disable
+                </button>
+                <button
+                  class="text-c-light-black bg-c-light-black1 rounded px-6 py-1 mr-1"
+                >
+                  Enable</button
+                ><button
+                  class="text-c-light-black bg-c-light-black1 rounded px-6 py-1 mr-1"
+                >
+                  Delete
+                </button>
+              </div>
+              <div class="mt-2 xl:mt-0">id:1;dep:1</div>
+            </div>
+            <div
+              class="bg-white cs-table-container border border-c-gray rounded-md mt-5"
+            >
+              <table class="table-auto w-full">
+                <thead class="h-14">
+                  <tr class="bg-c-dark-gray">
+                    <th
+                      class="text-c-white font-medium text-left pl-3 text-base rounded-tl-md"
+                    ></th>
+                    <th
+                      class="text-c-white font-medium text-left pl-3 text-base whitespace-nowrap"
+                    >
+                      NickName / Account
+                    </th>
+                    <th
+                      class="text-c-white font-medium text-left text-base pl-3"
+                    >
+                      <button class="font-medium">
+                        Role <i class="ri-arrow-down-s-fill"></i>
+                      </button>
+                    </th>
+                    <th
+                      class="text-c-white font-medium text-left text-base pl-3"
+                    >
+                      <button class="font-medium">
+                        Space Usage <i class="ri-arrow-down-s-fill"></i>
+                      </button>
+                    </th>
+                    <th
+                      class="text-c-white font-medium text-left text-base pl-3"
+                    >
+                      Group
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="h-16 border-b">
+                    <td class="pl-3 px-2 flex items-center justify-center mt-6">
+                      <input
+                        type="checkbox"
+                        class="c-checkbox"
+                        name="options"
+                        value="weak"
+                      />
+                    </td>
+                    <td class="font-normal text-c-black text-left pl-3">
+                      Administrator
+                    </td>
+                    <td class="font-normal text-c-black text-left pl-3">
+                      Administrator
+                    </td>
+                    <td class="font-normal text-c-black text-left pl-3">
+                      <div
+                        class="bg-c-light-black1 h-2 mb-2 rounded-lg overflow-hidden w-5/12"
+                      >
+                        <div
+                          class="bg-c-yellow h-full rounded-r-full w-1/4"
+                        ></div>
+                      </div>
+                      <span class="whitespace-nowrap">1.1 MB/ Unlimited</span>
+                    </td>
+                    <td
+                      class="font-normal text-c-black text-left pl-3 whitespace-nowrap"
+                    >
+                      Group 1
+                    </td>
+                  </tr>
+                  <tr class="h-16">
+                    <td class="pl-3 px-2 flex items-center justify-center mt-6">
+                      <input
+                        type="checkbox"
+                        class="c-checkbox"
+                        name="options"
+                        value="weak"
+                      />
+                    </td>
+                    <td class="font-normal text-c-black text-left pl-3">
+                      Administrator
+                    </td>
+                    <td class="font-normal text-c-black text-left pl-3">
+                      Administrator
+                    </td>
+                    <td class="font-normal text-c-black text-left pl-3">
+                      <div
+                        class="bg-c-light-black1 h-2 mb-2 rounded-lg overflow-hidden w-5/12"
+                      >
+                        <div
+                          class="bg-c-yellow h-full rounded-r-full w-1/4"
+                        ></div>
+                      </div>
+                      <span class="whitespace-nowrap">1.1 MB/ Unlimited</span>
+                    </td>
+                    <td
+                      class="font-normal text-c-black text-left pl-3 whitespace-nowrap"
+                    >
+                      Group 1
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="mt-auto flex justify-end pt-3">
+              Total 1 page &nbsp; <span class="text-c-yellow">(5 records)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- edit modal -->
+      <div
+        id="editModal"
+        role="dialog"
+        class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-50"
+      >
+        <div
+          class="bg-white rounded-2xl overflow-hidden shadow-lg max-w-xl w-full bg-c-lighten-gray modal-content"
+        >
+          <div
+            class="flex py-2 px-5 justify-between items-center border-b border-gray-3 text-c-black"
+          >
+            <div class="text-lg">Edit Group</div>
+            <button
+              type="button"
+              id="closeModalButton"
+              class="py-1.5 bg-c-lightest-gray rounded-md"
+              onclick="toggleModal('editModal')"
+            >
+              <i class="ri-close-circle-fill text-black ri-lg"></i>
+            </button>
+          </div>
+          <div class="p-5">
+            <form class="space-y-4 text-sm">
+              <div class="flex flex-wrap w-full gap-y-4 items-center">
+                <label for="title" class="title font-bold text-c-black"
+                  >Name: <span class="text-red-500">*</span></label
+                >
+                <div class="w-full sm:w-3/4 ml-auto">
+                  <div class="relative w-full">
+                    <input
+                      id="filesize"
+                      class="w-full p-2 bg-c-lighten-gray border border-gray-3 rounded-xl outline-none pl-4"
+                      type="text"
+                      placeholder="Group 1"
+                    />
+                    <div
+                      class="absolute inset-y-0 right-0 flex items-center border border-gray-3 w-12 rounded-r-xl pl-3"
+                    >
+                      <i class="ri-folder-5-fill ri-xl text-link-blue"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-y-4 items-start">
+                <div class="title font-bold text-c-black pt-3">
+                  Space size:<span class="text-red-500">*</span>
+                </div>
+                <div class="w-full sm:w-3/4 ml-auto">
+                  <div class="relative w-full">
+                    <input
+                      id="filesize"
+                      class="w-full p-2 bg-c-lighten-gray border border-gray-3 rounded-xl outline-none pl-4"
+                      type="text"
+                      placeholder="3"
+                    />
+                    <div
+                      class="absolute inset-y-0 right-0 flex items-center bg-c-gray-4 border border-gray-3 w-12 rounded-r-xl pl-3"
+                    >
+                      <p class="font-normal">GB</p>
+                    </div>
+                  </div>
+                  <p class="text-xs text-c-black font-light mt-2">
+                    0 is unlimited
+                  </p>
+                </div>
+              </div>
+              <div class="flex justify-end mt-3">
+                <button
+                  class="bg-c-black hover-bg-c-black text-white rounded-full w-32 py-2 text-sm"
+                >
+                  Save
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- new user modal -->
+      <div
+        id="newUserModal"
+        role="dialog"
+        class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-50"
+      >
+        <div
+          class="bg-white rounded-2xl overflow-hidden shadow-lg max-w-2xl w-full bg-c-lighten-gray modal-content"
+        >
+          <div
+            class="flex py-2 px-5 justify-between items-center border-b border-gray-3 text-c-black"
+          >
+            <div class="text-lg">User Info</div>
+            <button
+              type="button"
+              id="closeModalButton"
+              class="py-1.5 bg-c-lightest-gray rounded-md"
+              onclick="toggleModal('newUserModal')"
+            >
+              <i class="ri-close-circle-fill text-black ri-lg"></i>
+            </button>
+          </div>
+          <div class="p-5">
+            <form class="space-y-4 text-sm">
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                <div class="md:col-span-2 flex items-center">
+                  <label for="name" class="block font-bold text-c-black"
+                    >Name:<span class="text-red-500">*</span></label
+                  >
+                </div>
+                <div class="md:col-span-8">
+                  <input
+                    id="name"
+                    class="w-full p-2 bg-c-lighten-gray border border-gray-3 rounded-xl outline-none pl-5"
+                    type="text"
+                    placeholder="Please enter an username"
+                    autocomplete="name"
+                  />
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                <div class="md:col-span-2 flex items-center">
+                  <label for="name" class="block font-bold text-c-black"
+                    >Nickname:</label
+                  >
+                </div>
+                <div class="md:col-span-8">
+                  <input
+                    id="name"
+                    class="w-full p-2 bg-c-lighten-gray border border-gray-3 rounded-xl outline-none pl-5"
+                    type="text"
+                    placeholder="Please enter nickname"
+                    autocomplete="name"
+                  />
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mt-4">
+                <div class="md:col-span-2 flex items-center">
+                  <label for="filesize" class="block font-bold text-c-black"
+                    >Password:<span class="text-red-500">*</span></label
+                  >
+                </div>
+                <div class="md:col-span-8 flex items-center gap-2">
+                  <div class="relative w-full">
+                    <input
+                      id="filesize"
+                      class="w-full p-2 bg-c-lighten-gray border border-gray-3 rounded-xl outline-none pl-4"
+                      type="text"
+                      placeholder="Please enter password"
+                    />
+                    <div
+                      class="absolute inset-y-0 right-0 flex items-center border border-gray-3 w-12 rounded-r-xl pl-3 pt-1"
+                    >
+                      <i class="ri-eye-close-line ri-xl"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mt-4">
+                <div class="md:col-span-2 flex items-center">
+                  <label for="filesize" class="block font-bold text-c-black"
+                    >Space size:<span class="text-red-500">*</span></label
+                  >
+                </div>
+                <div class="md:col-span-8 flex items-center gap-2">
+                  <div class="relative w-full">
+                    <input
+                      id="filesize"
+                      class="w-full p-2 bg-c-lighten-gray border border-gray-3 rounded-xl outline-none pl-4"
+                      type="text"
+                      placeholder="Please enter space size"
+                    />
+                    <div
+                      class="absolute inset-y-0 right-0 flex items-center bg-c-gray-4 border border-gray-3 w-12 rounded-r-xl pl-3"
+                    >
+                      <p class="font-normal">GB</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="md:col-span-2 flex items-center ml-0 md:-ml-2">
+                  <p class="text-xs text-c-black font-light w-full">
+                    (GB) 0 is unlimited
+                  </p>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                <div class="md:col-span-2 flex items-center">
+                  <label for="name" class="block font-bold text-c-black"
+                    >More:</label
+                  >
+                </div>
+                <div class="md:col-span-8">
+                  <button
+                    class="bg-c-light-black1 hover-bg-c-yellow rounded-md px-10 py-2"
+                    onclick="hideMoreSettings()"
+                  >
+                    Basic
+                  </button>
+                  <button
+                    class="bg-c-light-black1 hover-bg-c-yellow rounded-md px-5 py-2 ml-3"
+                    onclick="showMoreSettings()"
+                  >
+                    More settings
+                  </button>
+                </div>
+              </div>
+              <div id="moresettings" class="hidden">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                  <div class="md:col-span-2 flex items-center">
+                    <label for="name" class="block font-bold text-c-black"
+                      >Gender:<span class="text-red-500">*</span></label
+                    >
+                  </div>
+                  <div class="md:col-span-8 flex">
+                    <div class="flex items-start justify-start gap-1 sm:gap-3">
+                      <input
+                        type="checkbox"
+                        class="c-checkbox mt-1"
+                        name="options"
+                        value="weak"
+                      />
+                      <span class="text-c-black mt-0.5">Female</span>
+                    </div>
+                    <div
+                      class="flex items-start justify-start gap-1 sm:gap-3 ml-3"
+                    >
+                      <input
+                        type="checkbox"
+                        class="c-checkbox mt-1"
+                        name="options"
+                        value="weak"
+                      />
+                      <span class="text-c-black mt-0.5"> Male</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mt-4">
+                  <div class="md:col-span-2 flex items-center">
+                    <label for="name" class="block font-bold text-c-black"
+                      >Mobile:<span class="text-red-500">*</span></label
+                    >
+                  </div>
+                  <div class="md:col-span-8">
+                    <input
+                      id="name"
+                      class="w-full p-2 bg-c-lighten-gray border border-gray-3 rounded-xl outline-none pl-5"
+                      type="text"
+                      placeholder="Please enter mobile number"
+                      autocomplete="name"
+                    />
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mt-4">
+                  <div class="md:col-span-2 flex items-center">
+                    <label for="name" class="block font-bold text-c-black"
+                      >Email:<span class="text-red-500">*</span></label
+                    >
+                  </div>
+                  <div class="md:col-span-8">
+                    <input
+                      id="name"
+                      class="w-full p-2 bg-c-lighten-gray border border-gray-3 rounded-xl outline-none pl-5"
+                      type="text"
+                      placeholder="Please enter your email"
+                      autocomplete="name"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mt-4">
+                <div class="md:col-span-2 flex items-center">
+                  <label for="filesize" class="block font-bold text-c-black"
+                    >Role:<span class="text-red-500">*</span></label
+                  >
+                </div>
+                <div class="md:col-span-8 flex items-center gap-2">
+                  <div class="dropdown inline-block relative w-full">
+                    <button
+                      class="w-full p-2 bg-c-lighten-gray border border-gray-3 rounded-xl outline-none pl-4 text-left"
+                    >
+                      <div class="flex items-center">
+                        <i class="ri-circle-fill text-c-yellow ri-xl pr-2"></i
+                        >Ordinary user
+                      </div>
+                      <div
+                        class="absolute inset-y-0 right-0 flex items-center border border-gray-3 w-12 rounded-r-xl pl-3 pt-1"
+                      >
+                        <i class="ri-arrow-drop-down-line ri-xl"></i>
+                      </div>
+                    </button>
+                    <ul
+                      class="dropdown-menu custom-dropdown-menu absolute hidden text-gray-700 shadow bg-custom-pure-white text-xs"
+                      style="width: 100%"
+                    >
+                      <li>
+                        <a
+                          class="rounded-t custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4"
+                          href="#"
+                          onclick="toggleModal('editModal')"
+                          ><div class="flex items-center">
+                            <i class="ri-circle-fill text-c-sky ri-xl pr-2"></i
+                            >Ordinary user
+                          </div></a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          class="custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4"
+                          href="#"
+                          ><div class="flex items-center">
+                            <i
+                              class="ri-circle-fill text-c-green ri-xl pr-2"
+                            ></i
+                            >Administrator
+                          </div></a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          class="rounded-b custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4"
+                          href="#"
+                          onclick="toggleModal('newUserModal')"
+                          ><div class="flex items-center">
+                            <i
+                              class="ri-circle-fill text-c-dark-red ri-xl pr-2"
+                            ></i
+                            >Department Administrator
+                          </div></a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mt-4">
+                <div class="md:col-span-2 flex items-center">
+                  <label for="filesize" class="block font-bold text-c-black"
+                    >Group:<span class="text-red-500">*</span></label
+                  >
+                </div>
+                <div class="md:col-span-10 flex flex-col items-start gap-2">
+                  <div
+                    class="bg-white cs-table-container border border-c-gray rounded-md w-full"
+                  >
+                    <table class="table-auto w-full">
+                      <thead class="h-14">
+                        <tr class="bg-c-dark-gray">
+                          <th
+                            class="text-c-white font-medium text-left pl-3 text-base rounded-tl-md"
+                          >
+                            Select
+                          </th>
+                          <th
+                            class="text-c-white font-medium text-left pl-3 text-base"
+                          >
+                            Parent
+                          </th>
+                          <th
+                            class="text-c-white font-medium text-left text-base pl-3"
+                          >
+                            Permission
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="h-16">
+                          <td class="font-normal text-c-black text-left pl-3">
+                            Group1
+                          </td>
+                          <td
+                            class="font-normal text-c-black text-left pl-3"
+                          ></td>
+                          <td
+                            class="font-normal text-c-black text-left pl-3 pr-3"
+                          >
+                            <div class="dropdown inline-block relative w-full">
+                              <button
+                                class="ordinarydropdown p-2 bg-c-lighten-gray border border-gray-3 rounded-xl outline-none pl-4 text-left"
+                              >
+                                <div class="flex items-center">
+                                  <i
+                                    class="ri-circle-fill text-c-yellow ri-xl pr-2"
+                                  ></i
+                                  >Ordinary user
+                                </div>
+                                <div
+                                  class="absolute inset-y-0 right-0 flex items-center border border-gray-3 w-12 rounded-r-xl pl-3 pt-1"
+                                >
+                                  <i class="ri-arrow-drop-down-line ri-xl"></i>
+                                </div>
+                              </button>
+                              <ul
+                                class="dropdown-menu custom-dropdown-menu absolute hidden text-gray-700 shadow bg-custom-pure-white text-xs"
+                                style="width: 100%"
+                              >
+                                <li>
+                                  <a
+                                    class="rounded-t custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4"
+                                    href="#"
+                                    onclick="toggleModal('editModal')"
+                                  >
+                                    <div class="flex items-center">
+                                      <i
+                                        class="ri-circle-fill text-c-sky ri-xl pr-2"
+                                      ></i
+                                      >Ordinary user
+                                    </div>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a
+                                    class="custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4"
+                                    href="#"
+                                  >
+                                    <div class="flex items-center">
+                                      <i
+                                        class="ri-circle-fill text-c-green ri-xl pr-2"
+                                      ></i
+                                      >Administrator
+                                    </div>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a
+                                    class="rounded-b custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4"
+                                    href="#"
+                                    onclick="toggleModal('newUserModal')"
+                                  >
+                                    <div class="flex items-center">
+                                      <i
+                                        class="ri-circle-fill text-c-dark-red ri-xl pr-2"
+                                      ></i
+                                      >Department Administrator
+                                    </div>
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="w-full flex justify-start mt-2 relative">
+                    <div
+                      class="absolute hidden bottom-full mb-2 h-80 w-1/2 bg-c-lighten-gray border border-gray-3 rounded-xl p-2 z-10"
+                      id="addGroup"
+                    >
+                      <div
+                        class="flex items-center rounded-lg overflow-hidden flex-shrink-0 flex-grow bg-c-white h-8 w-full border border-gray-3 hover-border-c-yellow focus-within:border-yellow-300"
+                      >
+                        <input
+                          type="text"
+                          class="pl-4 pt-2.5 pb-2.5 flex-shrink flex-grow font-size-14 w-3/12 focus:outline-none"
+                          placeholder="Search group"
+                        />
+                        <div
+                          class="searchicon pt-3 pb-3 pr-4 flex items-center justify-center"
+                        >
+                          <img src="images/search.svg" />
+                        </div>
+                      </div>
+
+                      <ul class="h-64 overflow-auto-y mt-3 font-medium">
+                        <li>Group1</li>
+                      </ul>
+                    </div>
+                    <button
+                      class="bg-c-light-black1 hover-bg-c-yellow rounded-md px-6 py-2"
+                      onclick="toggleModal('addGroup')"
+                    >
+                      Add group
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex justify-end mt-3">
+                <button
+                  class="bg-c-black hover-bg-c-black text-white rounded-full w-32 py-2 text-sm"
+                >
+                  Save
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="script/sidebar.js"></script>
+    <script defer>
+      // for handling add or edit modal
+      function toggleModal(id) {
+        const element = document.getElementById(id);
+        element.classList.toggle("hidden");
+      }
+      //handle moresetting toggle
+      const moreSettings = document.getElementById("moresettings");
+      function showMoreSettings() {
+        moreSettings.classList.remove("hidden");
+      }
+      function hideMoreSettings() {
+        moreSettings.classList.add("hidden");
+      }
+    </script>
+  </body>
+</html>

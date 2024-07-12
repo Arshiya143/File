@@ -29,7 +29,7 @@ body.fm {
   background: var(--color-gray);
 }
 .bg-c-gray-4 {
-  background: var(--color-gray-8);
+  background: var(--color-gray-4);
 }
 .bg-c-dark-gray {
   background: var(--color-dark-gray);
@@ -109,6 +109,10 @@ body.fm {
 .hover-bg-c-yellow:hover,
 .hover-bg-c-yellow:focus {
   background: var(--color-dark-yellow);
+}
+.hover-border-c-yellow:hover,
+.hover-border-c-yellow:focus {
+  border-color: var(--color-dark-yellow);
 }
 .border-c-yellow {
   border-color: var(--color-dark-yellow);
@@ -463,21 +467,7 @@ body.fm {
     text-align: center;
   }
 }
-@media (width > 400px) {
-  .title {
-    width: 25%;
-  }
 
-  .subcontent {
-    width: 75%;
-  }
-  .maintitle {
-    font-size: 16px;
-  }
-  .textsize {
-    font-size: 14px;
-  }
-}
 @media (min-width: 768px) {
   .fm .md\:font-size-24 {
     font-size: var(--font-size-24);
@@ -643,6 +633,27 @@ body.fm {
   }
   .searchicon {
     padding: 8px;
+  }
+  .ordinarydropdown {
+    width: 13rem;
+  }
+}
+@media (width > 400px) {
+  .title {
+    width: 25%;
+  }
+
+  .subcontent {
+    width: 75%;
+  }
+  .maintitle {
+    font-size: 16px;
+  }
+  .textsize {
+    font-size: 14px;
+  }
+  .ordinarydropdown {
+    width: 100%;
   }
 }
 .nodata {
