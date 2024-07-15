@@ -182,7 +182,7 @@
                 <input
                   type="text"
                   class="search pl-4 pt-2.5 pb-2.5 flex-shrink flex-grow border-none outline-none font-size-14 w-3/12"
-                  placeholder="Search users,groups..."
+                  placeholder="Search users, groups..."
                 />
                 <div
                   class="searchicon pt-3 pb-3 pr-4 flex items-center justify-center"
@@ -196,14 +196,9 @@
                   onclick="toggleModal('newUserModal')"
                 ></i>
               </button>
-              <button class="has-tooltip">
-                <i class="ri-folder-2-fill ri-xl"></i>
+              <button>
+                <i class="ri-file-excel-2-fill ri-xl"></i>
               </button>
-              <div
-                class="absolute py-1 px-2 text-start text-xs tooltip -bottom-8 right-0 z-10 bg-c-lighten-gray border border-c-yellow rounded-md"
-              >
-                Enter the directory
-              </div>
             </div>
           </div>
           <!-- searchbar in mobile-->
@@ -220,7 +215,7 @@
                 <input
                   type="text"
                   class="pl-4 pt-2.5 pb-2.5 flex-shrink flex-grow border-none outline-none w-3/12"
-                  placeholder="Search users,groups..."
+                  placeholder="Search users, groups..."
                 />
                 <div class="pt-3 pb-3 pr-4 flex items-center justify-center">
                   <img src="images/search.svg" />
@@ -232,14 +227,9 @@
                   onclick="toggleModal('newUserModal')"
                 ></i>
               </button>
-              <button class="has-tooltip">
-                <i class="ri-folder-2-fill ri-xl"></i>
+              <button>
+                <i class="ri-file-excel-2-fill ri-xl"></i>
               </button>
-              <div
-                class="absolute py-1 px-2 text-start text-xs tooltip -bottom-8 right-0 z-10 bg-c-lighten-gray border border-c-yellow rounded-md"
-              >
-                Enter the directory
-              </div>
             </div>
           </div>
 
@@ -258,47 +248,51 @@
                   </button>
                   <ul
                     class="dropdown-menu custom-dropdown-menu absolute hidden text-gray-700 shadow bg-custom-pure-white text-xs"
+                    style="width: 8.1rem"
                   >
                     <li>
                       <a
-                        class="rounded-t custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4"
+                        class="rounded-t custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4 flex justify-between"
                         href="#"
                         onclick="toggleModal('editModal')"
-                        >Edit</a
-                      >
+                        >Administrator <i class="ri-pencil-fill"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a
+                        class="custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4 flex justify-between"
+                        href="#"
+                        onclick="toggleModal('editModal')"
+                        >HR <i class="ri-pencil-fill"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a
+                        class="custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4 flex justify-between"
+                        href="#"
+                        onclick="toggleModal('editModal')"
+                        >Normal <i class="ri-pencil-fill"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a
+                        class="rounded-b custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4 flex justify-between"
+                        href="#"
+                        onclick="toggleModal('editModal')"
+                        >Add Group <i class="ri-add-circle-fill"></i
+                      ></a>
                     </li>
                   </ul>
                 </div>
                 <button
-                  class="border rounded px-6 py-1 mr-1 custom-safety-btn custom-outline hover:border-yellow-300"
-                >
-                  <span class="mr-1">New Users</span>
-                  <i class="ri-arrow-down-s-fill"></i></button
-                ><button
-                  class="border rounded px-6 py-1 mr-1 custom-safety-btn custom-outline hover:border-yellow-300"
-                >
-                  <span class="mr-1">Bulk Operations</span>
-                  <i class="ri-arrow-down-s-fill"></i>
-                </button>
-                <button
-                  class="text-c-light-black bg-c-light-black1 rounded px-6 py-1 mr-1"
-                >
-                  Disable
-                </button>
-                <button
-                  class="text-c-light-black bg-c-light-black1 rounded px-6 py-1 mr-1"
-                >
-                  Enable</button
-                ><button
                   class="text-c-light-black bg-c-light-black1 rounded px-6 py-1 mr-1"
                 >
                   Delete
                 </button>
               </div>
-              <div class="mt-2 xl:mt-0">id:1;dep:1</div>
             </div>
             <div
-              class="bg-white cs-table-container border border-c-gray rounded-md mt-5"
+              class="bg-white cs-table-container border border-gray-3 rounded-md mt-5"
             >
               <table class="table-auto w-full">
                 <thead class="h-14">
@@ -307,26 +301,26 @@
                       class="text-c-white font-medium text-left pl-3 text-base rounded-tl-md"
                     ></th>
                     <th
-                      class="text-c-white font-medium text-left pl-3 text-base whitespace-nowrap"
+                      class="text-c-white font-medium text-left pl-3 text-base whitespace-nowrap w-1/4 pr-3 md:pr-0"
                     >
                       NickName / Account
                     </th>
                     <th
-                      class="text-c-white font-medium text-left text-base pl-3"
+                      class="text-c-white font-medium text-left text-base pl-3 pr-3 md:pr-0"
                     >
                       <button class="font-medium">
                         Role <i class="ri-arrow-down-s-fill"></i>
                       </button>
                     </th>
                     <th
-                      class="text-c-white font-medium text-left text-base pl-3"
+                      class="text-c-white font-medium text-left text-base pl-3 pr-3 md:pr-0"
                     >
                       <button class="font-medium">
                         Space Usage <i class="ri-arrow-down-s-fill"></i>
                       </button>
                     </th>
                     <th
-                      class="text-c-white font-medium text-left text-base pl-3"
+                      class="text-c-white font-medium text-left text-base pl-3 rounded-tr-md pr-3 md:pr-0"
                     >
                       Group
                     </th>
@@ -345,10 +339,14 @@
                     <td class="font-normal text-c-black text-left pl-3">
                       Administrator
                     </td>
-                    <td class="font-normal text-c-black text-left pl-3">
+                    <td
+                      class="font-normal text-c-black text-left pl-3 pr-3 md:pr-0"
+                    >
                       Administrator
                     </td>
-                    <td class="font-normal text-c-black text-left pl-3">
+                    <td
+                      class="font-normal text-c-black text-left pl-3 pr-3 md:pr-0"
+                    >
                       <div
                         class="bg-c-light-black1 h-2 mb-2 rounded-lg overflow-hidden w-5/12"
                       >
@@ -359,7 +357,7 @@
                       <span class="whitespace-nowrap">1.1 MB/ Unlimited</span>
                     </td>
                     <td
-                      class="font-normal text-c-black text-left pl-3 whitespace-nowrap"
+                      class="font-normal text-c-black text-left pl-3 whitespace-nowrap pr-3 md:pr-0"
                     >
                       Group 1
                     </td>
@@ -376,10 +374,14 @@
                     <td class="font-normal text-c-black text-left pl-3">
                       Administrator
                     </td>
-                    <td class="font-normal text-c-black text-left pl-3">
+                    <td
+                      class="font-normal text-c-black text-left pl-3 pr-3 md:pr-0"
+                    >
                       Administrator
                     </td>
-                    <td class="font-normal text-c-black text-left pl-3">
+                    <td
+                      class="font-normal text-c-black text-left pl-3 pr-3 md:pr-0"
+                    >
                       <div
                         class="bg-c-light-black1 h-2 mb-2 rounded-lg overflow-hidden w-5/12"
                       >
@@ -390,7 +392,7 @@
                       <span class="whitespace-nowrap">1.1 MB/ Unlimited</span>
                     </td>
                     <td
-                      class="font-normal text-c-black text-left pl-3 whitespace-nowrap"
+                      class="font-normal text-c-black text-left pl-3 whitespace-nowrap pr-3 md:pr-0"
                     >
                       Group 1
                     </td>
@@ -493,26 +495,28 @@
         <div
           class="bg-white rounded-2xl overflow-hidden shadow-lg max-w-2xl w-full bg-c-lighten-gray modal-content"
         >
+          <!-- Sticky header -->
           <div
-            class="flex py-2 px-5 justify-between items-center border-b border-gray-3 text-c-black"
+            class="sticky top-0 flex py-2 px-5 justify-between items-center border-b border-gray-3 bg-white z-10 text-c-black"
           >
             <div class="text-lg">User Info</div>
             <button
               type="button"
               id="closeModalButton"
               class="py-1.5 bg-c-lightest-gray rounded-md"
-              onclick="toggleModal('newUserModal')"
+              onclick="event.stopPropagation();toggleModal('newUserModal');"
             >
               <i class="ri-close-circle-fill text-black ri-lg"></i>
             </button>
           </div>
-          <div class="p-5">
+          <!-- Scrollable content -->
+          <div class="p-5 overflow-y-auto max-h-[calc(100vh-6rem)]">
             <form class="space-y-4 text-sm">
               <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
                 <div class="md:col-span-2 flex items-center">
-                  <label for="name" class="block font-bold text-c-black"
-                    >Name:<span class="text-red-500">*</span></label
-                  >
+                  <label for="name" class="block font-bold text-c-black">
+                    Name:<span class="text-red-500">*</span>
+                  </label>
                 </div>
                 <div class="md:col-span-8">
                   <input
@@ -526,32 +530,32 @@
               </div>
               <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
                 <div class="md:col-span-2 flex items-center">
-                  <label for="name" class="block font-bold text-c-black"
-                    >Nickname:</label
-                  >
+                  <label for="nickname" class="block font-bold text-c-black">
+                    Nickname:
+                  </label>
                 </div>
                 <div class="md:col-span-8">
                   <input
-                    id="name"
+                    id="nickname"
                     class="w-full p-2 bg-c-lighten-gray border border-gray-3 rounded-xl outline-none pl-5"
                     type="text"
                     placeholder="Please enter nickname"
-                    autocomplete="name"
+                    autocomplete="nickname"
                   />
                 </div>
               </div>
               <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mt-4">
                 <div class="md:col-span-2 flex items-center">
-                  <label for="filesize" class="block font-bold text-c-black"
-                    >Password:<span class="text-red-500">*</span></label
-                  >
+                  <label for="password" class="block font-bold text-c-black">
+                    Password:<span class="text-red-500">*</span>
+                  </label>
                 </div>
                 <div class="md:col-span-8 flex items-center gap-2">
                   <div class="relative w-full">
                     <input
-                      id="filesize"
+                      id="password"
                       class="w-full p-2 bg-c-lighten-gray border border-gray-3 rounded-xl outline-none pl-4"
-                      type="text"
+                      type="password"
                       placeholder="Please enter password"
                     />
                     <div
@@ -564,14 +568,14 @@
               </div>
               <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mt-4">
                 <div class="md:col-span-2 flex items-center">
-                  <label for="filesize" class="block font-bold text-c-black"
-                    >Space size:<span class="text-red-500">*</span></label
-                  >
+                  <label for="space-size" class="block font-bold text-c-black">
+                    Space size:<span class="text-red-500">*</span>
+                  </label>
                 </div>
                 <div class="md:col-span-8 flex items-center gap-2">
                   <div class="relative w-full">
                     <input
-                      id="filesize"
+                      id="space-size"
                       class="w-full p-2 bg-c-lighten-gray border border-gray-3 rounded-xl outline-none pl-4"
                       type="text"
                       placeholder="Please enter space size"
@@ -591,20 +595,25 @@
               </div>
               <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
                 <div class="md:col-span-2 flex items-center">
-                  <label for="name" class="block font-bold text-c-black"
-                    >More:</label
+                  <label
+                    for="more-settings"
+                    class="block font-bold text-c-black"
                   >
+                    More:
+                  </label>
                 </div>
                 <div class="md:col-span-8">
                   <button
-                    class="bg-c-light-black1 hover-bg-c-yellow rounded-md px-10 py-2"
-                    onclick="event.stopPropagation();hideMoreSettings()"
+                    type="button"
+                    class="bg-c-light-black1 hover:bg-c-yellow rounded-md px-10 py-2"
+                    onclick="event.stopPropagation();hideMoreSettings();"
                   >
                     Basic
                   </button>
                   <button
-                    class="bg-c-light-black1 hover-bg-c-yellow rounded-md px-5 py-2 ml-3"
-                    onclick="event.stopPropagation();showMoreSettings()"
+                    type="button"
+                    class="bg-c-light-black1 hover:bg-c-yellow rounded-md px-5 py-2 ml-3"
+                    onclick="event.stopPropagation();showMoreSettings();"
                   >
                     More settings
                   </button>
@@ -613,17 +622,17 @@
               <div id="moresettings" class="hidden">
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
                   <div class="md:col-span-2 flex items-center">
-                    <label for="name" class="block font-bold text-c-black"
-                      >Gender:<span class="text-red-500">*</span></label
-                    >
+                    <label for="gender" class="block font-bold text-c-black">
+                      Gender:<span class="text-red-500">*</span>
+                    </label>
                   </div>
                   <div class="md:col-span-8 flex">
                     <div class="flex items-start justify-start gap-1 sm:gap-3">
                       <input
                         type="checkbox"
                         class="c-checkbox mt-1"
-                        name="options"
-                        value="weak"
+                        name="gender"
+                        value="female"
                       />
                       <span class="text-c-black mt-0.5">Female</span>
                     </div>
@@ -633,8 +642,8 @@
                       <input
                         type="checkbox"
                         class="c-checkbox mt-1"
-                        name="options"
-                        value="weak"
+                        name="gender"
+                        value="male"
                       />
                       <span class="text-c-black mt-0.5"> Male</span>
                     </div>
@@ -642,42 +651,42 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mt-4">
                   <div class="md:col-span-2 flex items-center">
-                    <label for="name" class="block font-bold text-c-black"
-                      >Mobile:<span class="text-red-500">*</span></label
-                    >
+                    <label for="mobile" class="block font-bold text-c-black">
+                      Mobile:<span class="text-red-500">*</span>
+                    </label>
                   </div>
                   <div class="md:col-span-8">
                     <input
-                      id="name"
+                      id="mobile"
                       class="w-full p-2 bg-c-lighten-gray border border-gray-3 rounded-xl outline-none pl-5"
                       type="text"
                       placeholder="Please enter mobile number"
-                      autocomplete="name"
+                      autocomplete="mobile"
                     />
                   </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mt-4">
                   <div class="md:col-span-2 flex items-center">
-                    <label for="name" class="block font-bold text-c-black"
-                      >Email:<span class="text-red-500">*</span></label
-                    >
+                    <label for="email" class="block font-bold text-c-black">
+                      Email:<span class="text-red-500">*</span>
+                    </label>
                   </div>
                   <div class="md:col-span-8">
                     <input
-                      id="name"
+                      id="email"
                       class="w-full p-2 bg-c-lighten-gray border border-gray-3 rounded-xl outline-none pl-5"
-                      type="text"
+                      type="email"
                       placeholder="Please enter your email"
-                      autocomplete="name"
+                      autocomplete="email"
                     />
                   </div>
                 </div>
               </div>
               <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mt-4">
                 <div class="md:col-span-2 flex items-center">
-                  <label for="filesize" class="block font-bold text-c-black"
-                    >Role:</label
-                  >
+                  <label for="role" class="block font-bold text-c-black">
+                    Role:
+                  </label>
                 </div>
                 <div class="md:col-span-8 flex items-center gap-2">
                   <div class="dropdown inline-block relative w-full">
@@ -685,8 +694,8 @@
                       class="w-full p-2 bg-c-lighten-gray border border-gray-3 rounded-xl outline-none pl-4 text-left"
                     >
                       <div class="flex items-center">
-                        <i class="ri-circle-fill text-c-yellow ri-xl pr-2"></i
-                        >Ordinary user
+                        <i class="ri-circle-fill text-c-yellow ri-xl pr-2"></i>
+                        Ordinary user
                       </div>
                       <div
                         class="absolute inset-y-0 right-0 flex items-center border border-gray-3 w-12 rounded-r-xl pl-3 pt-1"
@@ -702,35 +711,38 @@
                         <a
                           class="rounded-t custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4"
                           href="#"
-                          ><div class="flex items-center">
-                            <i class="ri-circle-fill text-c-sky ri-xl pr-2"></i
-                            >Ordinary user
-                          </div></a
                         >
+                          <div class="flex items-center">
+                            <i class="ri-circle-fill text-c-sky ri-xl pr-2"></i>
+                            Ordinary user
+                          </div>
+                        </a>
                       </li>
                       <li>
                         <a
                           class="custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4"
                           href="#"
-                          ><div class="flex items-center">
+                        >
+                          <div class="flex items-center">
                             <i
                               class="ri-circle-fill text-c-green ri-xl pr-2"
-                            ></i
-                            >Administrator
-                          </div></a
-                        >
+                            ></i>
+                            Administrator
+                          </div>
+                        </a>
                       </li>
                       <li>
                         <a
                           class="rounded-b custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4"
                           href="#"
-                          ><div class="flex items-center">
+                        >
+                          <div class="flex items-center">
                             <i
                               class="ri-circle-fill text-c-dark-red ri-xl pr-2"
-                            ></i
-                            >Department Administrator
-                          </div></a
-                        >
+                            ></i>
+                            Department Administrator
+                          </div>
+                        </a>
                       </li>
                     </ul>
                   </div>
@@ -738,13 +750,13 @@
               </div>
               <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mt-4">
                 <div class="md:col-span-2 flex items-center">
-                  <label for="filesize" class="block font-bold text-c-black"
-                    >Group:</label
-                  >
+                  <label for="group" class="block font-bold text-c-black">
+                    Group:
+                  </label>
                 </div>
                 <div class="md:col-span-10 flex flex-col items-start gap-2">
                   <div
-                    class="bg-white cs-table-container border border-c-gray rounded-md w-full"
+                    class="bg-white cs-table-container border border-gray-3 rounded-md w-full"
                   >
                     <table class="table-auto w-full">
                       <thead class="h-14">
@@ -784,8 +796,8 @@
                                 <div class="flex items-center">
                                   <i
                                     class="ri-circle-fill text-c-yellow ri-xl pr-2"
-                                  ></i
-                                  >Ordinary user
+                                  ></i>
+                                  Ordinary user
                                 </div>
                                 <div
                                   class="absolute inset-y-0 right-0 flex items-center border border-gray-3 w-12 rounded-r-xl pl-3 pt-1"
@@ -805,8 +817,8 @@
                                     <div class="flex items-center">
                                       <i
                                         class="ri-circle-fill text-c-sky ri-xl pr-2"
-                                      ></i
-                                      >Ordinary user
+                                      ></i>
+                                      Ordinary user
                                     </div>
                                   </a>
                                 </li>
@@ -818,8 +830,8 @@
                                     <div class="flex items-center">
                                       <i
                                         class="ri-circle-fill text-c-green ri-xl pr-2"
-                                      ></i
-                                      >Administrator
+                                      ></i>
+                                      Administrator
                                     </div>
                                   </a>
                                 </li>
@@ -831,8 +843,8 @@
                                     <div class="flex items-center">
                                       <i
                                         class="ri-circle-fill text-c-dark-red ri-xl pr-2"
-                                      ></i
-                                      >Department Administrator
+                                      ></i>
+                                      Department Administrator
                                     </div>
                                   </a>
                                 </li>
@@ -849,7 +861,7 @@
                       id="addGroup"
                     >
                       <div
-                        class="flex items-center rounded-lg overflow-hidden flex-shrink-0 flex-grow bg-c-white h-8 w-full border border-gray-3 hover-border-c-yellow focus-within:border-yellow-300"
+                        class="flex items-center rounded-lg overflow-hidden flex-shrink-0 flex-grow bg-c-white h-8 w-full border border-gray-3 hover:border-c-yellow focus-within:border-yellow-300"
                       >
                         <input
                           type="text"
@@ -868,18 +880,19 @@
                       </ul>
                     </div>
                     <button
-                      class="bg-c-light-black1 hover-bg-c-yellow rounded-md px-6 py-2"
-                      onclick="event.stopPropagation();toggleModal('addGroup')"
+                      type="button"
+                      class="bg-c-light-black1 hover:bg-c-yellow rounded-md px-6 py-2"
+                      onclick="event.stopPropagation();toggleModal('addGroup');"
                     >
                       Add group
                     </button>
                   </div>
                 </div>
               </div>
-
               <div class="flex justify-end mt-3">
                 <button
-                  class="bg-c-black hover-bg-c-black text-white rounded-full w-32 py-2 text-sm"
+                  type="button"
+                  class="bg-c-black hover:bg-c-black text-white rounded-full w-32 py-2 text-sm"
                 >
                   Save
                 </button>
