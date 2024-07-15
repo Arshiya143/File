@@ -414,8 +414,9 @@ body.fm {
   font-size: 12px;
   position: absolute;
   height: 12px;
-  top: -3px;
+  top: -2.5px;
   left: 2px;
+  font-weight: 600;
 }
 @media (max-width: 480px) {
   .fm input[type="checkbox"].d-checkbox:checked::after {
@@ -562,8 +563,9 @@ body.fm {
   font-size: 12px;
   position: absolute;
   height: 12px;
-  top: -2px;
+  top: -2.5px;
   left: 1px;
+  font-weight: 600;
 }
 .custom-safety-btn {
   background-color: var(--color-lighten-gray);
