@@ -1,9 +1,3 @@
-body.fm {
-  color: var(--color-light-gray);
-  font-weight: var(--font-weight-400);
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
 .bg-c-black {
   background: var(--color-light-gray);
 }
@@ -166,28 +160,19 @@ body.fm {
 .font-weight-500 {
   font-weight: var(--font-weight-500);
 }
-
+/* common css for all pages*/
+body.fm {
+  color: var(--color-light-gray);
+  font-weight: var(--font-weight-400);
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
 .fm .main {
   background: url("/images/main-bg.png");
   background-size: cover;
   background-position: center;
   overflow: scroll;
 }
-
-@media (width > 768px) {
-  .fm .main {
-    /* max-height: calc(100vh - 60px); */
-    max-height: calc(100vh);
-  }
-}
-
-@media (width < 767.98px) {
-  .fm .main {
-    /* max-height: calc(100vh - 45px); */
-    max-height: calc(100vh);
-  }
-}
-
 .fm .taskbar {
   background: url("/images/taskbar-bg.svg");
   background-size: cover;
@@ -204,7 +189,25 @@ body.fm {
   background-repeat: no-repeat;
   background-size: cover;
 }
+.fm .main .content {
+  min-width: 320px;
+}
 
+@media (width > 768px) {
+  .fm .main {
+    /* max-height: calc(100vh - 60px); */
+    max-height: calc(100vh);
+  }
+}
+
+@media (width < 767.98px) {
+  .fm .main {
+    /* max-height: calc(100vh - 45px); */
+    max-height: calc(100vh);
+  }
+}
+
+/* css for popups*/
 .fm div[role="dialog"] {
   padding: 20px 10px;
 }
@@ -231,11 +234,7 @@ body.fm {
     min-width: 1000px;
   }
 }
-
-.fm .main .content {
-  min-width: 320px;
-}
-
+/* css for toggle button*/
 .fm .toggle-bg {
   background: #dcdcdc;
   border: 1px solid var(--border-light-gray);
@@ -253,7 +252,7 @@ body.fm {
   display: none;
   background-color: #f9f9f9;
 }
-
+/* css for tooltip*/
 .fm .tooltip {
   display: none;
 }
@@ -264,7 +263,7 @@ body.fm {
 .dropdown-option:hover {
   display: block;
 }
-
+/* css for radiobutton*/
 .fm .radio-button input {
   display: none;
   white-space: nowrap;
