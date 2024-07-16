@@ -111,7 +111,8 @@ body.fm {
   background: var(--color-dark-yellow);
 }
 .hover-border-c-yellow:hover,
-.hover-border-c-yellow:focus {
+.hover-border-c-yellow:focus,
+.hover-border-c-yellow:active {
   border-color: var(--color-dark-yellow);
 }
 .border-c-yellow {
@@ -671,4 +672,13 @@ body.fm {
 .tab-active {
   color: var(--color-light-gray); /* Yellow-300 */
   font-weight: 500;
+}
+/*multiple select -  css override*/
+.ui.selection.dropdown {
+  border-radius: 12px !important;
+}
+
+.ui.label {
+  background-color: #fff !important;
+  border-radius: 10px !important;
 }

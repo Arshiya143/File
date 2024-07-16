@@ -289,7 +289,11 @@
                         class="rounded-b custom-bg-hover py-2 px-4 block whitespace-no-wrap px-4 flex justify-between"
                         href="#"
                         onclick="toggleModal('editModal')"
-                        >Add Group <i class="ri-add-circle-fill"></i
+                        >Add Group
+                        <i
+                          class="ri-add-circle-fill"
+                          style="font-size: 14.5px"
+                        ></i
                       ></a>
                     </li>
                   </ul>
@@ -448,7 +452,6 @@
                 <div class="w-full sm:w-3/4 ml-auto">
                   <div class="relative w-full">
                     <input
-                      id="filesize"
                       class="w-full p-2 bg-c-lighten-gray border border-gray-3 rounded-xl outline-none pl-4"
                       type="text"
                       placeholder="Group 1"
@@ -468,7 +471,6 @@
                 <div class="w-full sm:w-3/4 ml-auto">
                   <div class="relative w-full">
                     <input
-                      id="filesize"
                       class="w-full p-2 bg-c-lighten-gray border border-gray-3 rounded-xl outline-none pl-4"
                       type="text"
                       placeholder="3"
@@ -615,7 +617,8 @@
                 <div class="md:col-span-8">
                   <button
                     type="button"
-                    class="bg-c-light-black1 hover-bg-c-yellow rounded-md px-10 py-2"
+                    id="basicButton"
+                    class="rounded-md px-10 py-2"
                     onclick="event.stopPropagation();hideMoreSettings();"
                   >
                     Basic
@@ -782,7 +785,7 @@
                             Parent
                           </th>
                           <th
-                            class="text-c-white font-medium text-left text-base pl-3"
+                            class="text-c-white font-medium text-left text-base pl-3 rounded-tr-md"
                           >
                             Permission
                           </th>
@@ -915,14 +918,22 @@
     <script src="script/sidebar.js"></script>
     <script defer>
       // for handling add or edit modal
+      const basicButton = document.getElementById("basicButton");
+      const moreSettings = document.getElementById("moresettings");
+
       function toggleModal(id) {
         const element = document.getElementById(id);
         element.classList.toggle("hidden");
+        if (id == "newUserModal") {
+          basicButton.classList.add("bg-c-yellow");
+        }
       }
       //handle moresetting toggle
-      const moreSettings = document.getElementById("moresettings");
       function showMoreSettings() {
         moreSettings.classList.remove("hidden");
+        basicButton.classList.add("bg-c-light-black1");
+        basicButton.classList.add("hover-bg-c-yellow");
+        basicButton.classList.remove("bg-c-yellow");
       }
       function hideMoreSettings() {
         moreSettings.classList.add("hidden");

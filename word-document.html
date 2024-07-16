@@ -411,173 +411,194 @@
     </div>
 
     <script>
-      const comment = document.querySelector(".commentssection");
-      const commentButton = document.querySelector(".commentbutton");
-      const frame = document.querySelector(".frame");
-      const resizer = document.querySelector(".resizer");
-      const commentList = document.querySelector(".comment-list");
-      const mentionList = document.querySelector(".mentionList");
-      const textarea = document.querySelector(".commentTextarea");
-      const styledTextarea = document.querySelector(".styledTextarea");
-      const iframePopup = document.querySelector(".popupiframe iframe");
+      document.addEventListener("DOMContentLoaded", () => {
+        const comment = document.querySelector(".commentssection");
+        const commentButton = document.querySelector(".commentbutton");
+        const frame = document.querySelector(".frame");
+        const resizer = document.querySelector(".resizer");
+        const commentList = document.querySelector(".comment-list");
+        const mentionList = document.querySelector(".mentionList");
+        const textarea = document.querySelector(".commentTextarea");
+        const styledTextarea = document.querySelector(".styledTextarea");
+        const iframePopup = document.querySelector(".popupiframe iframe");
 
-      // Toggle visibility of the comments pane
-      function togglePane(id) {
-        let element = document.querySelector(id);
-        element.classList.toggle("hidden");
-        if (!element.classList.contains("hidden")) {
-          scrollToBottom();
-        }
-        updateFrameMargin();
-      }
-
-      // Scroll to the bottom of the comment list
-      function scrollToBottom() {
-        commentList.scrollTop = commentList.scrollHeight;
-      }
-
-      // Update the margin of the frame based on the comments pane width
-      function updateFrameMargin() {
-        if (window.innerWidth > 768) {
-          if (comment.classList.contains("hidden")) {
-            iframePopup.style.width = "100%";
-            iframePopup.style.marginLeft = "0";
-            commentButton.style.marginLeft = "0";
+        // Toggle visibility of the comments pane
+        function togglePane(id) {
+          let element = document.querySelector(id);
+          console.log(element); // Check if the element is correctly selected
+          if (element) {
+            // Ensure the element exists
+            element.classList.toggle("hidden");
+            if (!element.classList.contains("hidden")) {
+              scrollToBottom();
+            }
+            updateFrameMargin();
           } else {
-            const commentsWidth = comment.offsetWidth;
-            iframePopup.style.width = `calc(100% - ${commentsWidth}px)`;
-            commentButton.style.marginLeft = `${comment.offsetWidth}px`;
-            iframePopup.style.marginLeft = `${comment.offsetWidth}px`;
+            console.error(`Element with selector ${id} not found.`);
           }
         }
-      }
 
-      let startX, startWidth;
+        // Scroll to the bottom of the comment list
+        function scrollToBottom() {
+          if (commentList) {
+            commentList.scrollTop = commentList.scrollHeight;
+          }
+        }
 
-      // Initialize the resizing of the comment section
-      const initResize = (e) => {
-        e.preventDefault();
-        startX = e.clientX;
-        startWidth = comment.offsetWidth;
+        // Update the margin of the frame based on the comments pane width
+        function updateFrameMargin() {
+          if (window.innerWidth > 768 && comment) {
+            // Check if comment is not null
+            if (comment.classList.contains("hidden")) {
+              iframePopup.style.width = "100%";
+              iframePopup.style.marginLeft = "0";
+              commentButton.style.marginLeft = "0";
+            } else {
+              const commentsWidth = comment.offsetWidth;
+              iframePopup.style.width = `calc(100% - ${commentsWidth}px)`;
+              commentButton.style.marginLeft = `${comment.offsetWidth}px`;
+              iframePopup.style.marginLeft = `${comment.offsetWidth}px`;
+            }
+          }
+        }
 
-        window.addEventListener("mousemove", startResizing);
-        window.addEventListener("mouseup", stopResizing);
-      };
+        let startX, startWidth;
 
-      // Start resizing the comment section
-      const startResizing = (e) => {
-        const minWidth = 250;
-        const maxWidth = 500;
-        let newWidth = startWidth + (e.clientX - startX);
+        // Initialize the resizing of the comment section
+        const initResize = (e) => {
+          e.preventDefault();
+          startX = e.clientX;
+          startWidth = comment.offsetWidth;
 
-        if (newWidth < minWidth) newWidth = minWidth;
-        else if (newWidth > maxWidth) newWidth = maxWidth;
+          window.addEventListener("mousemove", startResizing);
+          window.addEventListener("mouseup", stopResizing);
+        };
 
-        comment.style.width = `${newWidth}px`;
+        // Start resizing the comment section
+        const startResizing = (e) => {
+          const minWidth = 250;
+          const maxWidth = 500;
+          let newWidth = startWidth + (e.clientX - startX);
+
+          if (newWidth < minWidth) newWidth = minWidth;
+          else if (newWidth > maxWidth) newWidth = maxWidth;
+
+          if (comment) {
+            comment.style.width = `${newWidth}px`;
+            updateFrameMargin();
+          }
+        };
+
+        // Stop resizing the comment section
+        const stopResizing = () => {
+          window.removeEventListener("mousemove", startResizing);
+          window.removeEventListener("mouseup", stopResizing);
+        };
+
+        if (resizer) {
+          resizer.addEventListener("mousedown", initResize);
+        }
+
+        // Update frame margin initially in case the comments section is not hidden
         updateFrameMargin();
-      };
 
-      // Stop resizing the comment section
-      const stopResizing = () => {
-        window.removeEventListener("mousemove", startResizing);
-        window.removeEventListener("mouseup", stopResizing);
-      };
+        // Array of users for mention suggestions
+        const users = [
+          { id: 1, name: "John Doe" },
+          { id: 2, name: "Sarah Anderson" },
+          { id: 3, name: "Michael Brown" },
+        ];
 
-      resizer.addEventListener("mousedown", initResize);
-
-      // Update frame margin initially in case the comments section is not hidden
-      updateFrameMargin();
-
-      // Array of users for mention suggestions
-      const users = [
-        { id: 1, name: "John Doe" },
-        { id: 2, name: "Sarah Anderson" },
-        { id: 3, name: "Michael Brown" },
-      ];
-
-      // Function to highlight @mentions in the textarea content
-      function highlightMentions(text) {
-        // Regex to find @mentions and wrap them with a span for styling
-        const regex = /(@[a-zA-Z]+\s[a-zA-Z]+)/g;
-        return text.replace(
-          regex,
-          (match) => `<span class="text-link-blue">${match}</span>`
-        );
-      }
-
-      // Update the preview and display user suggestions as the user types
-      textarea.addEventListener("input", (e) => {
-        const value = e.target.value;
-        const cursorPosition = e.target.selectionStart;
-        const lastAtIndex = value.lastIndexOf("@", cursorPosition - 1);
-
-        // Show highlighted mentions in the preview area
-        styledTextarea.innerHTML =
-          highlightMentions(value) +
-          "<br>".repeat(textarea.rows - (value.match(/\n/g) || []).length);
-
-        if (lastAtIndex !== -1) {
-          const query = value.slice(lastAtIndex + 1, cursorPosition);
-          const filteredUsers = users.filter((user) =>
-            user.name.toLowerCase().includes(query.toLowerCase())
+        // Function to highlight @mentions in the textarea content
+        function highlightMentions(text) {
+          // Regex to find @mentions and wrap them with a span for styling
+          const regex = /(@[a-zA-Z]+\s[a-zA-Z]+)/g;
+          return text.replace(
+            regex,
+            (match) => `<span class="text-link-blue">${match}</span>`
           );
+        }
 
-          // Display filtered users in the mention list if there are matches
-          if (filteredUsers.length > 0) {
-            mentionList.innerHTML = filteredUsers
-              .map(
-                (user) =>
-                  `<div class="px-4 py-2 hover-bg-c-yellow text-c-black cursor-pointer" data-name="${user.name}">${user.name}</div>`
-              )
-              .join("");
-            const rect = textarea.getBoundingClientRect();
-            mentionList.style.width = `${textarea.offsetWidth}px`;
-            mentionList.classList.remove("hidden");
+        // Update the preview and display user suggestions as the user types
+        textarea.addEventListener("input", (e) => {
+          const value = e.target.value;
+          const cursorPosition = e.target.selectionStart;
+          const lastAtIndex = value.lastIndexOf("@", cursorPosition - 1);
+
+          // Show highlighted mentions in the preview area
+          if (styledTextarea) {
+            styledTextarea.innerHTML =
+              highlightMentions(value) +
+              "<br>".repeat(textarea.rows - (value.match(/\n/g) || []).length);
+          }
+
+          if (lastAtIndex !== -1) {
+            const query = value.slice(lastAtIndex + 1, cursorPosition);
+            const filteredUsers = users.filter((user) =>
+              user.name.toLowerCase().includes(query.toLowerCase())
+            );
+
+            // Display filtered users in the mention list if there are matches
+            if (filteredUsers.length > 0) {
+              mentionList.innerHTML = filteredUsers
+                .map(
+                  (user) =>
+                    `<div class="px-4 py-2 hover-bg-c-yellow text-c-black cursor-pointer" data-name="${user.name}">${user.name}</div>`
+                )
+                .join("");
+              const rect = textarea.getBoundingClientRect();
+              mentionList.style.width = `${textarea.offsetWidth}px`;
+              mentionList.classList.remove("hidden");
+            } else {
+              mentionList.classList.add("hidden");
+            }
           } else {
             mentionList.classList.add("hidden");
           }
-        } else {
-          mentionList.classList.add("hidden");
-        }
-      });
+        });
 
-      // Insert the selected mention into the textarea and update the preview
-      mentionList.addEventListener("click", (e) => {
-        if (e.target.dataset.name) {
-          const cursorPosition = textarea.selectionStart;
-          const value = textarea.value;
-          const lastAtIndex = value.lastIndexOf("@", cursorPosition - 1);
+        // Insert the selected mention into the textarea and update the preview
+        mentionList.addEventListener("click", (e) => {
+          if (e.target.dataset.name) {
+            const cursorPosition = textarea.selectionStart;
+            const value = textarea.value;
+            const lastAtIndex = value.lastIndexOf("@", cursorPosition - 1);
 
-          // Replace the @mention with the selected user’s name
-          const newValue =
-            value.slice(0, lastAtIndex + 1) +
-            e.target.dataset.name +
-            " " +
-            value.slice(cursorPosition);
-          textarea.value = newValue;
-          textarea.focus();
-          textarea.setSelectionRange(
-            lastAtIndex + 1 + e.target.dataset.name.length + 1,
-            lastAtIndex + 1 + e.target.dataset.name.length + 1
-          );
-
-          // Update the preview area with the new text
-          styledTextarea.innerHTML =
-            highlightMentions(textarea.value) +
-            "<br>".repeat(
-              textarea.rows - (textarea.value.match(/\n/g) || []).length
+            // Replace the @mention with the selected user’s name
+            const newValue =
+              value.slice(0, lastAtIndex + 1) +
+              e.target.dataset.name +
+              " " +
+              value.slice(cursorPosition);
+            textarea.value = newValue;
+            textarea.focus();
+            textarea.setSelectionRange(
+              lastAtIndex + 1 + e.target.dataset.name.length + 1,
+              lastAtIndex + 1 + e.target.dataset.name.length + 1
             );
 
-          // Hide the mention list after selection
-          mentionList.classList.add("hidden");
-        }
-      });
+            // Update the preview area with the new text
+            if (styledTextarea) {
+              styledTextarea.innerHTML =
+                highlightMentions(textarea.value) +
+                "<br>".repeat(
+                  textarea.rows - (textarea.value.match(/\n/g) || []).length
+                );
+            }
 
-      // Hide the mention list if the user clicks outside of the textarea or list
-      document.addEventListener("click", (e) => {
-        if (!mentionList.contains(e.target) && !textarea.contains(e.target)) {
-          mentionList.classList.add("hidden");
-        }
+            // Hide the mention list after selection
+            mentionList.classList.add("hidden");
+          }
+        });
+
+        // Hide the mention list if the user clicks outside of the textarea or list
+        document.addEventListener("click", (e) => {
+          if (!mentionList.contains(e.target) && !textarea.contains(e.target)) {
+            mentionList.classList.add("hidden");
+          }
+        });
+
+        window.togglePane = togglePane; // Expose togglePane globally
       });
     </script>
   </body>

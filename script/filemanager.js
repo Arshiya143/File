@@ -241,6 +241,70 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initialization
   resizer.addEventListener("mousedown", initResize);
+  const pushUsersDiv = document.getElementById("push-users-div");
+  const pushGroupsDiv = document.getElementById("push-groups-div");
+  const pushRoleDiv = document.getElementById("push-role-div");
+  const pushUsersRadio = document.querySelector("input#push-users");
+  const pushGroupsRadio = document.querySelector("input#push-groups");
+  const pushRoleRadio = document.querySelector("input#push-role");
+  const pushEveryoneRadio = document.querySelector("input#push-everyone");
+  const pushOtherLabels = document.querySelectorAll(".push-other-labels");
+
+  const shareUsersDiv = document.getElementById("share-users-div");
+  const shareGroupsDiv = document.getElementById("share-groups-div");
+  const shareRoleDiv = document.getElementById("share-role-div");
+  const shareUsersRadio = document.querySelector("input#share-users");
+  const shareGroupsRadio = document.querySelector("input#share-groups");
+  const shareRoleRadio = document.querySelector("input#share-role");
+  const shareEveryoneRadio = document.querySelector("input#share-everyone");
+  const shareOtherLabels = document.querySelectorAll(".share-other-labels");
+
+  pushUsersRadio.addEventListener("click", () => {
+    pushUsersDiv.style.display = "block";
+    pushEveryoneRadio.checked = false;
+  });
+  pushGroupsRadio.addEventListener("click", () => {
+    pushGroupsDiv.style.display = "block";
+    pushEveryoneRadio.checked = false;
+  });
+  pushRoleRadio.addEventListener("click", () => {
+    pushRoleDiv.style.display = "block";
+    pushEveryoneRadio.checked = false;
+  });
+
+  pushEveryoneRadio.addEventListener("click", () => {
+    pushUsersDiv.style.display = "none";
+    pushGroupsDiv.style.display = "none";
+    pushRoleDiv.style.display = "none";
+
+    pushOtherLabels.forEach((label) => {
+      label.querySelector("input").checked = false;
+    });
+  });
+
+  shareUsersRadio.addEventListener("click", () => {
+    shareUsersDiv.style.display = "block";
+    shareEveryoneRadio.checked = false;
+  });
+  shareGroupsRadio.addEventListener("click", () => {
+    shareGroupsDiv.style.display = "block";
+    shareEveryoneRadio.checked = false;
+  });
+  shareRoleRadio.addEventListener("click", () => {
+    shareRoleDiv.style.display = "block";
+    shareEveryoneRadio.checked = false;
+  });
+
+  shareEveryoneRadio.addEventListener("click", () => {
+    shareUsersDiv.style.display = "none";
+    shareGroupsDiv.style.display = "none";
+    shareRoleDiv.style.display = "none";
+
+    shareOtherLabels.forEach((label) => {
+      label.querySelector("input").checked = false;
+    });
+  });
+
   handleResize();
   window.togglePanel = togglePanel;
   window.toggleView = toggleView;
