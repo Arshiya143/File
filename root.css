@@ -16,35 +16,20 @@
 :root {
   --color-white: #ffffff;
   --color-light-white: #ddd;
-  --color-light-white1: #fbfbfb;
-  --color-light-white-smoke: #efefef;
-  --color-light-white2: rgba(255, 255, 255, 1);
   --color-pure-black: #000000;
-  --color-pure-black1: #060709;
   --color-light-gray: #282828;
-  --color-light-gray1: #c9c9c9;
   --color-light-black: #4d4d4d;
-  --color-light-black1: #d9d9d9;
   --color-dark-white: #fdfdfd;
   --color-gray-2: #646464;
   --color-gray-3: #a3a3a3;
-  --color-gray-4: #dbdbdb;
   --color-dark-gray: rgba(0, 0, 0, 0.38);
   --color-dark-yellow: #fdcf01;
   --color-light-pink: #ffd9d9;
-  --color-light-sky: #00adef;
   --color-lighten-gray: #f9f9f9;
   --color-medium-gray: #6d6d6d;
   --color-link-blue: #00adef;
   --color-creame-yellow: #fff4c2;
   --color-green: #09ab40;
-  --color-gray-opaque: rgba(77, 77, 77, 0.53);
-  --color-medium-gray: #686868;
-  --color-silver-gray: #b5b5b5;
-  --color-platinum-gray: #dbd7d7;
-  --color-dark-gray-opaque: rgba(0, 0, 0, 0.25);
-  --color-light-blue: #93c5fd;
-  --color-dark-red: #e53e3e;
   --bg-linear-gradient: linear-gradient(
     204deg,
     #fff 15.46%,
@@ -52,6 +37,22 @@
   );
   --box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   --border-radius: 0px 10px 10px 0px;
+  /* colors added by arshiya */
+  --color-light-white1: #fbfbfb;
+  --color-light-white2: rgba(255, 255, 255, 1);
+  --color-light-white-smoke: #efefef;
+  --color-pure-black1: #060709;
+  --color-light-gray1: #c9c9c9;
+  --color-light-black1: #d9d9d9;
+  --color-light-sky: #00adef;
+  --color-gray-4: #dbdbdb;
+  --color-gray-opaque: rgba(77, 77, 77, 0.53);
+  --color-medium-gray: #686868;
+  --color-silver-gray: #b5b5b5;
+  --color-platinum-gray: #dbd7d7;
+  --color-dark-gray-opaque: rgba(0, 0, 0, 0.25);
+  --color-light-blue: #93c5fd;
+  --color-dark-red: #e53e3e;
   /*Font Family and Font Size */
   --font-family-roboto: "Roboto", sans-serif;
   --font-size-50: 50px;
