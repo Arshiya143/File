@@ -379,45 +379,45 @@ body.fm {
 }
 /* responsive taskbar in filemanager and popup in user&group page*/
 @media (width < 400px) {
-  .title {
+  .fm .title {
     width: 33.333333%;
   }
-  .subcontent {
+  .fm .subcontent {
     width: 66.666667%;
   }
-  .maintitle,
-  .textsize {
+  .fm .maintitle,
+  .fm .textsize {
     font-size: 12px;
   }
-  .flex-responsive {
+  .fm .flex-responsive {
     display: flex;
     flex-direction: column;
     text-align: center;
   }
-  .search {
+  .fm .search {
     /* max-height: calc(100vh - 45px); */
     display: none;
   }
-  .taskicon {
+  .fm .taskicon {
     /* max-height: calc(100vh - 45px); */
     width: 13.5rem;
   }
-  .searchicon {
+  .fm .searchicon {
     padding: 8px;
   }
 }
 @media (width > 400px) {
-  .title {
+  .fm .title {
     width: 25%;
   }
 
-  .subcontent {
+  .fm .subcontent {
     width: 75%;
   }
-  .maintitle {
+  .fm .maintitle {
     font-size: 16px;
   }
-  .textsize {
+  .fm .textsize {
     font-size: 14px;
   }
 }
@@ -426,6 +426,6 @@ body.fm {
   height: calc(100% - 32px);
 }
 /* nodata image container height in file share page */
-.nodata {
+.fm .nodata {
   height: 50vh;
 }
