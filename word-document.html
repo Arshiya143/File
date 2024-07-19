@@ -15,141 +15,150 @@
     <link rel="stylesheet" href="root.css" />
     <link rel="stylesheet" href="styles/as.css" />
     <style>
-      .w-22 {
-            width: 8rem;
-          }
-          .dropzone {
-                      border: 2px dashed #ccc;
-                      padding: 20px;
-                      text-align: center;
-                      height: 50vh; /* Adjust height to fill the popup */
-                      overflow-y: auto; /* Enable vertical scrolling if content overflows */
-                  }
-
-
-          .dropzone.dragover {
-              background-color: #e2e8f0;
-          }
-
-          #popupuploadfiles {
-              display: none;
-          }
-
-             .popup {
-              width: 9rem;
-              height : 2.3rem;/* Adjust width as needed */
-             /* z-index: 999999;  Ensure  popup is above other content*/
-
-          }
-          .bookshelf{
-              background-image: url("/public/images/appshelf.png");
-              background-repeat: no-repeat;
-              background-position: center;
-              background-size: 30rem 3.5rem;
-
-          }
-          .mainiframeiconheader{
-              z-index:999999;
-          }
-          .disabledicon {
-              opacity: 0.5; /* Reduce opacity to visually disable the icon */
-              pointer-events: none; /* Disable pointer events on the icon */
-              /* Add any additional styling for the disabled appearance */
-          }
-          .popup-header,.popup-buttons {
-              padding-bottom: 1rem;
-          }
-          .scroll-content {
-              white-space: nowrap;
-              -webkit-overflow-scrolling: touch; /* Optional: smooth scrolling on iOS
-          }
-          .scrollbar-hidden {
-              scrollbar-width: none; /* Hide the scrollbar for Firefox */
-          }
-
-          .scrollbar-hidden::-webkit-scrollbar {
-              display: none; /* Hide the scrollbar for WebKit browsers (Chrome, Safari, etc.) */
-          }
-          .popupiframe {
-              position: fixed;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              background-color: white;
-              border: 1px solid #ccc;
-              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-              z-index: 9999;
-              width: 80%; /* Adjust width as needed */
-              height: 80%; /* Fixed height */
-              overflow: auto; /* Enable scrolling if content overflows */
-          }
-
-          .popupiframe-content {
-              padding: 10px;
-          }
-
-          .popupiframe-header {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              padding: 10px;
-              background-color: #333;
-              color: white;
-              border-top-left-radius: 5px;
-              border-top-right-radius: 5px;
-          }
-
-          .popupiframe-header i {
-              cursor: pointer;
-          }
-
-          .popupiframe iframe {
-              width: 100%;
-              height: 93.2%;
-              border: none;
-          }
-          /*  .triangle {*/
-          /*  width: 0;*/
-          /*  height: 0;*/
-          /*  border-style: solid;*/
-          /}/
-          /.triangle-up {/
-          /*  border-width: 0 10px 17.32px 10px;*/
-          /*  border-color: transparent transparent red transparent;*/
-          /}/
-
-          .maximized {
-          width: 100% !important;
-          height: 100% !important;
-          top: 0 !important;
-          left: 0 !important;
-          transform: none !important;
-          }
-
-          .triangle-btn {
-          width: 0;
-          height: 0;
-          border-top: 4px solid transparent;
-          border-bottom: 4px solid transparent;
-          border-left: 6px solid transparent;
-          cursor: pointer;
-          position: relative;
-          overflow: hidden;
-          transform: translateY(-50%);
-          }
-           .desktopapp-clicked{
-                border-radius: 5px;
-                background: #fdfdfd3d;
-                backdrop-filter: blur(2px);
-                border: 1px solid rgba(255, 255, 255, 0.2);
-                border-right-color: rgba(255, 255, 255, 0.1);
-                border-bottom-color: rgba(255, 255, 255, 0.1);
-                box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
-                padding: 10px;
-                position: relative;
-                @include flex-center;
-                flex-direction: column;
+        .w-22 {
+              width: 8rem;
             }
+            .dropzone {
+                        border: 2px dashed #ccc;
+                        padding: 20px;
+                        text-align: center;
+                        height: 50vh; /* Adjust height to fill the popup */
+                        overflow-y: auto; /* Enable vertical scrolling if content overflows */
+                    }
+
+
+            .dropzone.dragover {
+                background-color: #e2e8f0;
+            }
+
+            #popupuploadfiles {
+                display: none;
+            }
+
+               .popup {
+                width: 9rem;
+                height : 2.3rem;/* Adjust width as needed */
+               /* z-index: 999999;  Ensure  popup is above other content*/
+
+            }
+            .bookshelf{
+                background-image: url("/public/images/appshelf.png");
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 30rem 3.5rem;
+
+            }
+            .mainiframeiconheader{
+                z-index:999999;
+            }
+            .disabledicon {
+                opacity: 0.5; /* Reduce opacity to visually disable the icon */
+                pointer-events: none; /* Disable pointer events on the icon */
+                /* Add any additional styling for the disabled appearance */
+            }
+            .popup-header,.popup-buttons {
+                padding-bottom: 1rem;
+            }
+            .scroll-content {
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch; /* Optional: smooth scrolling on iOS
+            }
+            .scrollbar-hidden {
+                scrollbar-width: none; /* Hide the scrollbar for Firefox */
+            }
+
+            .scrollbar-hidden::-webkit-scrollbar {
+                display: none; /* Hide the scrollbar for WebKit browsers (Chrome, Safari, etc.) */
+            }
+            .popupiframe {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: white;
+                border: 1px solid #ccc;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                z-index: 9999;
+                width: 80%; /* Adjust width as needed */
+                height: 80%; /* Fixed height */
+                overflow: auto; /* Enable scrolling if content overflows */
+            }
+
+            .popupiframe-content {
+                padding: 10px;
+            }
+
+            .popupiframe-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px;
+                background-color: #333;
+                color: white;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+            }
+
+            .popupiframe-header i {
+                cursor: pointer;
+            }
+
+            .popupiframe iframe {
+                width: 100%;
+                height: 93.2%;
+                border: none;
+            }
+            /*  .triangle {*/
+            /*  width: 0;*/
+            /*  height: 0;*/
+            /*  border-style: solid;*/
+            /}/
+            /.triangle-up {/
+            /*  border-width: 0 10px 17.32px 10px;*/
+            /*  border-color: transparent transparent red transparent;*/
+            /}/
+
+            .maximized {
+            width: 100% !important;
+            height: 100% !important;
+            top: 0 !important;
+            left: 0 !important;
+            transform: none !important;
+            }
+
+            .triangle-btn {
+            width: 0;
+            height: 0;
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            border-left: 6px solid transparent;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transform: translateY(-50%);
+            }
+             .desktopapp-clicked{
+                  border-radius: 5px;
+                  background: #fdfdfd3d;
+                  backdrop-filter: blur(2px);
+                  border: 1px solid rgba(255, 255, 255, 0.2);
+                  border-right-color: rgba(255, 255, 255, 0.1);
+                  border-bottom-color: rgba(255, 255, 255, 0.1);
+                  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+                  padding: 10px;
+                  position: relative;
+                  @include flex-center;
+                  flex-direction: column;
+              }
+              /* Hide scrollbar for Chrome, Safari, and Opera */
+      .mention-textbox::-webkit-scrollbar, .mention-list::-webkit-scrollbar {
+          display: none;
+      }
+      /* Hide scrollbar for IE, Edge, and Firefox */
+      .mention-textbox,.mention-list {
+          -ms-overflow-style: none; /* IE and Edge */
+          scrollbar-width: none; /* Firefox */
+      }
     </style>
   </head>
   <body>
@@ -361,32 +370,32 @@
           </div>
           <!--Add comment-->
           <div
-            class="addcomment sticky bottom-0 z-10 border-t px-4 py-2 hidden bg-c-lighten-gray relative"
+            class="addcomment flex items-center gap-x-2 sticky bottom-0 z-10 border-t px-4 py-2 hidden bg-c-lighten-gray relative"
           >
-            <!-- Mention list -->
-            <div
-              class="absolute mentionList hidden bg-c-white border border-c-medium-gray rounded-md shadow-lg z-20 max-h-40 overflow-y-auto bottom-full"
-            >
-              <!-- Mention items will be dynamically inserted here -->
-            </div>
-            <div class="flex items-center gap-2 relative">
-              <div class="flex-1 relative">
-                <textarea
-                  placeholder="Write a new comment..."
-                  class="commentTextarea w-full rounded-md border border-c-medium-gray p-2 text-sm focus:outline-none bg-transparent relative z-10 text-transparent caret-black"
-                  rows="4"
-                  style="caret-color: black"
-                ></textarea>
-                <div
-                  class="styledTextarea absolute top-0 left-0 w-full h-full p-2 text-sm pointer-events-none whitespace-pre-wrap break-words overflow-hidden bg-transparent"
-                ></div>
-              </div>
-              <button
-                class="border px-3 hover-bg-c-black hover-text-c-yellow text-sm py-1 rounded border-gray-600 bg-c-yellow"
+            <div class="w-3/4">
+              <div
+                class="mention-container w-full relative bg-c-white border border-gray-3 p-2 rounded-lg"
               >
-                Post
-              </button>
+                <div
+                  contenteditable="true"
+                  class="mention-textbox w-full h-20 overflow-auto focus:outline-none"
+                  placeholder="Type your message here..."
+                ></div>
+                <!-- Mention list -->
+                <div
+                  class="mention-list absolute bottom-full h-28 overflow-y-auto mb-2 left-0 w-full bg-c-white border border-gray-3 rounded-lg shadow-lg mt-1 hidden"
+                >
+                  <ul class="list list-none">
+                    <!-- Mention list items will be injected here -->
+                  </ul>
+                </div>
+              </div>
             </div>
+            <button
+              class="border px-3 hover-bg-c-black hover-text-c-yellow text-sm py-1 rounded border-gray-600 bg-c-yellow"
+            >
+              Post
+            </button>
           </div>
         </div>
         <!--Iframe-->
@@ -416,16 +425,15 @@
         const commentButton = document.querySelector(".commentbutton");
         const frame = document.querySelector(".frame");
         const resizer = document.querySelector(".resizer");
+        const mentionTextbox = document.querySelector(".mention-textbox");
+        const mentionList = document.querySelector(".mention-list");
+        const mentionListItems = document.querySelector(".list");
         const commentList = document.querySelector(".comment-list");
-        const mentionList = document.querySelector(".mentionList");
-        const textarea = document.querySelector(".commentTextarea");
-        const styledTextarea = document.querySelector(".styledTextarea");
         const iframePopup = document.querySelector(".popupiframe iframe");
 
         // Toggle visibility of the comments pane
         function togglePane(id) {
           let element = document.querySelector(id);
-          console.log(element); // Check if the element is correctly selected
           if (element) {
             // Ensure the element exists
             element.classList.toggle("hidden");
@@ -502,101 +510,168 @@
         // Update frame margin initially in case the comments section is not hidden
         updateFrameMargin();
 
-        // Array of users for mention suggestions
-        const users = [
-          { id: 1, name: "John Doe" },
-          { id: 2, name: "Sarah Anderson" },
-          { id: 3, name: "Michael Brown" },
-        ];
+        const users = ["alice", "bob", "charlie", "dave"]; // Example users for mention list
+        const placeholderText = "Type your comment here..."; // placeholder
 
-        // Function to highlight @mentions in the textarea content
-        function highlightMentions(text) {
-          // Regex to find @mentions and wrap them with a span for styling
-          const regex = /(@[a-zA-Z]+\s[a-zA-Z]+)/g;
-          return text.replace(
-            regex,
-            (match) => `<span class="text-link-blue">${match}</span>`
-          );
+        // Initial setup for the mention textbox
+        mentionTextbox.textContent = placeholderText;
+
+        // Event listener to manage placeholder behavior
+        mentionTextbox.addEventListener("focus", function () {
+          if (this.textContent === placeholderText) {
+            this.textContent = "";
+          }
+        });
+
+        mentionTextbox.addEventListener("blur", function () {
+          if (this.textContent === "") {
+            this.textContent = placeholderText;
+          }
+        });
+
+        // Event listeners for handling input and keydown events
+        mentionTextbox.addEventListener("input", handleInput);
+        mentionTextbox.addEventListener("keydown", handleKeyDown);
+
+        // Function to handle input events
+        function handleInput(e) {
+          const text = mentionTextbox.innerText;
+          const cursorPos = getCaretPosition();
+          const textBeforeCursor = text.substring(0, cursorPos);
+          const atIndex = textBeforeCursor.lastIndexOf("@");
+
+          if (text.charAt(cursorPos - 1) === "@") {
+            showMentionList(atIndex);
+          } else {
+            hideMentionList();
+          }
+
+          applyMentionStyles();
         }
 
-        // Update the preview and display user suggestions as the user types
-        textarea.addEventListener("input", (e) => {
-          const value = e.target.value;
-          const cursorPosition = e.target.selectionStart;
-          const lastAtIndex = value.lastIndexOf("@", cursorPosition - 1);
+        // Function to handle keydown events
+        function handleKeyDown(e) {
+          if (
+            e.key === "ArrowDown" &&
+            !mentionList.classList.contains("hidden")
+          ) {
+            mentionList.querySelector("li").focus();
+            e.preventDefault();
+          }
+        }
 
-          // Show highlighted mentions in the preview area
-          if (styledTextarea) {
-            styledTextarea.innerHTML =
-              highlightMentions(value) +
-              "<br>".repeat(textarea.rows - (value.match(/\n/g) || []).length);
+        // Function to show the mention list
+        function showMentionList(atIndex) {
+          mentionListItems.innerHTML = users
+            .map(
+              (user) =>
+                `<li tabindex="0" class="p-2 hover-bg-c-yellow cursor-pointer">${user}</li>`
+            )
+            .join("");
+          mentionList.classList.remove("hidden");
+
+          mentionListItems.querySelectorAll("li").forEach((item) => {
+            item.addEventListener("click", () => selectMention(item, atIndex));
+          });
+        }
+
+        // Function to hide the mention list
+        function hideMentionList() {
+          mentionList.classList.add("hidden");
+        }
+
+        // Function to select a mention from the list
+        function selectMention(item, atIndex) {
+          const mentionText = item.innerText; // Get the mention text
+          const text = mentionTextbox.innerText;
+          const cursorPos = getCaretPosition();
+          const textBeforeAt = text.substring(0, atIndex);
+          const textAfterAt = text.substring(cursorPos);
+
+          mentionTextbox.innerText =
+            textBeforeAt + "@" + mentionText + "&nbsp;" + textAfterAt; // Update text with mention
+          setCaretPosition(atIndex + mentionText.length + 2); // Adjust caret position
+
+          hideMentionList();
+          applyMentionStyles();
+        }
+
+        // Function to apply styles to mentions
+        function applyMentionStyles() {
+          const text = mentionTextbox.innerText;
+          console.log(text);
+          const html = text.replace(
+            /(@\w+)/g,
+            '<span class="text-link-blue">$1</span>'
+          );
+          console.log(html);
+          mentionTextbox.innerHTML = html;
+          setCaretToEnd();
+        }
+
+        // Function to set the caret to the end
+        function setCaretToEnd() {
+          const range = document.createRange();
+          const sel = window.getSelection();
+          range.selectNodeContents(mentionTextbox);
+          range.collapse(false);
+          sel.removeAllRanges();
+          sel.addRange(range);
+        }
+
+        // Function to get the caret position
+        function getCaretPosition() {
+          const selection = window.getSelection();
+          const range = selection.getRangeAt(0);
+          const preCaretRange = range.cloneRange();
+          preCaretRange.selectNodeContents(mentionTextbox);
+          preCaretRange.setEnd(range.endContainer, range.endOffset);
+          return preCaretRange.toString().length;
+        }
+
+        // Function to set the caret position
+        function setCaretPosition(chars) {
+          if (chars >= 0) {
+            const selection = window.getSelection();
+            const range = createRange(mentionTextbox, { count: chars });
+            if (range) {
+              range.collapse(false);
+              selection.removeAllRanges();
+              selection.addRange(range);
+            }
+          }
+        }
+
+        // Function to create a range for caret position
+        function createRange(node, chars, range) {
+          if (!range) {
+            range = document.createRange();
+            range.selectNode(node);
+            range.setStart(node, 0);
           }
 
-          if (lastAtIndex !== -1) {
-            const query = value.slice(lastAtIndex + 1, cursorPosition);
-            const filteredUsers = users.filter((user) =>
-              user.name.toLowerCase().includes(query.toLowerCase())
-            );
-
-            // Display filtered users in the mention list if there are matches
-            if (filteredUsers.length > 0) {
-              mentionList.innerHTML = filteredUsers
-                .map(
-                  (user) =>
-                    `<div class="px-4 py-2 hover-bg-c-yellow text-c-black cursor-pointer" data-name="${user.name}">${user.name}</div>`
-                )
-                .join("");
-              const rect = textarea.getBoundingClientRect();
-              mentionList.style.width = `${textarea.offsetWidth}px`;
-              mentionList.classList.remove("hidden");
+          if (chars.count === 0) {
+            range.setEnd(node, chars.count);
+          } else if (node && chars.count > 0) {
+            if (node.nodeType === Node.TEXT_NODE) {
+              if (node.textContent.length < chars.count) {
+                chars.count -= node.textContent.length;
+              } else {
+                range.setEnd(node, chars.count);
+                chars.count = 0;
+              }
             } else {
-              mentionList.classList.add("hidden");
+              for (let i = 0; i < node.childNodes.length; i++) {
+                range = createRange(node.childNodes[i], chars, range);
+                if (chars.count === 0) {
+                  break;
+                }
+              }
             }
-          } else {
-            mentionList.classList.add("hidden");
           }
-        });
 
-        // Insert the selected mention into the textarea and update the preview
-        mentionList.addEventListener("click", (e) => {
-          if (e.target.dataset.name) {
-            const cursorPosition = textarea.selectionStart;
-            const value = textarea.value;
-            const lastAtIndex = value.lastIndexOf("@", cursorPosition - 1);
-
-            // Replace the @mention with the selected user’s name
-            const newValue =
-              value.slice(0, lastAtIndex + 1) +
-              e.target.dataset.name +
-              " " +
-              value.slice(cursorPosition);
-            textarea.value = newValue;
-            textarea.focus();
-            textarea.setSelectionRange(
-              lastAtIndex + 1 + e.target.dataset.name.length + 1,
-              lastAtIndex + 1 + e.target.dataset.name.length + 1
-            );
-
-            // Update the preview area with the new text
-            if (styledTextarea) {
-              styledTextarea.innerHTML =
-                highlightMentions(textarea.value) +
-                "<br>".repeat(
-                  textarea.rows - (textarea.value.match(/\n/g) || []).length
-                );
-            }
-
-            // Hide the mention list after selection
-            mentionList.classList.add("hidden");
-          }
-        });
-
-        // Hide the mention list if the user clicks outside of the textarea or list
-        document.addEventListener("click", (e) => {
-          if (!mentionList.contains(e.target) && !textarea.contains(e.target)) {
-            mentionList.classList.add("hidden");
-          }
-        });
+          return range;
+        }
 
         window.togglePane = togglePane; // Expose togglePane globally
       });

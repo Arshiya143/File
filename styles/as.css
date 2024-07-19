@@ -85,6 +85,9 @@
 .text-c-dark-gray {
   color: var(--color-dark-gray);
 }
+.text-c-gray-opaque {
+  color: var(--color-gray-opaque);
+}
 .text-c-medium-gray {
   color: var(--color-medium-gray);
 }

@@ -212,10 +212,10 @@
               class="flex bg-c-white rounded-md w-20 h-10 justify-evenly ml-6"
             >
               <button>
-                <img src="images/left.svg" />
+                <i class="ri-arrow-left-line ri-lg"></i>
               </button>
               <button>
-                <img src="images/right.svg" />
+                <i class="ri-arrow-right-line ri-lg text-c-gray-opaque"></i>
               </button>
             </div>
 
@@ -225,7 +225,7 @@
               <button
                 class="pt-3 pb-3 pl-4 hidden md:flex items-center justify-center border-r border-c-gray-opaque pr-3"
               >
-                <img src="images/top.svg" width="13" height="16" />
+                <i class="ri-arrow-up-line ri-lg"></i>
               </button>
 
               <div
@@ -233,29 +233,26 @@
               >
                 <button class="flex items-center px-2">
                   <i class="ri-home-4-line pr-2"></i>Personal
-                  <img src="images/down.svg" />
-                  <span>/</span>
+                  <i class="ri-arrow-drop-down-line ri-lg"></i> <span>/</span>
                 </button>
                 <button class="flex items-center px-2">
                   Desktop
-                  <img src="images/down.svg" />
-                  <span>/</span>
+                  <i class="ri-arrow-drop-down-line ri-lg"></i> <span>/</span>
                 </button>
                 <button class="flex items-center px-2 whitespace-nowrap">
                   <span class="flex-shrink-0">New folder(0)</span>
-                  <img src="images/down.svg" class="ml-1" />
-                  <span>/</span>
+                  <i class="ri-arrow-drop-down-line ri-lg"></i> <span>/</span>
                 </button>
               </div>
 
               <button
                 class="pr-5 pt-3 pb-3 px-4 flex items-center justify-center"
               >
-                <img src="images/star.svg" width="15" height="15" />
+                <i class="ri-star-line ri-lg"></i>
               </button>
 
               <button class="pr-4 pt-3 pb-3 flex items-center justify-center">
-                <img src="images/refresh.svg" width="15" height="15" />
+                <i class="ri-loop-left-line ri-lg"></i>
               </button>
             </div>
 
@@ -268,7 +265,7 @@
                 placeholder="Search"
               />
               <div class="pt-3 pb-3 pr-4 flex items-center justify-center">
-                <img src="images/search.svg" />
+                <i class="ri-search-line ri-lg"></i>
               </div>
             </div>
           </div>
@@ -283,24 +280,22 @@
               >
                 <button class="flex items-center">
                   <i class="ri-home-4-line pr-2"></i>Personal
-                  <img src="images/down.svg" />
-                  <span>/</span>
+                  <i class="ri-arrow-drop-down-line ri-lg"></i> <span>/</span>
                 </button>
                 <button class="flex items-center">
                   Desktop
-                  <img src="images/down.svg" />
-                  <span>/</span>
+                  <i class="ri-arrow-drop-down-line ri-lg"></i> <span>/</span>
                 </button>
                 <button class="flex items-center">
                   <span class="truncate">New folder(0)</span>
-                  <img src="images/down.svg" class="ml-1" />
+                  <i class="ri-arrow-drop-down-line ri-lg"></i>
                 </button>
                 <button class="flex items-center">
                   <span class="truncate">New folder(0)</span>
-                  <img src="images/down.svg" class="ml-1" /></button
+                  <i class="ri-arrow-drop-down-line ri-lg"></i></button
                 ><button class="flex items-center">
                   <span class="truncate">New folder(0)</span>
-                  <img src="images/down.svg" class="ml-1" />
+                  <i class="ri-arrow-drop-down-line ri-lg"></i>
                 </button>
               </div>
 
@@ -311,7 +306,7 @@
                   class="pr-2 pt-3 pb-3 flex items-center justify-center"
                   onclick="toggleView();"
                 >
-                  <img src="images/view.svg" />
+                  <i class="ri-gallery-view-2 ri-lg"></i>
                 </button>
                 <button
                   class="pt-3 pb-3 flex items-center justify-center dropdown-toggle"
@@ -356,7 +351,7 @@
                   placeholder="Search"
                 />
                 <div class="pt-3 pb-3 pr-4 flex items-center justify-center">
-                  <img src="images/search.svg" />
+                  <i class="ri-search-line ri-lg"></i>
                 </div>
               </div>
             </div>
@@ -375,10 +370,10 @@
                   >
                 </button>
                 <button
-                  class="dropdown-toggle"
+                  class="dropdown-toggle mt-1"
                   onclick="toggleDropdown('newDropdown')"
                 >
-                  <i class="ri-arrow-drop-down-line font-medium"></i>
+                  <i class="ri-arrow-drop-down-line ri-lg"></i>
                 </button>
                 <div
                   id="newDropdown"
@@ -482,14 +477,14 @@
                   class="flex gap-x-2"
                   onclick="togglePopup('uploadPopup');"
                 >
-                  <img src="images/upload.svg" class="pt-1" />
+                  <i class="ri-upload-2-line ri-lg mt-1"></i>
                   <span class="font-size-18">Upload</span>
                 </button>
                 <button
-                  class="dropdown-toggle"
+                  class="dropdown-toggle mt-1"
                   onclick="toggleDropdown('uploadDropdown')"
                 >
-                  <i class="ri-arrow-drop-down-line font-medium"></i>
+                  <i class="ri-arrow-drop-down-line ri-lg"></i>
                 </button>
                 <div
                   id="uploadDropdown"
@@ -498,8 +493,8 @@
                   <div class="hover-bg-c-yellow rounded-t-lg">
                     <a href="#" class="block p-2 pl-4 dropdown-item"
                       ><div class="flex">
-                        <img src="images/upload.svg" class="pr-4" /><span
-                          onclick="togglePopup('uploadPopup');"
+                        <i class="ri-upload-2-line ri-lg pr-4 mt-1"></i>
+                        <span onclick="togglePopup('uploadPopup');"
                           >Upload File</span
                         >
                       </div></a
@@ -508,9 +503,8 @@
                   <div class="hover-bg-c-yellow rounded-b-lg">
                     <a href="#" class="block p-2 pl-4 dropdown-item"
                       ><div class="flex">
-                        <img src="images/upload.svg" class="pr-4" /><span
-                          >Upload Folder</span
-                        >
+                        <i class="ri-upload-2-line ri-lg pr-4 mt-1"></i>
+                        <span>Upload Folder</span>
                       </div></a
                     >
                   </div>
@@ -518,10 +512,10 @@
               </div>
 
               <button>
-                <img src="images/scissor.svg" />
+                <i class="ri-scissors-2-fill ri-lg"></i>
               </button>
               <button>
-                <img src="images/copy.svg" />
+                <i class="ri-file-copy-line ri-lg"></i>
               </button>
               <button>
                 <img src="images/paste.svg" />
@@ -530,21 +524,21 @@
                 <img src="images/rename.svg" />
               </button>
               <button onclick="togglePopup('sharePopup');">
-                <img src="images/share.svg" />
+                <i class="ri-share-fill ri-lg"></i>
               </button>
               <button>
-                <img src="images/delete.svg" />
+                <i class="ri-delete-bin-line ri-lg"></i>
               </button>
               <div class="relative flex items-center">
                 <button class="flex gap-x-2">
-                  <img src="images/sort.svg" class="pt-1" />
+                  <i class="ri-arrow-up-down-line ri-lg mt-1"></i>
                   <span class="font-size-18">Sort</span>
                 </button>
                 <button
                   class="dropdown-toggle"
                   onclick="toggleDropdown('sortDropdown')"
                 >
-                  <i class="ri-arrow-drop-down-line font-medium"></i>
+                  <i class="ri-arrow-drop-down-line ri-lg"></i>
                 </button>
                 <div
                   id="sortDropdown"
@@ -553,9 +547,8 @@
                   <div class="hover-bg-c-yellow rounded-t-lg">
                     <a href="#" class="block p-2 pl-4 dropdown-item"
                       ><div class="flex">
-                        <img src="images/check.svg" class="pr-4" /><span
-                          >Name</span
-                        >
+                        <i class="ri-check-line pr-3 ri-lg mt-1"></i
+                        ><span>Name</span>
                       </div></a
                     >
                   </div>
@@ -573,9 +566,8 @@
                   <div class="hover-bg-c-yellow rounded-t-lg">
                     <a href="#" class="block p-2 pl-4 dropdown-item"
                       ><div class="flex">
-                        <img src="images/check.svg" class="pr-4" /><span
-                          >Increasing</span
-                        >
+                        <i class="ri-check-line pr-3 ri-lg mt-1"></i
+                        ><span>Increasing</span>
                       </div></a
                     >
                   </div>
@@ -588,14 +580,14 @@
               </div>
               <div class="relative flex items-center">
                 <button class="flex gap-x-2" onclick="toggleView()">
-                  <img src="images/view.svg" class="pt-1" />
+                  <i class="ri-gallery-view-2 ri-lg mt-1"></i>
                   <span class="font-size-18">View</span>
                 </button>
                 <button
                   class="dropdown-toggle"
                   onclick="toggleDropdown('viewDropdown')"
                 >
-                  <i class="ri-arrow-drop-down-line font-medium"></i>
+                  <i class="ri-arrow-drop-down-line ri-lg"></i>
                 </button>
                 <div
                   id="viewDropdown"
@@ -604,45 +596,40 @@
                   <div class="hover-bg-c-yellow rounded-t-lg">
                     <a href="#" class="block p-2 pl-4 dropdown-item"
                       ><div class="flex">
-                        <img src="images/tiny.svg" class="pr-4" /><span
-                          >Tiny</span
-                        >
+                        <i class="ri-gallery-view-2 text-sm mt-1 pr-4"></i>
+                        <span>Tiny</span>
                       </div></a
                     >
                   </div>
                   <div class="hover-bg-c-yellow">
                     <a href="#" class="block p-2 pl-4 dropdown-item"
                       ><div class="flex">
-                        <img src="images/small.svg" class="pr-4" /><span
-                          >Small icon</span
-                        >
+                        <i class="ri-gallery-view-2 text-base mt-1 pr-4"></i>
+                        <span>Small icon</span>
                       </div></a
                     >
                   </div>
                   <div class="hover-bg-c-yellow">
                     <a href="#" class="block p-2 pl-4 dropdown-item"
                       ><div class="flex">
-                        <img src="images/medium.svg" class="pr-4" /><span
-                          >Medium icon</span
-                        >
+                        <i class="ri-gallery-view-2 text-lg pr-4"></i>
+                        <span>Medium icon</span>
                       </div></a
                     >
                   </div>
                   <div class="hover-bg-c-yellow">
                     <a href="#" class="block p-2 pl-4 dropdown-item"
                       ><div class="flex">
-                        <img src="images/big.svg" class="pr-4" /><span
-                          >Big icon</span
-                        >
+                        <i class="ri-gallery-view-2 text-xl pr-4"></i>
+                        <span>Big icon</span>
                       </div></a
                     >
                   </div>
                   <div class="hover-bg-c-yellow">
                     <a href="#" class="block p-2 pl-4 dropdown-item"
                       ><div class="flex">
-                        <img src="images/oversize.svg" class="pr-3.5" /><span
-                          >Oversized icon</span
-                        >
+                        <i class="ri-gallery-view-2 text-2xl pr-4"></i>
+                        <span>Oversized icon</span>
                       </div></a
                     >
                   </div>
@@ -652,9 +639,8 @@
                       class="block p-2 pl-4 dropdown-item"
                       onclick="toggleView();"
                       ><div class="flex">
-                        <img src="images/list.svg" class="pr-4" /><span
-                          >List View</span
-                        >
+                        <i class="ri-list-check ri-lg mt-1 pr-4"></i
+                        ><span>List View</span>
                       </div></a
                     >
                   </div>
@@ -1368,16 +1354,5 @@
     </main>
     <script src="script/sidebar.js"></script>
     <script src="script/filemanager.js"></script>
-    <script defer>
-      $(".label.ui.dropdown").dropdown();
-
-      $(".no.label.ui.dropdown").dropdown({
-        useLabels: false,
-      });
-
-      $(".ui.button").on("click", function () {
-        $(".ui.dropdown").dropdown("restore defaults");
-      });
-    </script>
   </body>
 </html>
