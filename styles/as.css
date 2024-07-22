@@ -171,7 +171,6 @@ body.fm {
   color: var(--color-light-gray);
   font-weight: var(--font-weight-400);
   overflow-x: hidden;
-  overflow-y: hidden;
 }
 .fm .main {
   background: url("/images/main-bg.png");
