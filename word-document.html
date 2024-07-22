@@ -510,7 +510,7 @@
         // Update frame margin initially in case the comments section is not hidden
         updateFrameMargin();
 
-        const users = ["alice", "bob", "charlie", "dave"]; // Example users for mention list
+        const users = ["alice bob", "bob", "charlie", "dave"]; // Example users for mention list
         const placeholderText = "Type your comment here..."; // placeholder
 
         // Initial setup for the mention textbox
@@ -599,12 +599,10 @@
         // Function to apply styles to mentions
         function applyMentionStyles() {
           const text = mentionTextbox.innerText;
-          console.log(text);
           const html = text.replace(
             /(@\w+)/g,
             '<span class="text-link-blue">$1</span>'
           );
-          console.log(html);
           mentionTextbox.innerHTML = html;
           setCaretToEnd();
         }

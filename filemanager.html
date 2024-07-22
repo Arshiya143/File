@@ -39,7 +39,6 @@
                   >
                     <div
                       class="w-full px-6 py-3 flex justify-between items-center"
-                      href="#"
                     >
                       <span> Position </span>
                       <i
@@ -726,7 +725,8 @@
                     style="position: absolute !important"
                   />
                   <i
-                    class="ri-arrow-down-line absolute top-0 right-0 mr-2 mt-0.5 text-c-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    class="ri-arrow-down-line absolute top-0 right-0 mr-2 mt-0.5 text-c-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer hover-text-c-yellow"
+                    onclick="togglePane('.popupiframe')"
                   ></i>
                   <i
                     class="ri-edit-line edit-icon absolute bottom-0 right-0 pb-1 mr-2 text-c-white cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover-text-c-yellow"
@@ -1348,6 +1348,269 @@
                 </div>
               </form>
             </div>
+          </div>
+        </div>
+      </div>
+      <!--Iframe popup-->
+      <div
+        id="iframepopup{{ $iframe['filetype'] . $iframefile['filekey'] }}"
+        class="draggableelement popupiframe fixed inset-0 bg-black-900 bg-opacity-50 flex items-center justify-center hidden"
+      >
+        <div
+          class="draggable bg-black bg-opacity-70 rounded-lg shadow-lg w-full h-full relative"
+        >
+          <div class="flex justify-between items-center p-1 pr-2 border-b">
+            <span class="text-lg flex font-semibold"
+              ><img
+                class="w-5 h-5 mt-1"
+                src="{{ asset($constants['APPFILEPATH'] . $iframe['appicon']) }}"
+              />
+              <h2 class="text-white ml-2 font-thin">
+                {{ $iframe['appname'] }}
+              </h2>
+            </span>
+            <div class="flex space-x-1">
+              <a
+                href="#"
+                class="maximizeiframe-btn"
+                data-iframe-id="{{ $iframe['filetype'] . $iframefile['filekey'] }}"
+                ><i class="ri-triangle-fill text-green-400 text-lg"></i
+              ></a>
+              <a
+                href="#"
+                class="minimizeiframe-btn"
+                data-iframe-id="{{ $iframe['filetype'] . $iframefile['filekey'] }}"
+                ><i class="ri-triangle-fill text-yellow-400 text-lg"></i
+              ></a>
+              <a
+                href="#"
+                class="closeiframe-btn"
+                data-filekey="{{ $iframefile['filekey'] }}"
+                data-iframefile-id="{{ $iframe['filetype'] . $iframefile['filekey'] }}"
+                data-appkey="{{ $iframe['appkey'] }}"
+                data-filetype="{{ $iframe['filetype'] }}"
+                data-isfile="{{ $iframe['isfile'] }}"
+                onclick="togglePane('.popupiframe')"
+                ><i class="ri-triangle-fill text-red-400 text-lg"></i
+              ></a>
+            </div>
+          </div>
+          <!--comment section-->
+          <div
+            class="commentssection absolute bottom-0 top-9 flex h-11/12 flex-col border-r bg-c-lighten-gray hidden md:w-1/3 xl:w-1/5 font-size-14"
+          >
+            <div
+              class="commentresizer absolute top-0 right-0 w-1 h-full"
+              style="cursor: ew-resize; background-color: #d1d5db"
+            ></div>
+            <div
+              class="sticky top-0 z-10 flex items-center justify-between border-b px-4 py-2"
+            >
+              <h3 class="font-medium font-size-16">Comments</h3>
+              <div>
+                <button class="pr-2" onclick="togglePane('.addcomment')">
+                  <i class="ri-chat-new-line ri-lg"></i>
+                </button>
+                <button onclick="togglePane('.commentssection')">
+                  <i class="ri-close-fill ri-lg"></i>
+                </button>
+              </div>
+            </div>
+            <!--chat list-->
+            <div class="flex-1 overflow-auto comment-list">
+              <div class="space-y-4 p-4">
+                <div class="grid gap-2 border-b">
+                  <div class="flex items-start gap-3">
+                    <div class="h-8 w-8 rounded-full">
+                      <img
+                        src="images/avatar.png"
+                        alt="Avatar"
+                        class="h-8 w-8 rounded-full"
+                      />
+                    </div>
+                    <div class="flex-1 space-y-1">
+                      <div class="flex items-center justify-between">
+                        <div class="font-medium">John Doe</div>
+                        <div class="text-xs">10-07-2024 10:45</div>
+                      </div>
+                      <p>
+                        This is a great document! I have a few suggestions...
+                      </p>
+                      <div class="flex items-center gap-2">
+                        <button class="p-2">
+                          <i class="ri-reply-line"></i>
+                        </button>
+                        <button class="p-2">
+                          <i class="ri-delete-bin-line"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ml-11 grid gap-2">
+                    <div class="flex items-start gap-3">
+                      <div class="h-8 w-8 rounded-full">
+                        <img
+                          src="images/avatar.png"
+                          alt="Avatar"
+                          class="h-8 w-8 rounded-full"
+                        />
+                      </div>
+                      <div class="flex-1 space-y-1">
+                        <div class="flex items-center justify-between">
+                          <div class="font-medium">Sarah Anderson</div>
+                          <div class="text-xs">1 hour ago</div>
+                        </div>
+                        <p>
+                          I agree, those are great suggestions. Let me add a few
+                          more...
+                        </p>
+                        <div class="flex items-center gap-2">
+                          <button class="p-2">
+                            <i class="ri-reply-line"></i>
+                          </button>
+                          <button class="p-2">
+                            <i class="ri-delete-bin-line"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ml-11 grid gap-2">
+                    <div class="flex items-start gap-3">
+                      <div class="h-8 w-8 rounded-full">
+                        <img
+                          src="images/avatar.png"
+                          alt="Avatar"
+                          class="h-8 w-8 rounded-full"
+                        />
+                      </div>
+                      <div class="flex-1 space-y-1">
+                        <div class="flex items-center justify-between">
+                          <div class="font-medium">Sarah Anderson</div>
+                          <div class="text-xs">1 hour ago</div>
+                        </div>
+                        <p>
+                          I agree, those are great suggestions. Let me add a few
+                          more...
+                        </p>
+                        <div class="flex items-center gap-2">
+                          <button class="p-2">
+                            <i class="ri-reply-line"></i>
+                          </button>
+                          <button class="p-2">
+                            <i class="ri-delete-bin-line"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="grid gap-2">
+                  <div class="flex items-start gap-3">
+                    <div class="h-8 w-8 rounded-full">
+                      <img
+                        src="images/avatar.png"
+                        alt="Avatar"
+                        class="h-8 w-8 rounded-full"
+                      />
+                    </div>
+                    <div class="flex-1 space-y-1">
+                      <div class="flex items-center justify-between">
+                        <div class="font-medium">John Doe</div>
+                        <div class="text-xs">10-07-2024 10:45</div>
+                      </div>
+                      <p>
+                        This is a great document! I have a few suggestions...
+                      </p>
+                      <div class="flex items-center gap-2">
+                        <button class="p-2">
+                          <i class="ri-reply-line"></i>
+                        </button>
+                        <button class="p-2">
+                          <i class="ri-delete-bin-line"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ml-11 grid gap-2">
+                    <div class="flex items-start gap-3">
+                      <div class="h-8 w-8 rounded-full">
+                        <img
+                          src="images/avatar.png"
+                          alt="Avatar"
+                          class="h-8 w-8 rounded-full"
+                        />
+                      </div>
+                      <div class="flex-1 space-y-1">
+                        <div class="flex items-center justify-between">
+                          <div class="font-medium">Sarah Anderson</div>
+                          <div class="text-xs">1 hour ago</div>
+                        </div>
+                        <p>
+                          I agree, those are great suggestions. Let me add a few
+                          more...
+                        </p>
+                        <div class="flex items-center gap-2">
+                          <button class="p-2">
+                            <i class="ri-reply-line"></i>
+                          </button>
+                          <button class="p-2">
+                            <i class="ri-delete-bin-line"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Add comment-->
+            <div
+              class="addcomment flex items-center gap-x-2 sticky bottom-0 z-10 border-t px-4 py-2 hidden bg-c-lighten-gray relative"
+            >
+              <div class="w-3/4">
+                <div
+                  class="mention-container w-full relative bg-c-white border border-gray-3 p-2 rounded-lg"
+                >
+                  <div
+                    contenteditable="true"
+                    class="mention-textbox w-full h-20 overflow-auto focus:outline-none"
+                    placeholder="Type your message here..."
+                  ></div>
+                  <!-- Mention list -->
+                  <div
+                    class="mention-list absolute bottom-full h-28 overflow-y-auto mb-2 left-0 w-full bg-c-white border border-gray-3 rounded-lg shadow-lg mt-1 hidden"
+                  >
+                    <ul class="list list-none">
+                      <!-- Mention list items will be injected here -->
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <button
+                class="border px-3 hover-bg-c-black hover-text-c-yellow text-sm py-1 rounded border-gray-600 bg-c-yellow"
+              >
+                Post
+              </button>
+            </div>
+          </div>
+          <!--Iframe-->
+          <iframe
+            id="iframe{{ $iframe['filetype'] . $iframefile['filekey'] }}"
+            src="https://desktop2.sizaf.com/filemanager/Desktop"
+            class="w-full h-full frame"
+          ></iframe>
+          <!--chat button-->
+          <div
+            class="absolute bottom-5 left-5 bg-gray-300 rounded-full px-2 py-1 commentbutton"
+          >
+            <button
+              class="comment"
+              data-filekey="{{ $iframe['filetype'] . $iframefile['filekey'] }}"
+              onclick="togglePane('.commentssection')"
+            >
+              <i class="ri-chat-4-line ri-lg"></i>
+            </button>
           </div>
         </div>
       </div>
